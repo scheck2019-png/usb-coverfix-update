@@ -1,1 +1,3 @@
-4.1
+4.0.1
+https://github.com/scheck2019-png/USB-CoverFix/releases/download/v4.0.1/USB_CoverFix_Deluxe_4.0.1_Setup.exe
+Bugfixes and Car Radio improvements
