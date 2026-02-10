@@ -1,2 +1,2 @@
 4.0.3
-https://github.com/scheck2019-png/usb-coverfix-update/releases/download/v4.0.1/USB_CoverFix_Deluxe_4.0.3_setup.exe
+https://github.com/scheck2019-png/usb-coverfix-update/releases/download/v4.0.3/USB_CoverFix_Deluxe_4.0.3_setup.exe
