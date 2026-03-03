@@ -1,140 +1,283 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>USB CoverFix Deluxe</title>
+    <title>USB CoverFix Deluxe – Die ultimative Cover-Lösung für MP3s</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', 'Courier New', monospace;
         }
         body {
-            background: linear-gradient(145deg, #0b1a2e 0%, #1a2f3f 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: #0a0e12;
+            color: #e0e0e0;
+            line-height: 1.6;
             padding: 20px;
         }
-        .card {
-            max-width: 600px;
-            width: 100%;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #151e26;
             border-radius: 32px;
-            box-shadow: 0 25px 50px -12px rgba(0,40,80,0.5);
-            padding: 30px 25px;
-            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 20px 40px rgba(0, 255, 0, 0.2);
+            padding: 30px;
+            border: 2px solid #2ecc71;
         }
         h1 {
-            font-size: 2.2rem;
+            font-size: 3rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #0b1a2e, #1a4b6e);
+            background: linear-gradient(45deg, #2ecc71, #f1c40f);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
-            word-break: break-word;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px #2ecc7180;
         }
         .version {
+            background: #2ecc71;
+            color: #0a0e12;
             display: inline-block;
-            background: #1a4b6e;
-            color: white;
-            padding: 5px 15px;
+            padding: 5px 20px;
             border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-weight: bold;
             margin-bottom: 20px;
-            letter-spacing: 0.5px;
+            font-size: 1.2rem;
+        }
+        .trial {
+            background: #f39c12;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        .screenshots {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 30px 0;
         }
         .screenshot {
-            width: 100%;
+            background: #1e2a36;
             border-radius: 24px;
-            margin: 20px 0;
-            border: 1px solid rgba(0,0,0,0.1);
-            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.3);
+            padding: 10px;
+            border: 2px solid #2ecc71;
+            max-width: 500px;
         }
-        .description {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #0b1a2e;
-            margin-bottom: 25px;
+        .screenshot img {
+            width: 100%;
+            border-radius: 16px;
+            display: block;
         }
-        .features {
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        .feature-card {
+            background: #1e2a36;
+            border-left: 6px solid #2ecc71;
+            padding: 25px 20px;
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transition: transform 0.2s;
+        }
+        .feature-card:hover {
+            transform: scale(1.02);
+            border-color: #f1c40f;
+        }
+        .feature-card h3 {
+            color: #2ecc71;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .feature-card ul {
             list-style: none;
-            margin-bottom: 30px;
         }
-        .features li {
-            padding: 8px 0 8px 30px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%231a4b6e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>') left center no-repeat;
-            background-size: 20px;
-            color: #0b1a2e;
+        .feature-card li {
+            padding: 5px 0 5px 25px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%232ecc71" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>') left center no-repeat;
+            background-size: 16px;
         }
-        .download-btn {
+        .highlight {
+            color: #f1c40f;
+            font-weight: bold;
+        }
+        .btn {
             display: inline-block;
-            background: #1a4b6e;
-            color: white;
-            text-decoration: none;
-            padding: 15px 40px;
+            background: #2ecc71;
+            color: #0a0e12;
+            font-weight: bold;
+            padding: 18px 40px;
             border-radius: 60px;
-            font-size: 1.3rem;
-            font-weight: 600;
-            box-shadow: 0 8px 20px rgba(26,75,110,0.4);
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.4);
             transition: all 0.2s;
             border: none;
             cursor: pointer;
-            width: 100%;
-            text-align: center;
-            margin-top: 10px;
+            margin: 10px 0;
         }
-        .download-btn:hover {
-            background: #0b2a40;
-            transform: scale(1.02);
-            box-shadow: 0 12px 25px rgba(26,75,110,0.5);
+        .btn:hover {
+            background: #f1c40f;
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(241, 196, 15, 0.5);
         }
         .footer {
-            margin-top: 30px;
-            font-size: 0.85rem;
-            color: #4a5f73;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #2ecc71;
             text-align: center;
-            border-top: 1px solid rgba(0,0,0,0.05);
-            padding-top: 20px;
+            color: #95a5a6;
+            font-size: 0.9rem;
         }
         .footer a {
-            color: #1a4b6e;
+            color: #2ecc71;
             text-decoration: none;
-            font-weight: 500;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .badge {
+            background: #f39c12;
+            color: #000;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="card">
+    <div class="container">
         <h1>USB CoverFix Deluxe</h1>
-        <div class="version">Версия 1.0.0</div>
+        <div class="version">Version 4.0.5</div>
 
-        <img src="screenshot.png" alt="Скриншот USB CoverFix Deluxe" class="screenshot" onerror="this.style.display='none'">
+        <div class="trial">
+            🔑 14-Tage-Testversion – danach Lizenz erforderlich<br>
+            <small>(Trial-Datei wird geschützt unter %CommonAppData% gespeichert)</small>
+        </div>
 
-        <p class="description">
-            Мощная утилита для диагностики и восстановления USB-накопителей. Автоматически исправляет ошибки файловой системы, возвращает скрытые файлы и тестирует реальный объём флешек. Работает без установки.
+        <p style="font-size: 1.3rem; text-align: center; margin: 20px 0;">
+            Die ultimative Lösung, um MP3-Dateien mit Cover-Bildern für Autoradios und USB-Sticks zu versehen.<br>
+            <span class="highlight">Car-Radio-Modus • Batch • integrierter Player • KI-Fee • Mini-Game</span>
         </p>
 
-        <ul class="features">
-            <li>Восстановление доступа к флешке</li>
-            <li>Тестирование на поддельный объём</li>
-            <li>Возврат скрытых вирусами файлов</li>
-            <li>Низкоуровневое форматирование</li>
-            <li>Проверка на bad-блоки</li>
-        </ul>
+        <!-- Platzhalter für Screenshots – hier kannst du deine Bilder einfügen -->
+        <div class="screenshots">
+            <div class="screenshot">
+                <img src="screenshot_main.png" alt="Hauptfenster" onerror="this.style.display='none'">
+                <p style="text-align: center; margin-top: 10px;">Hauptfenster mit MP3-Liste, Bildern und Player</p>
+            </div>
+            <div class="screenshot">
+                <img src="screenshot_batch.png" alt="Batch-Verarbeitung" onerror="this.style.display='none'">
+                <p style="text-align: center; margin-top: 10px;">Batch-Modus mit Fortschritt</p>
+            </div>
+        </div>
 
-        <a href="https://github.com/scheck2019-png/USB_CoverFix_Deluxe/releases/latest" class="download-btn">Скачать бесплатно</a>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>🎵 MP3 & Cover</h3>
+                <ul>
+                    <li>Ordner mit MP3s und Bildern laden</li>
+                    <li>Einzelne Zuordnung oder Batch</li>
+                    <li>Zufallsmodus für Abwechslung</li>
+                    <li>Backup vor dem Schreiben (optional)</li>
+                    <li>Schreibschutz automatisch entfernen</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>🚗 Car-Radio-Optimierung</h3>
+                <ul>
+                    <li>Verschiedene Namensschemata (z.B. "Artist – Title")</li>
+                    <li>Bildgröße anpassbar (500×500, 1024×1024)</li>
+                    <li>Kompatibel mit den meisten Autoradios</li>
+                    <li>Unterstützt JPG, PNG, BMP, WebP</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>🎧 Integrierter Player</h3>
+                <ul>
+                    <li>MP3-Wiedergabe mit Play/Pause/Stop</li>
+                    <li>Position springen (Seek)</li>
+                    <li>Lautstärkeregler</li>
+                    <li>Anzeige der aktuellen Zeit</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>🖼️ Bildverwaltung</h3>
+                <ul>
+                    <li>Vorschau mit Cache (LRU) für schnelles Blättern</li>
+                    <li>Vollbildansicht per Doppelklick</li>
+                    <li>Navigation mit Pfeiltasten</li>
+                    <li>Cover extrahieren aus MP3</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>🧚 KI-Fee</h3>
+                <ul>
+                    <li>Animierte Hilfe, die bei Inaktivität erscheint</li>
+                    <li>Schaltbar (ON/OFF) über Button oder Ctrl+Shift+O</li>
+                    <li>Sofort aufrufbar mit Ctrl+Shift+K</li>
+                    <li>Mehrsprachig (DE/EN/RU)</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>🎮 Easter Egg</h3>
+                <ul>
+                    <li>Klicke auf das <span class="highlight">Logo unten rechts</span> – es öffnet sich das Mini-Spiel <strong>BrickBreak</strong>!</li>
+                    <li>Eine kleine Belohnung für neugierige User 😉</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="background: #1e2a36; border-radius: 16px; padding: 25px; margin: 40px 0;">
+            <h2 style="color: #2ecc71; margin-bottom: 20px;">⚙️ Weitere Features im Überblick</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+                <ul style="flex: 1; min-width: 250px;">
+                    <li>✅ Drag & Drop für MP3s und Bilder</li>
+                    <li>✅ Metadata-Editor (ID3-Tags)</li>
+                    <li>✅ Cover-Editor (Bilder bearbeiten)</li>
+                    <li>✅ "Nächste unzugewiesene MP3" finden</li>
+                    <li>✅ Mehrsprachige Oberfläche (DE/EN/RU)</li>
+                </ul>
+                <ul style="flex: 1; min-width: 250px;">
+                    <li>✅ Auto-Update via GitHub</li>
+                    <li>✅ Ausführliches Fehler-Logging</li>
+                    <li>✅ Sound-Feedback (optional abschaltbar mit Ctrl+M)</li>
+                    <li>✅ Trial-Management mit 14 Tagen</li>
+                    <li>✅ .NET 8 / Windows Forms</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="https://github.com/scheck2019-png/USB_CoverFix_Deluxe/releases/latest" class="btn">
+                ⬇️ Kostenlose Testversion herunterladen
+            </a>
+            <p style="margin-top: 15px; color: #95a5a6;">
+                Version 4.0.5 – 45 MB – für Windows 10/11
+            </p>
+        </div>
 
         <div class="footer">
-            💾 Сделано с заботой о данных | 
-            <a href="https://github.com/scheck2019-png/USB_CoverFix_Deluxe">Исходный код</a> | 
-            <a href="https://github.com/scheck2019-png/USB_CoverFix_Deluxe/issues">Сообщить о проблеме</a>
+            <p>© 2026 Siegfried Scheck | USB CoverFix Deluxe</p>
+            <p>
+                <a href="https://github.com/scheck2019-png/USB_CoverFix_Deluxe">Quellcode auf GitHub</a> |
+                <a href="https://github.com/scheck2019-png/USB_CoverFix_Deluxe/issues">Support / Fehler melden</a>
+            </p>
+            <p style="margin-top: 10px;">📧 usbcoverfix@gmail.com</p>
         </div>
     </div>
 </body>
-</html>
+    </html>
