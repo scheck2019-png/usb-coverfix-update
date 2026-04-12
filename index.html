@@ -2,19 +2,21 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, shrink-to-fit=no">
     <title>USB CoverFix Deluxe – Die ultimative Cover-Lösung für MP3s</title>
     <style>
-        /* ---------- БАЗОВЫЕ СТИЛИ ---------- */
+        /* ---------- ГЛОБАЛЬНЫЙ СБРОС И ЗАЩИТА ОТ ВЫЛЕЗАНИЯ ---------- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', 'Courier New', monospace;
+            /* Запрещаем любому элементу быть шире родителя */
+            max-width: 100%;
         }
 
         html, body {
-            overflow-x: hidden;
+            overflow-x: hidden !important;
             width: 100%;
         }
 
@@ -25,13 +27,16 @@
             padding: 20px;
         }
 
-        img, video, iframe {
+        /* Изображения и медиа — строго по ширине */
+        img, video, iframe, svg {
             max-width: 100%;
             height: auto;
         }
 
+        /* Основной контейнер — теперь всегда 100% ширины с авто-отступами */
         .container {
             max-width: 1200px;
+            width: 100%;
             margin: 0 auto;
             background: #151e26;
             border-radius: 32px;
@@ -50,6 +55,7 @@
             -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
             text-shadow: 0 0 20px #2ecc7180;
+            word-break: break-word;
         }
 
         .version {
@@ -73,6 +79,7 @@
             font-weight: bold;
             text-align: center;
             font-size: 1.2rem;
+            word-break: break-word;
         }
 
         .trial strong {
@@ -93,6 +100,7 @@
             padding: 10px;
             border: 2px solid #2ecc71;
             max-width: 500px;
+            width: 100%; /* на мобильных займёт всю ширину */
         }
 
         .screenshot img {
@@ -115,6 +123,7 @@
             border-radius: 16px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.5);
             transition: transform 0.2s;
+            word-break: break-word;
         }
 
         .feature-card:hover {
@@ -162,6 +171,8 @@
             margin: 10px 0;
             border: 2px solid transparent;
             text-align: center;
+            white-space: normal;
+            word-break: break-word;
         }
 
         .btn:hover {
@@ -227,25 +238,21 @@
             color: #0a0e12;
         }
 
-        /* ---------- МОБИЛЬНАЯ АДАПТАЦИЯ (ПОЛНАЯ) ---------- */
+        /* ---------- МОБИЛЬНАЯ ТОНКАЯ НАСТРОЙКА (убираем всё лишнее) ---------- */
         @media (max-width: 600px) {
             body {
                 padding: 8px;
-                overflow-x: hidden;
             }
 
             .container {
                 padding: 20px 12px;
                 border-radius: 20px;
-                width: 100%;
-                max-width: 100%;
             }
 
             h1 {
                 font-size: 2rem;
                 line-height: 1.2;
                 text-align: center;
-                word-break: break-word;
             }
 
             .version {
@@ -257,7 +264,6 @@
                 font-size: 0.95rem;
                 padding: 12px 10px;
                 margin: 15px 0;
-                word-break: break-word;
             }
 
             p[style*="font-size: 1.3rem"] {
@@ -290,17 +296,12 @@
                 font-size: 1.2rem;
                 padding: 14px 15px;
                 margin: 8px 0;
-                white-space: normal;
             }
 
-            div[style*="display: flex; gap: 20px"] {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            div[style*="display: flex; flex-wrap: wrap"] {
-                flex-direction: column;
-                gap: 15px;
+            /* Все флекс-контейнеры на мобилке — колонкой */
+            div[style*="display: flex"] {
+                flex-direction: column !important;
+                gap: 12px !important;
             }
 
             h2[style*="font-size: 2.2rem"] {
@@ -328,21 +329,13 @@
                 font-size: 0.9rem;
             }
 
-            /* Скриншоты */
             .screenshots {
-                width: 100%;
                 gap: 10px;
             }
 
             .screenshot {
                 max-width: 100%;
                 padding: 8px;
-            }
-
-            .screenshot img {
-                width: 100%;
-                height: auto;
-                border-radius: 12px;
             }
 
             .screenshot p {
@@ -353,9 +346,15 @@
             div[style*="border-radius: 30px"] {
                 padding: 20px 12px !important;
             }
+
+            /* Убираем возможные фиксированные отступы у изображений */
+            img {
+                width: 100% !important;
+                height: auto !important;
+            }
         }
 
-        /* Для очень маленьких экранов */
+        /* Для самых маленьких */
         @media (max-width: 480px) {
             h1 {
                 font-size: 1.8rem;
@@ -519,4 +518,4 @@
         </div>
     </div>
 </body>
-</html>
+    </html>
