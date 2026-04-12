@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>USB CoverFix Deluxe – Cover-Lösung</title>
     <style>
-        /* ---------- ОЧЕНЬ КОМПАКТНЫЙ МОБИЛЬНЫЙ ДИЗАЙН + УМНЫЕ КАРТИНКИ ---------- */
+        /* ---------- СБРОС И КОМПАКТНЫЙ МОБИЛЬНЫЙ ДИЗАЙН ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -102,7 +102,7 @@
             font-weight: bold;
         }
 
-        /* ---------- УМНАЯ КАРУСЕЛЬ ДЛЯ СКРИНШОТОВ (без JS) ---------- */
+        /* ---------- УМНАЯ КАРУСЕЛЬ (КАРТИНКИ + ВИДЕО) ---------- */
         .screenshots-carousel {
             margin: 10px 0;
             border-radius: 12px;
@@ -129,10 +129,11 @@
             position: relative;
         }
 
-        .carousel-slide img {
+        .carousel-slide img,
+        .carousel-slide video {
             width: 100%;
             height: auto;
-            aspect-ratio: 16 / 9; /* фиксированное соотношение, чтобы блок не прыгал */
+            aspect-ratio: 16 / 9;
             object-fit: cover;
             display: block;
         }
@@ -149,7 +150,6 @@
             text-align: center;
         }
 
-        /* Точки-индикаторы */
         .carousel-dots {
             display: flex;
             justify-content: center;
@@ -164,6 +164,7 @@
             border-radius: 50%;
             background: #2ecc71;
             opacity: 0.4;
+            transition: all 0.2s;
         }
 
         .dot.active {
@@ -173,7 +174,7 @@
             border-radius: 10px;
         }
 
-        /* Горизонтальная прокрутка для фич */
+        /* ---------- ГОРИЗОНТАЛЬНЫЕ ФИЧИ ---------- */
         .feature-scroll {
             display: flex;
             overflow-x: auto;
@@ -196,6 +197,12 @@
             min-width: 160px;
             flex: 0 0 auto;
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(46,204,113,0.3);
         }
 
         .feature-card h3 {
@@ -219,20 +226,30 @@
             white-space: nowrap;
         }
 
-        /* Блок редактора — компактный */
+        /* ---------- АККОРДЕОН РЕДАКТОРА ---------- */
         .editor-compact {
             background: linear-gradient(145deg, #0f1a24, #1a2a36);
             border-radius: 12px;
-            padding: 10px;
             margin: 10px 0;
             border: 1px solid #2ecc71;
+            cursor: pointer;
         }
 
-        .editor-compact h2 {
+        .editor-compact summary {
+            list-style: none;
+            text-align: center;
             color: #f1c40f;
             font-size: 1.2rem;
-            text-align: center;
-            margin-bottom: 5px;
+            font-weight: bold;
+            padding: 8px;
+        }
+
+        .editor-compact summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .editor-compact[open] summary {
+            border-bottom: 1px solid #2ecc71;
         }
 
         .editor-compact ul {
@@ -241,6 +258,7 @@
             flex-wrap: wrap;
             gap: 5px 10px;
             justify-content: center;
+            padding: 10px;
         }
 
         .editor-compact li {
@@ -251,7 +269,7 @@
             border: 1px solid #2ecc71;
         }
 
-        /* Кнопки */
+        /* ---------- КНОПКИ ---------- */
         .btn {
             display: block;
             width: 100%;
@@ -266,13 +284,19 @@
             margin: 6px 0;
             border: none;
             box-shadow: 0 4px 8px rgba(46,204,113,0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 12px rgba(46,204,113,0.5);
         }
 
         .btn-buy {
             background: #f39c12;
         }
 
-        /* Футер */
+        /* ---------- ФУТЕР И СЧЁТЧИК ---------- */
         .footer {
             margin-top: 10px;
             padding-top: 8px;
@@ -293,7 +317,36 @@
             margin-right: 3px;
         }
 
-        /* Десктопная версия */
+        .visitor-counter {
+            margin-top: 5px;
+            font-size: 0.75rem;
+            color: #f1c40f;
+        }
+
+        /* ---------- КНОПКА НАВЕРХ ---------- */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #2ecc71;
+            color: #0a0e12;
+            border: none;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            cursor: pointer;
+            display: none;
+            z-index: 999;
+            transition: transform 0.2s;
+        }
+
+        #scrollToTopBtn:hover {
+            transform: scale(1.1);
+        }
+
+        /* ---------- ДЕСКТОПНАЯ ВЕРСИЯ ---------- */
         @media (min-width: 768px) {
             body { padding: 20px; }
             .container { max-width: 1200px; padding: 30px; border-radius: 32px; }
@@ -304,17 +357,8 @@
             .lang-switch a { font-size: 1rem; padding: 5px 12px; }
             .intro-text { font-size: 1.3rem; }
 
-            .screenshots-carousel {
-                display: block;
-                margin: 20px 0;
-            }
-            .carousel-slide img {
-                aspect-ratio: 16 / 9;
-            }
-            .carousel-caption {
-                font-size: 1rem;
-                padding: 8px;
-            }
+            .screenshots-carousel { margin: 20px 0; }
+            .carousel-caption { font-size: 1rem; padding: 8px; }
 
             .feature-scroll {
                 display: grid;
@@ -333,10 +377,11 @@
                 padding-left: 25px;
             }
             .feature-card h3 { font-size: 1.5rem; }
+
             .editor-compact {
-                padding: 30px;
+                padding: 0;
             }
-            .editor-compact h2 { font-size: 2.2rem; }
+            .editor-compact summary { font-size: 2.2rem; }
             .editor-compact ul { display: block; }
             .editor-compact li {
                 font-size: 1.2rem;
@@ -345,21 +390,23 @@
                 padding: 5px 0 5px 25px;
                 background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%232ecc71" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>') left center no-repeat;
             }
+
             .btn {
                 display: inline-block;
                 width: auto;
                 padding: 18px 40px;
                 font-size: 1.5rem;
             }
+
             .footer { font-size: 0.9rem; }
             .footer img { height: 30px; }
+            .visitor-counter { font-size: 0.9rem; }
         }
 
-        /* Для очень низких экранов ещё чуть сжать */
+        /* Для очень низких экранов */
         @media (max-height: 700px) {
             .feature-card li { white-space: normal; font-size: 0.7rem; }
             .btn { padding: 8px; font-size: 1rem; }
-            .carousel-slide img { aspect-ratio: 16 / 9; }
         }
     </style>
 </head>
@@ -374,16 +421,20 @@
         <h1>USB CoverFix Deluxe</h1>
         <div class="version">v4.0.5</div>
 
+        <!-- Счётчик MP3 с прогресс-баром -->
         <div class="trial">
-            <strong>🎁 Gratis:</strong> 20 MP3/Tag • Reset täglich<br>
-            <span style="font-size:0.8rem;">💎 Vollversion ohne Limit</span>
+            <strong>🎁 Gratis:</strong> <span id="mp3-counter">20</span>/20 MP3 heute<br>
+            <div style="width:100%; height:6px; background:#0a0e12; border-radius:10px; margin-top:5px;">
+                <div id="mp3-progress" style="width:100%; height:6px; background:#f1c40f; border-radius:10px;"></div>
+            </div>
+            <span style="font-size:0.7rem;">💎 Vollversion ohne Limit</span>
         </div>
 
         <p class="intro-text">
             Cover für Autoradio & USB • <span class="highlight">Batch • Player • KI-Fee</span>
         </p>
 
-        <!-- Умная карусель со скриншотами -->
+        <!-- Умная карусель: два скриншота + видео -->
         <div class="screenshots-carousel">
             <div class="carousel-slides">
                 <div class="carousel-slide">
@@ -395,8 +446,12 @@
                     <div class="carousel-caption">Batch-Verarbeitung</div>
                 </div>
                 <div class="carousel-slide">
-                    <img src="screenshot_editor.png" alt="Cover-Editor" onerror="this.style.display='none'">
-                    <div class="carousel-caption">Integrierter Editor</div>
+                    <!-- ВИДЕО: замените src на своё демо-видео -->
+                    <video autoplay loop muted playsinline>
+                        <source src="demo.mp4" type="video/mp4">
+                        Ваш браузер не поддерживает видео.
+                    </video>
+                    <div class="carousel-caption">🎬 Kurze Demo</div>
                 </div>
             </div>
             <div class="carousel-dots">
@@ -406,7 +461,7 @@
             </div>
         </div>
 
-        <!-- Горизонтальная карусель фич -->
+        <!-- Горизонтальные фичи -->
         <div class="feature-scroll">
             <div class="feature-card">
                 <h3>🎵 MP3</h3>
@@ -458,9 +513,9 @@
             </div>
         </div>
 
-        <!-- Компактный редактор -->
-        <div class="editor-compact">
-            <h2>🎨 Cover-Editor</h2>
+        <!-- Аккордеон редактора (свёрнут) -->
+        <details class="editor-compact">
+            <summary>🎨 Cover-Editor ▼</summary>
             <ul>
                 <li>Speichern</li>
                 <li>Spiegeln</li>
@@ -469,45 +524,110 @@
                 <li>Größe ändern</li>
                 <li>JPG/PNG/WebP</li>
             </ul>
-        </div>
+        </details>
 
         <!-- Кнопки -->
         <a href="ССЫЛКА_НА_СКАЧИВАНИЕ_TRIAL" class="btn">⬇️ Gratis Download</a>
-        <a href="ССЫЛКА_НА_ПОКУПКУ" class="btn btn-buy">💎 Vollversion kaufen</a>
+        <a href="#" id="buyButton" class="btn btn-buy">💎 Vollversion kaufen</a>
 
         <p style="text-align:center; font-size:0.7rem; color:#95a5a6; margin:5px 0;">
             *Bis 20 MP3/Tag kostenlos
         </p>
 
-        <!-- Футер -->
+        <!-- Футер + счётчик посетителей -->
         <div class="footer">
             <img src="logo_mini5.png" alt="Logo"> © Siegfried Scheck<br>
             <a href="https://github.com/scheck2019-png/USB_CoverFix_Deluxe">GitHub</a> |
             <a href="https://github.com/scheck2019-png/USB_CoverFix_Deluxe/issues">Support</a> |
             📧 usbcoverfix@gmail.com
+            <div class="visitor-counter">
+                👀 Besucher heute: <span id="visitorCount">0</span>
+            </div>
         </div>
     </div>
 
-    <!-- Маленький скрипт для активации точек в карусели (опционально) -->
+    <!-- Кнопка "Наверх" -->
+    <button id="scrollToTopBtn">↑</button>
+
+    <!-- ВСЕ СКРИПТЫ В ОДНОМ МЕСТЕ -->
     <script>
         (function() {
+            // 1. Карусель (точки)
             const carousel = document.querySelector('.carousel-slides');
             const dots = document.querySelectorAll('.dot');
-            if (!carousel || !dots.length) return;
+            if (carousel && dots.length) {
+                function updateDots() {
+                    const scrollLeft = carousel.scrollLeft;
+                    const slideWidth = carousel.clientWidth;
+                    const index = Math.round(scrollLeft / slideWidth);
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === index);
+                    });
+                }
+                carousel.addEventListener('scroll', updateDots);
+                window.addEventListener('resize', updateDots);
+                updateDots();
+            }
 
-            function updateDots() {
-                const scrollLeft = carousel.scrollLeft;
-                const slideWidth = carousel.clientWidth;
-                const index = Math.round(scrollLeft / slideWidth);
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === index);
+            // 2. Счётчик MP3 (демо-значение)
+            const used = Math.floor(Math.random() * 15); // 0-14 использовано
+            const left = 20 - used;
+            const counterSpan = document.getElementById('mp3-counter');
+            const progressBar = document.getElementById('mp3-progress');
+            if (counterSpan && progressBar) {
+                counterSpan.textContent = left;
+                progressBar.style.width = (left / 20 * 100) + '%';
+            }
+
+            // 3. Кнопка покупки с уведомлением
+            const buyBtn = document.getElementById('buyButton');
+            if (buyBtn) {
+                buyBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('💎 Спасибо за интерес! Вы будете перенаправлены на страницу оплаты.');
+                    // window.location.href = 'ССЫЛКА_НА_ПОКУПКУ'; // раскомментировать, когда будет ссылка
                 });
             }
 
-            carousel.addEventListener('scroll', updateDots);
-            window.addEventListener('resize', updateDots);
-            updateDots();
+            // 4. Кнопка "Наверх"
+            const topBtn = document.getElementById('scrollToTopBtn');
+            window.addEventListener('scroll', () => {
+                topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+            });
+            topBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // 5. Счётчик посетителей (localStorage)
+            function updateVisitorCounter() {
+                const countSpan = document.getElementById('visitorCount');
+                if (!countSpan) return;
+                
+                // Получаем текущую дату в формате ГГГГ-ММ-ДД
+                const today = new Date().toISOString().split('T')[0];
+                let data = JSON.parse(localStorage.getItem('visitorData')) || { date: today, count: 0 };
+                
+                // Если дата не сегодня — сбрасываем счётчик
+                if (data.date !== today) {
+                    data = { date: today, count: 0 };
+                }
+                
+                // Увеличиваем счётчик только при первом посещении за сегодня (или каждый раз? лучше при каждом)
+                data.count += 1;
+                localStorage.setItem('visitorData', JSON.stringify(data));
+                countSpan.textContent = data.count;
+            }
+            updateVisitorCounter();
+
+            // Опционально: можно добавить сброс счётчика в полночь через setTimeout
         })();
     </script>
+
+    <!-- Внешний счётчик (альтернатива) — раскомментируйте, если хотите использовать сервис -->
+    <!-- Например, от hitwebcounter:
+    <a href="https://www.hitwebcounter.com" target="_blank">
+        <img src="https://hitwebcounter.com/counter/counter.php?page=YOUR_ID&style=0006&nbdigits=5&type=page&initCount=0" title="Counter Widget" Alt="Visit counter" border="0" />
+    </a>
+    -->
 </body>
-    </html>
+</html>
