@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>USB CoverFix Deluxe – Cover-Lösung</title>
     <style>
-        /* ---------- ОЧЕНЬ КОМПАКТНЫЙ МОБИЛЬНЫЙ ДИЗАЙН ---------- */
+        /* ---------- ОЧЕНЬ КОМПАКТНЫЙ МОБИЛЬНЫЙ ДИЗАЙН + УМНЫЕ КАРТИНКИ ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -91,7 +91,6 @@
             color: #0a0e12;
         }
 
-        /* Описание под заголовком */
         .intro-text {
             font-size: 0.9rem;
             text-align: center;
@@ -103,9 +102,75 @@
             font-weight: bold;
         }
 
-        /* Скриншоты — убираем, чтобы сэкономить место (можно оставить один) */
-        .screenshots {
-            display: none; /* скрываем на мобильных для компактности */
+        /* ---------- УМНАЯ КАРУСЕЛЬ ДЛЯ СКРИНШОТОВ (без JS) ---------- */
+        .screenshots-carousel {
+            margin: 10px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #2ecc71;
+            background: #0a0e12;
+        }
+
+        .carousel-slides {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .carousel-slides::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9; /* фиксированное соотношение, чтобы блок не прыгал */
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            font-size: 0.7rem;
+            padding: 4px;
+            text-align: center;
+        }
+
+        /* Точки-индикаторы */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            padding: 6px 0;
+            background: #151e26;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #2ecc71;
+            opacity: 0.4;
+        }
+
+        .dot.active {
+            opacity: 1;
+            background: #f1c40f;
+            width: 16px;
+            border-radius: 10px;
         }
 
         /* Горизонтальная прокрутка для фич */
@@ -116,11 +181,11 @@
             padding: 5px 0 10px;
             margin: 10px 0;
             -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
         }
 
         .feature-scroll::-webkit-scrollbar {
-            display: none; /* Chrome/Safari */
+            display: none;
         }
 
         .feature-card {
@@ -151,7 +216,7 @@
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%232ecc71" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>') left center no-repeat;
             background-size: 12px;
             font-size: 0.75rem;
-            white-space: nowrap; /* текст в одну строку для экономии места */
+            white-space: nowrap;
         }
 
         /* Блок редактора — компактный */
@@ -228,24 +293,7 @@
             margin-right: 3px;
         }
 
-        /* Скрываем некоторые элементы для экономии места */
-        .desktop-only {
-            display: none;
-        }
-
-        /* На очень маленьких экранах ещё сильнее сжимаем */
-        @media (max-height: 700px) {
-            .feature-card li {
-                white-space: normal; /* если высота мала, переносим */
-                font-size: 0.7rem;
-            }
-            .btn {
-                padding: 8px;
-                font-size: 1rem;
-            }
-        }
-
-        /* Десктопная версия остаётся прежней */
+        /* Десктопная версия */
         @media (min-width: 768px) {
             body { padding: 20px; }
             .container { max-width: 1200px; padding: 30px; border-radius: 32px; }
@@ -255,7 +303,19 @@
             .lang-switch { text-align: right; }
             .lang-switch a { font-size: 1rem; padding: 5px 12px; }
             .intro-text { font-size: 1.3rem; }
-            .screenshots { display: flex; } /* показываем на десктопе */
+
+            .screenshots-carousel {
+                display: block;
+                margin: 20px 0;
+            }
+            .carousel-slide img {
+                aspect-ratio: 16 / 9;
+            }
+            .carousel-caption {
+                font-size: 1rem;
+                padding: 8px;
+            }
+
             .feature-scroll {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -293,7 +353,13 @@
             }
             .footer { font-size: 0.9rem; }
             .footer img { height: 30px; }
-            .desktop-only { display: block; }
+        }
+
+        /* Для очень низких экранов ещё чуть сжать */
+        @media (max-height: 700px) {
+            .feature-card li { white-space: normal; font-size: 0.7rem; }
+            .btn { padding: 8px; font-size: 1rem; }
+            .carousel-slide img { aspect-ratio: 16 / 9; }
         }
     </style>
 </head>
@@ -317,7 +383,28 @@
             Cover für Autoradio & USB • <span class="highlight">Batch • Player • KI-Fee</span>
         </p>
 
-        <!-- Скриншоты скрыты на мобильных -->
+        <!-- Умная карусель со скриншотами -->
+        <div class="screenshots-carousel">
+            <div class="carousel-slides">
+                <div class="carousel-slide">
+                    <img src="screenshot_main.png" alt="Hauptfenster" onerror="this.style.display='none'">
+                    <div class="carousel-caption">Hauptfenster mit Player</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="screenshot_batch.png" alt="Batch-Modus" onerror="this.style.display='none'">
+                    <div class="carousel-caption">Batch-Verarbeitung</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="screenshot_editor.png" alt="Cover-Editor" onerror="this.style.display='none'">
+                    <div class="carousel-caption">Integrierter Editor</div>
+                </div>
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
 
         <!-- Горизонтальная карусель фич -->
         <div class="feature-scroll">
@@ -400,5 +487,27 @@
             📧 usbcoverfix@gmail.com
         </div>
     </div>
+
+    <!-- Маленький скрипт для активации точек в карусели (опционально) -->
+    <script>
+        (function() {
+            const carousel = document.querySelector('.carousel-slides');
+            const dots = document.querySelectorAll('.dot');
+            if (!carousel || !dots.length) return;
+
+            function updateDots() {
+                const scrollLeft = carousel.scrollLeft;
+                const slideWidth = carousel.clientWidth;
+                const index = Math.round(scrollLeft / slideWidth);
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+            }
+
+            carousel.addEventListener('scroll', updateDots);
+            window.addEventListener('resize', updateDots);
+            updateDots();
+        })();
+    </script>
 </body>
-</html>
+    </html>
