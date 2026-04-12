@@ -5,68 +5,380 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>USB CoverFix Deluxe – Die ultimative Cover-Lösung für MP3s</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', 'Courier New', monospace; }
-        body { background: #0a0e12; color: #e0e0e0; line-height: 1.6; padding: 20px; }
-        .container { max-width: 1200px; margin: 0 auto; background: #151e26; border-radius: 32px; box-shadow: 0 20px 40px rgba(0, 255, 0, 0.2); padding: 30px; border: 2px solid #2ecc71; }
-        h1 { font-size: 3rem; font-weight: 700; background: linear-gradient(45deg, #2ecc71, #f1c40f); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; text-shadow: 0 0 20px #2ecc7180; }
-        .version { background: #2ecc71; color: #0a0e12; display: inline-block; padding: 5px 20px; border-radius: 50px; font-weight: bold; margin-bottom: 20px; font-size: 1.2rem; }
-        .trial { background: #1e2a36; border: 2px solid #2ecc71; color: #e0e0e0; padding: 15px 20px; border-radius: 20px; margin: 20px 0; font-weight: bold; text-align: center; font-size: 1.2rem; }
-        .trial strong { color: #f1c40f; }
-        .screenshots { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin: 30px 0; }
-        .screenshot { background: #1e2a36; border-radius: 24px; padding: 10px; border: 2px solid #2ecc71; max-width: 500px; }
-        .screenshot img { width: 100%; border-radius: 16px; display: block; }
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin: 40px 0; }
-        .feature-card { background: #1e2a36; border-left: 6px solid #2ecc71; padding: 25px 20px; border-radius: 16px; box-shadow: 0 10px 20px rgba(0,0,0,0.5); transition: transform 0.2s; }
-        .feature-card:hover { transform: scale(1.02); border-color: #f1c40f; }
-        .feature-card h3 { color: #2ecc71; margin-bottom: 15px; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
-        .feature-card ul { list-style: none; }
-        .feature-card li { padding: 5px 0 5px 25px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%232ecc71" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>') left center no-repeat; background-size: 16px; }
-        .highlight { color: #f1c40f; font-weight: bold; }
-        .btn { display: inline-block; background: #2ecc71; color: #0a0e12; font-weight: bold; padding: 18px 40px; border-radius: 60px; text-decoration: none; font-size: 1.5rem; box-shadow: 0 10px 20px rgba(46, 204, 113, 0.4); transition: all 0.2s; border: none; cursor: pointer; margin: 10px 0; border: 2px solid transparent; text-align: center; }
-        .btn:hover { background: #f1c40f; transform: scale(1.05); box-shadow: 0 15px 30px rgba(241, 196, 15, 0.5); }
-        .btn-buy { background: #f39c12; color: #0a0e12; }
-        .btn-buy:hover { background: #e67e22; }
-        .footer { margin-top: 50px; padding-top: 30px; border-top: 2px solid #2ecc71; text-align: center; color: #95a5a6; font-size: 0.9rem; }
-        .footer a { color: #2ecc71; text-decoration: none; }
-        .footer a:hover { text-decoration: underline; }
-        .badge { background: #f39c12; color: #000; padding: 3px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; margin-left: 10px; }
-        .lang-switch { text-align: right; margin-bottom: 20px; }
-        .lang-switch a { color: #2ecc71; text-decoration: none; font-weight: bold; margin: 0 10px; padding: 5px 10px; border-radius: 20px; transition: background 0.2s; }
-        .lang-switch a:hover { background: #2ecc71; color: #0a0e12; }
-
-        /* ---------- МОБИЛЬНАЯ АДАПТАЦИЯ ---------- */
-        @media (max-width: 600px) {
-            body { padding: 10px; }
-            .container { padding: 20px 15px; border-radius: 20px; }
-            h1 { font-size: 2.2rem; line-height: 1.2; text-align: center; }
-            .version { font-size: 1rem; padding: 4px 15px; }
-            .trial { font-size: 1rem; padding: 12px 15px; margin: 15px 0; }
-            p[style*="font-size: 1.3rem"] { font-size: 1.1rem !important; }
-            .feature-grid { grid-template-columns: 1fr; gap: 15px; margin: 25px 0; }
-            .feature-card { padding: 20px 15px; }
-            .feature-card h3 { font-size: 1.3rem; }
-            .feature-card li { background-size: 14px; padding-left: 22px; }
-            .btn { display: block; width: 100%; font-size: 1.4rem; padding: 16px 20px; margin: 10px 0; }
-            div[style*="display: flex; gap: 20px"] { flex-direction: column; gap: 15px; }
-            div[style*="display: flex; flex-wrap: wrap"] { flex-direction: column; gap: 20px; }
-            h2[style*="font-size: 2.2rem"] { font-size: 1.8rem !important; }
-            h3[style*="font-size: 1.8rem"] { font-size: 1.5rem !important; }
-            .footer { margin-top: 30px; padding-top: 20px; font-size: 0.8rem; }
-            .lang-switch { text-align: center; }
-            .lang-switch a { margin: 0 5px; }
+        /* ---------- БАЗОВЫЕ СТИЛИ ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Courier New', monospace;
         }
 
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body {
+            background: #0a0e12;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        img, video, iframe {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #151e26;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0, 255, 0, 0.2);
+            padding: 30px;
+            border: 2px solid #2ecc71;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #2ecc71, #f1c40f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px #2ecc7180;
+        }
+
+        .version {
+            background: #2ecc71;
+            color: #0a0e12;
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .trial {
+            background: #1e2a36;
+            border: 2px solid #2ecc71;
+            color: #e0e0e0;
+            padding: 15px 20px;
+            border-radius: 20px;
+            margin: 20px 0;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .trial strong {
+            color: #f1c40f;
+        }
+
+        .screenshots {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .screenshot {
+            background: #1e2a36;
+            border-radius: 24px;
+            padding: 10px;
+            border: 2px solid #2ecc71;
+            max-width: 500px;
+        }
+
+        .screenshot img {
+            width: 100%;
+            border-radius: 16px;
+            display: block;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: #1e2a36;
+            border-left: 6px solid #2ecc71;
+            padding: 25px 20px;
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transition: transform 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: scale(1.02);
+            border-color: #f1c40f;
+        }
+
+        .feature-card h3 {
+            color: #2ecc71;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-card ul {
+            list-style: none;
+        }
+
+        .feature-card li {
+            padding: 5px 0 5px 25px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%232ecc71" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>') left center no-repeat;
+            background-size: 16px;
+        }
+
+        .highlight {
+            color: #f1c40f;
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #2ecc71;
+            color: #0a0e12;
+            font-weight: bold;
+            padding: 18px 40px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.4);
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            margin: 10px 0;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #f1c40f;
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(241, 196, 15, 0.5);
+        }
+
+        .btn-buy {
+            background: #f39c12;
+            color: #0a0e12;
+        }
+
+        .btn-buy:hover {
+            background: #e67e22;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #2ecc71;
+            text-align: center;
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: #2ecc71;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .badge {
+            background: #f39c12;
+            color: #000;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .lang-switch {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .lang-switch a {
+            color: #2ecc71;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            transition: background 0.2s;
+        }
+
+        .lang-switch a:hover {
+            background: #2ecc71;
+            color: #0a0e12;
+        }
+
+        /* ---------- МОБИЛЬНАЯ АДАПТАЦИЯ (ПОЛНАЯ) ---------- */
+        @media (max-width: 600px) {
+            body {
+                padding: 8px;
+                overflow-x: hidden;
+            }
+
+            .container {
+                padding: 20px 12px;
+                border-radius: 20px;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+                text-align: center;
+                word-break: break-word;
+            }
+
+            .version {
+                font-size: 1rem;
+                padding: 4px 15px;
+            }
+
+            .trial {
+                font-size: 0.95rem;
+                padding: 12px 10px;
+                margin: 15px 0;
+                word-break: break-word;
+            }
+
+            p[style*="font-size: 1.3rem"] {
+                font-size: 1rem !important;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin: 25px 0;
+            }
+
+            .feature-card {
+                padding: 20px 12px;
+            }
+
+            .feature-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .feature-card li {
+                background-size: 12px;
+                padding-left: 20px;
+                font-size: 0.95rem;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                font-size: 1.2rem;
+                padding: 14px 15px;
+                margin: 8px 0;
+                white-space: normal;
+            }
+
+            div[style*="display: flex; gap: 20px"] {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            div[style*="display: flex; flex-wrap: wrap"] {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            h2[style*="font-size: 2.2rem"] {
+                font-size: 1.6rem !important;
+            }
+
+            h3[style*="font-size: 1.8rem"] {
+                font-size: 1.3rem !important;
+            }
+
+            .footer {
+                margin-top: 30px;
+                padding-top: 20px;
+                font-size: 0.8rem;
+            }
+
+            .lang-switch {
+                text-align: center;
+                margin-bottom: 15px;
+            }
+
+            .lang-switch a {
+                margin: 0 4px;
+                padding: 5px 8px;
+                font-size: 0.9rem;
+            }
+
+            /* Скриншоты */
+            .screenshots {
+                width: 100%;
+                gap: 10px;
+            }
+
+            .screenshot {
+                max-width: 100%;
+                padding: 8px;
+            }
+
+            .screenshot img {
+                width: 100%;
+                height: auto;
+                border-radius: 12px;
+            }
+
+            .screenshot p {
+                font-size: 0.9rem;
+            }
+
+            /* Блок редактора */
+            div[style*="border-radius: 30px"] {
+                padding: 20px 12px !important;
+            }
+        }
+
+        /* Для очень маленьких экранов */
         @media (max-width: 480px) {
-            h1 { font-size: 1.9rem; }
-            .container { padding: 15px 10px; }
-            .btn { font-size: 1.2rem; padding: 14px 15px; }
-            .feature-card h3 { font-size: 1.2rem; }
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 15px 10px;
+            }
+
+            .btn {
+                font-size: 1.1rem;
+                padding: 12px 10px;
+            }
+
+            .feature-card h3 {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Language switch -->
+        <!-- Переключатель языков -->
         <div class="lang-switch">
             <a href="index.html" style="background: #2ecc71; color: #0a0e12;">DE</a>
             <a href="index_en.html">EN</a>
@@ -76,7 +388,7 @@
         <h1>USB CoverFix Deluxe</h1>
         <div class="version">Version 4.0.5</div>
 
-        <!-- Блок с описанием лимита -->
+        <!-- Блок с информацией о бесплатной версии и лимите -->
         <div class="trial">
             <strong>🎁 Бесплатно навсегда:</strong> обрабатывайте до <strong>20 MP3-файлов в день</strong>.<br>
             <span style="font-size: 1rem; display: block; margin-top: 10px;">
@@ -90,7 +402,7 @@
             <span class="highlight">Car-Radio-Modus • Batch • integrierter Player • KI-Fee • Mini-Game</span>
         </p>
 
-        <!-- Screenshots -->
+        <!-- Скриншоты (если картинок нет, они скроются через onerror) -->
         <div class="screenshots">
             <div class="screenshot">
                 <img src="screenshot_main.png" alt="Hauptfenster" onerror="this.style.display='none'">
@@ -102,7 +414,7 @@
             </div>
         </div>
 
-        <!-- Feature Grid -->
+        <!-- Сетка возможностей -->
         <div class="feature-grid">
             <div class="feature-card">
                 <h3>🎵 MP3 & Cover</h3>
@@ -159,7 +471,7 @@
             </div>
         </div>
 
-        <!-- Cover Editor Block DE -->
+        <!-- Блок с редактором обложек -->
         <div style="background: linear-gradient(145deg, #0f1a24, #1a2a36); border-radius: 30px; padding: 30px; margin: 50px 0; border: 2px solid #2ecc71;">
             <h2 style="color: #f1c40f; font-size: 2.2rem; text-align: center; margin-bottom: 20px;">🎨 Integrierter Cover-Editor</h2>
             <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center;">
@@ -184,9 +496,11 @@
 
         <!-- Кнопки: Скачать бесплатно и Купить -->
         <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin: 30px 0;">
+            <!-- ЗАМЕНИТЕ ССЫЛКУ НА РЕАЛЬНУЮ ССЫЛКУ ДЛЯ СКАЧИВАНИЯ TRIAL-ВЕРСИИ -->
             <a href="ССЫЛКА_НА_СКАЧИВАНИЕ_TRIAL" class="btn" style="background: #2ecc71;">
                 ⬇️ Скачать бесплатно (Trial)
             </a>
+            <!-- ЗАМЕНИТЕ ССЫЛКУ НА СТРАНИЦУ ПОКУПКИ -->
             <a href="ССЫЛКА_НА_ПОКУПКУ" class="btn btn-buy" style="background: #f39c12;">
                 💎 Купить полную версию
             </a>
@@ -195,15 +509,14 @@
             * Бесплатная версия: до 20 MP3 в день. После покупки лимит снимается навсегда.
         </p>
 
-        <!-- Footer -->
+        <!-- Футер -->
         <div class="footer">
-            <img src="logo_mini5.png" style="height: 30px; vertical-align: middle; margin-right: 10px;">
+            <img src="logo_mini5.png" style="height: 30px; vertical-align: middle; margin-right: 10px;" alt="Logo">
             <span>© 2026 Siegfried Scheck | USB CoverFix Deluxe</span><br>
             <a href="https://github.com/scheck2019-png/USB_CoverFix_Deluxe">Quellcode auf GitHub</a> |
             <a href="https://github.com/scheck2019-png/USB_CoverFix_Deluxe/issues">Support / Fehler melden</a><br>
             <span style="margin-top: 10px; display: inline-block;">📧 usbcoverfix@gmail.com</span>
         </div>
-
-    </div> <!-- container Ende -->
+    </div>
 </body>
 </html>
