@@ -14,11 +14,14 @@
         .subhead { text-align:center; font-size:1rem; color:#95a5a6; margin-bottom:20px; border-bottom:1px dashed #2ecc71; padding-bottom:15px; }
         .support-options { display:flex; flex-direction:column; gap:12px; margin:20px 0; }
         .support-btn { display:flex; align-items:center; justify-content:center; gap:12px; width:100%; background:#1e2a36; color:#e0e0e0; font-weight:bold; padding:16px 12px; border-radius:50px; text-decoration:none; font-size:1.2rem; text-align:center; border:1px solid #2ecc71; box-shadow:0 4px 8px rgba(0,0,0,0.3); transition:transform 0.2s, box-shadow 0.2s, background 0.2s; }
-        .support-btn i { font-size:1.8rem; color:#2ecc71; }
+        .support-btn i { font-size:1.8rem; }
         .support-btn:hover { transform:translateY(-3px); box-shadow:0 8px 20px rgba(46,204,113,0.3); background:#2a3a48; }
         .btn-email { border-left:6px solid #e74c3c; }
-        .btn-github { border-left:6px solid #f39c12; }
+        .btn-email i { color:#e74c3c; }
+        .btn-telegram { border-left:6px solid #26A5E4; }
+        .btn-telegram i { color:#26A5E4; }
         .btn-instagram { border-left:6px solid #e1306c; }
+        .btn-instagram i { color:#e1306c; }
         .btn-back { border-left:6px solid #2ecc71; background:#0f1a24; }
         .btn-back i { color:#f1c40f; }
         .support-note { text-align:center; font-size:0.8rem; color:#95a5a6; margin:20px 0 10px; }
@@ -33,14 +36,17 @@
         <h1>🛟 Support Center</h1>
         <div class="subhead">Wählen Sie einen Kontaktweg</div>
         <div class="support-options">
+            <!-- Email -->
             <a href="mailto:usbcoverfix@gmail.com" class="support-btn btn-email">
                 <i class="fas fa-envelope"></i><span>E-Mail schreiben</span>
                 <i class="fas fa-chevron-right" style="margin-left:auto; font-size:1rem; opacity:0.7;"></i>
             </a>
-            <a href="https://github.com/scheck2019-png/USB_CoverFix_Deluxe/issues" target="_blank" class="support-btn btn-github">
-                <i class="fab fa-github"></i><span>Problem melden (GitHub)</span>
+            <!-- Telegram -->
+            <a href="https://t.me/usb_coverfix" target="_blank" class="support-btn btn-telegram">
+                <i class="fab fa-telegram-plane"></i><span>Telegram Support</span>
                 <i class="fas fa-chevron-right" style="margin-left:auto; font-size:1rem; opacity:0.7;"></i>
             </a>
+            <!-- Instagram -->
             <a href="https://instagram.com/твой_никнейм" target="_blank" class="support-btn btn-instagram">
                 <i class="fab fa-instagram"></i><span>Instagram Community</span>
                 <i class="fas fa-chevron-right" style="margin-left:auto; font-size:1rem; opacity:0.7;"></i>
@@ -48,14 +54,14 @@
         </div>
         <p class="support-note">
             <i class="fas fa-clock"></i> Antwort meist innerhalb von 24 Stunden.<br>
-            Für dringende Anfragen bitte E-Mail nutzen.
+            Für dringende Anfragen bitte Telegram oder E-Mail nutzen.
         </p>
         <a href="index.html" class="support-btn btn-back" style="margin-top:20px;">
             <i class="fas fa-arrow-left"></i><span>Zurück zur Startseite</span>
         </a>
         <div class="footer">
             <img src="logo_mini5.png" alt="Logo"> © Siegfried Scheck<br>
-            <a href="index.html">USB CoverFix Deluxe</a> | <a href="https://github.com/scheck2019-png/USB_CoverFix_Deluxe">GitHub</a>
+            <a href="index.html">USB CoverFix Deluxe</a>
         </div>
     </div>
 </body>
