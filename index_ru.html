@@ -5,456 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>USB CoverFix Deluxe – Решение для обложек</title>
     <style>
-        /* ---------- СБРОС И КОМПАКТНЫЙ МОБИЛЬНЫЙ ДИЗАЙН ---------- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', 'Courier New', monospace;
-        }
-
-        html, body {
-            width: 100%;
-            overflow-x: hidden;
-            background: #0a0e12;
-        }
-
-        body {
-            color: #e0e0e0;
-            line-height: 1.3;
-            padding: 6px;
-        }
-
-        .container {
-            background: #151e26;
-            border-radius: 16px;
-            padding: 12px 10px;
-            border: 2px solid #2ecc71;
-            max-width: 100%;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-size: 1.8rem;
-            background: linear-gradient(45deg, #2ecc71, #f1c40f);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-            margin-bottom: 5px;
-            line-height: 1.1;
-        }
-
-        .version {
-            background: #2ecc71;
-            color: #0a0e12;
-            display: inline-block;
-            padding: 2px 12px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            margin-bottom: 8px;
-        }
-
-        .trial {
-            background: #1e2a36;
-            border: 1px solid #2ecc71;
-            padding: 8px 8px;
-            border-radius: 12px;
-            margin: 8px 0;
-            text-align: center;
-            font-size: 0.85rem;
-            font-weight: bold;
-        }
-
-        .trial strong {
-            color: #f1c40f;
-        }
-
-        .lang-switch {
-            text-align: center;
-            margin-bottom: 8px;
-        }
-
-        .lang-switch a {
-            color: #2ecc71;
-            margin: 0 4px;
-            padding: 3px 8px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
-        }
-
-        .lang-switch a:last-child {
-            background: #2ecc71;
-            color: #0a0e12;
-        }
-
-        .intro-text {
-            font-size: 0.9rem;
-            text-align: center;
-            margin: 8px 0;
-        }
-
-        .highlight {
-            color: #f1c40f;
-            font-weight: bold;
-        }
-
-        /* ---------- УМНАЯ КАРУСЕЛЬ (КАРТИНКИ + ВИДЕО) ---------- */
-        .carousel-wrapper {
-            position: relative;
-            margin: 10px 0;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #2ecc71;
-            background: #0a0e12;
-        }
-
-        .screenshots-carousel {
-            width: 100%;
-        }
-
-        .carousel-slides {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            scroll-behavior: smooth;
-        }
-
-        .carousel-slides::-webkit-scrollbar {
-            display: none;
-        }
-
-        .carousel-slide {
-            flex: 0 0 100%;
-            scroll-snap-align: start;
-            position: relative;
-        }
-
-        .carousel-slide img,
-        .carousel-slide video {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 16 / 9;
-            object-fit: cover;
-            display: block;
-        }
-
-        .carousel-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            font-size: 0.7rem;
-            padding: 4px;
-            text-align: center;
-        }
-
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-            padding: 6px 0;
-            background: #151e26;
-        }
-
-        .dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #2ecc71;
-            opacity: 0.4;
-            transition: all 0.2s;
-        }
-
-        .dot.active {
-            opacity: 1;
-            background: #f1c40f;
-            width: 16px;
-            border-radius: 10px;
-        }
-
-        /* Кнопки-стрелки (только для десктопа) */
-        .carousel-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 36px;
-            height: 36px;
-            background: rgba(21, 30, 38, 0.8);
-            border: 1px solid #2ecc71;
-            border-radius: 50%;
-            color: #2ecc71;
-            font-size: 24px;
-            font-weight: bold;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            backdrop-filter: blur(4px);
-            transition: all 0.2s;
-        }
-
-        .carousel-arrow:hover {
-            background: #2ecc71;
-            color: #0a0e12;
-        }
-
-        .arrow-left {
-            left: 8px;
-        }
-
-        .arrow-right {
-            right: 8px;
-        }
-
-        @media (min-width: 768px) {
-            .carousel-arrow {
-                display: flex;
-            }
-        }
-
-        /* ---------- ГОРИЗОНТАЛЬНЫЕ ФИЧИ ---------- */
-        .feature-scroll {
-            display: flex;
-            overflow-x: auto;
-            gap: 10px;
-            padding: 5px 0 10px;
-            margin: 10px 0;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-        }
-
-        .feature-scroll::-webkit-scrollbar {
-            display: none;
-        }
-
-        .feature-card {
-            background: #1e2a36;
-            border-left: 4px solid #2ecc71;
-            padding: 10px 12px;
-            border-radius: 12px;
-            min-width: 160px;
-            flex: 0 0 auto;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            transition: transform 0.2s, box-shadow 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(46,204,113,0.3);
-        }
-
-        .feature-card h3 {
-            color: #2ecc71;
-            font-size: 1rem;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .feature-card ul {
-            list-style: none;
-        }
-
-        .feature-card li {
-            padding: 2px 0 2px 18px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%232ecc71" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>') left center no-repeat;
-            background-size: 12px;
-            font-size: 0.75rem;
-            white-space: nowrap;
-        }
-
-        /* ---------- АККОРДЕОН РЕДАКТОРА ---------- */
-        .editor-compact {
-            background: linear-gradient(145deg, #0f1a24, #1a2a36);
-            border-radius: 12px;
-            margin: 10px 0;
-            border: 1px solid #2ecc71;
-            cursor: pointer;
-        }
-
-        .editor-compact summary {
-            list-style: none;
-            text-align: center;
-            color: #f1c40f;
-            font-size: 1.2rem;
-            font-weight: bold;
-            padding: 8px;
-        }
-
-        .editor-compact summary::-webkit-details-marker {
-            display: none;
-        }
-
-        .editor-compact[open] summary {
-            border-bottom: 1px solid #2ecc71;
-        }
-
-        .editor-compact ul {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px 10px;
-            justify-content: center;
-            padding: 10px;
-        }
-
-        .editor-compact li {
-            font-size: 0.75rem;
-            background: #1e2a36;
-            padding: 2px 8px;
-            border-radius: 20px;
-            border: 1px solid #2ecc71;
-        }
-
-        /* ---------- КНОПКИ ---------- */
-        .btn {
-            display: block;
-            width: 100%;
-            background: #2ecc71;
-            color: #0a0e12;
-            font-weight: bold;
-            padding: 10px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            text-align: center;
-            margin: 6px 0;
-            border: none;
-            box-shadow: 0 4px 8px rgba(46,204,113,0.3);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 12px rgba(46,204,113,0.5);
-        }
-
-        .btn-buy {
-            background: #f39c12;
-        }
-
-        /* ---------- ФУТЕР И СЧЁТЧИК ---------- */
-        .footer {
-            margin-top: 10px;
-            padding-top: 8px;
-            border-top: 1px solid #2ecc71;
-            text-align: center;
-            font-size: 0.7rem;
-            color: #95a5a6;
-        }
-
-        .footer a {
-            color: #2ecc71;
-            text-decoration: none;
-        }
-
-        .footer img {
-            height: 18px;
-            vertical-align: middle;
-            margin-right: 3px;
-        }
-
-        .visitor-counter {
-            margin-top: 5px;
-            font-size: 0.75rem;
-            color: #f1c40f;
-        }
-
-        /* ---------- КНОПКА НАВЕРХ ---------- */
-        #scrollToTopBtn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: #2ecc71;
-            color: #0a0e12;
-            border: none;
-            font-size: 24px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            cursor: pointer;
-            display: none;
-            z-index: 999;
-            transition: transform 0.2s;
-        }
-
-        #scrollToTopBtn:hover {
-            transform: scale(1.1);
-        }
-
-        /* ---------- ДЕСКТОПНАЯ ВЕРСИЯ ---------- */
-        @media (min-width: 768px) {
-            body { padding: 20px; }
-            .container { max-width: 1200px; padding: 30px; border-radius: 32px; }
-            h1 { font-size: 3rem; text-align: left; }
-            .version { font-size: 1.2rem; padding: 5px 20px; }
-            .trial { font-size: 1.2rem; padding: 15px; }
-            .lang-switch { text-align: right; }
-            .lang-switch a { font-size: 1rem; padding: 5px 12px; }
-            .intro-text { font-size: 1.3rem; }
-
-            .screenshots-carousel { margin: 20px 0; }
-            .carousel-caption { font-size: 1rem; padding: 8px; }
-
-            .feature-scroll {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                overflow: visible;
-                gap: 20px;
-            }
-            .feature-card {
-                min-width: auto;
-                padding: 20px;
-            }
-            .feature-card li {
-                white-space: normal;
-                font-size: 1rem;
-                background-size: 16px;
-                padding-left: 25px;
-            }
-            .feature-card h3 { font-size: 1.5rem; }
-
-            .editor-compact {
-                padding: 0;
-            }
-            .editor-compact summary { font-size: 2.2rem; }
-            .editor-compact ul { display: block; }
-            .editor-compact li {
-                font-size: 1.2rem;
-                background: none;
-                border: none;
-                padding: 5px 0 5px 25px;
-                background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%232ecc71" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>') left center no-repeat;
-            }
-
-            .btn {
-                display: inline-block;
-                width: auto;
-                padding: 18px 40px;
-                font-size: 1.5rem;
-            }
-
-            .footer { font-size: 0.9rem; }
-            .footer img { height: 30px; }
-            .visitor-counter { font-size: 0.9rem; }
-        }
-
-        /* Для очень низких экранов */
-        @media (max-height: 700px) {
-            .feature-card li { white-space: normal; font-size: 0.7rem; }
-            .btn { padding: 8px; font-size: 1rem; }
-        }
+        /* стили те же */
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI','Courier New',monospace; }
+        html,body { width:100%; overflow-x:hidden; background:#0a0e12; }
+        body { color:#e0e0e0; line-height:1.3; padding:6px; }
+        .container { background:#151e26; border-radius:16px; padding:12px 10px; border:2px solid #2ecc71; max-width:100%; margin:0 auto; }
+        h1 { font-size:1.8rem; background:linear-gradient(45deg,#2ecc71,#f1c40f); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-align:center; margin-bottom:5px; line-height:1.1; }
+        .version { background:#2ecc71; color:#0a0e12; display:inline-block; padding:2px 12px; border-radius:20px; font-weight:bold; font-size:0.9rem; margin-bottom:8px; }
+        .trial { background:#1e2a36; border:1px solid #2ecc71; padding:8px; border-radius:12px; margin:8px 0; text-align:center; font-size:0.85rem; font-weight:bold; }
+        .trial strong { color:#f1c40f; }
+        .lang-switch { text-align:center; margin-bottom:8px; }
+        .lang-switch a { color:#2ecc71; margin:0 4px; padding:3px 8px; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:bold; display:inline-block; }
+        .lang-switch a:last-child { background:#2ecc71; color:#0a0e12; }
+        .intro-text { font-size:0.9rem; text-align:center; margin:8px 0; }
+        .highlight { color:#f1c40f; font-weight:bold; }
+        .carousel-wrapper { position:relative; margin:10px 0; border-radius:12px; overflow:hidden; border:1px solid #2ecc71; background:#0a0e12; }
+        .screenshots-carousel { width:100%; }
+        .carousel-slides { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; scroll-behavior:smooth; }
+        .carousel-slides::-webkit-scrollbar { display:none; }
+        .carousel-slide { flex:0 0 100%; scroll-snap-align:start; position:relative; }
+        .carousel-slide img, .carousel-slide video { width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; display:block; }
+        .carousel-caption { position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.7); color:#fff; font-size:0.7rem; padding:4px; text-align:center; }
+        .carousel-dots { display:flex; justify-content:center; gap:6px; padding:6px 0; background:#151e26; }
+        .dot { width:6px; height:6px; border-radius:50%; background:#2ecc71; opacity:0.4; transition:all 0.2s; }
+        .dot.active { opacity:1; background:#f1c40f; width:16px; border-radius:10px; }
+        .carousel-arrow { position:absolute; top:50%; transform:translateY(-50%); width:36px; height:36px; background:rgba(21,30,38,0.8); border:1px solid #2ecc71; border-radius:50%; color:#2ecc71; font-size:24px; font-weight:bold; display:none; align-items:center; justify-content:center; cursor:pointer; z-index:10; backdrop-filter:blur(4px); transition:all 0.2s; }
+        .carousel-arrow:hover { background:#2ecc71; color:#0a0e12; }
+        .arrow-left { left:8px; }
+        .arrow-right { right:8px; }
+        @media (min-width:768px) { .carousel-arrow { display:flex; } }
+        .feature-scroll { display:flex; overflow-x:auto; gap:10px; padding:5px 0 10px; margin:10px 0; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+        .feature-scroll::-webkit-scrollbar { display:none; }
+        .feature-card { background:#1e2a36; border-left:4px solid #2ecc71; padding:10px 12px; border-radius:12px; min-width:160px; flex:0 0 auto; box-shadow:0 4px 8px rgba(0,0,0,0.3); transition:transform 0.2s, box-shadow 0.3s; }
+        .feature-card:hover { transform:translateY(-3px); box-shadow:0 8px 20px rgba(46,204,113,0.3); }
+        .feature-card h3 { color:#2ecc71; font-size:1rem; margin-bottom:5px; display:flex; align-items:center; gap:5px; }
+        .feature-card ul { list-style:none; }
+        .feature-card li { padding:2px 0 2px 18px; background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%232ecc71" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>') left center no-repeat; background-size:12px; font-size:0.75rem; white-space:nowrap; }
+        .editor-compact { background:linear-gradient(145deg,#0f1a24,#1a2a36); border-radius:12px; margin:10px 0; border:1px solid #2ecc71; cursor:pointer; }
+        .editor-compact summary { list-style:none; text-align:center; color:#f1c40f; font-size:1.2rem; font-weight:bold; padding:8px; }
+        .editor-compact summary::-webkit-details-marker { display:none; }
+        .editor-compact[open] summary { border-bottom:1px solid #2ecc71; }
+        .editor-compact ul { list-style:none; display:flex; flex-wrap:wrap; gap:5px 10px; justify-content:center; padding:10px; }
+        .editor-compact li { font-size:0.75rem; background:#1e2a36; padding:2px 8px; border-radius:20px; border:1px solid #2ecc71; }
+        .btn { display:block; width:100%; background:#2ecc71; color:#0a0e12; font-weight:bold; padding:10px; border-radius:40px; text-decoration:none; font-size:1.1rem; text-align:center; margin:6px 0; border:none; box-shadow:0 4px 8px rgba(46,204,113,0.3); transition:transform 0.2s, box-shadow 0.2s; }
+        .btn:hover { transform:scale(1.02); box-shadow:0 6px 12px rgba(46,204,113,0.5); }
+        .btn-buy { background:#f39c12; }
+        .footer { margin-top:10px; padding-top:8px; border-top:1px solid #2ecc71; text-align:center; font-size:0.7rem; color:#95a5a6; }
+        .footer a { color:#2ecc71; text-decoration:none; }
+        .footer img { height:18px; vertical-align:middle; margin-right:3px; }
+        .visitor-counter { margin-top:5px; font-size:0.75rem; color:#f1c40f; }
+        #scrollToTopBtn { position:fixed; bottom:20px; right:20px; width:45px; height:45px; border-radius:50%; background:#2ecc71; color:#0a0e12; border:none; font-size:24px; box-shadow:0 4px 10px rgba(0,0,0,0.5); cursor:pointer; display:none; z-index:999; transition:transform 0.2s; }
+        #scrollToTopBtn:hover { transform:scale(1.1); }
+        @media (min-width:768px) { body { padding:20px; } .container { max-width:1200px; padding:30px; border-radius:32px; } h1 { font-size:3rem; text-align:left; } .version { font-size:1.2rem; padding:5px 20px; } .trial { font-size:1.2rem; padding:15px; } .lang-switch { text-align:right; } .lang-switch a { font-size:1rem; padding:5px 12px; } .intro-text { font-size:1.3rem; } .screenshots-carousel { margin:20px 0; } .carousel-caption { font-size:1rem; padding:8px; } .feature-scroll { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); overflow:visible; gap:20px; } .feature-card { min-width:auto; padding:20px; } .feature-card li { white-space:normal; font-size:1rem; background-size:16px; padding-left:25px; } .feature-card h3 { font-size:1.5rem; } .editor-compact { padding:0; } .editor-compact summary { font-size:2.2rem; } .editor-compact ul { display:block; } .editor-compact li { font-size:1.2rem; background:none; border:none; padding:5px 0 5px 25px; background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%232ecc71" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>') left center no-repeat; } .btn { display:inline-block; width:auto; padding:18px 40px; font-size:1.5rem; } .footer { font-size:0.9rem; } .footer img { height:30px; } .visitor-counter { font-size:0.9rem; } }
+        @media (max-height:700px) { .feature-card li { white-space:normal; font-size:0.7rem; } .btn { padding:8px; font-size:1rem; } }
     </style>
 </head>
 <body>
@@ -464,11 +67,8 @@
             <a href="index_en.html">EN</a>
             <a href="index_ru.html">RU</a>
         </div>
-
         <h1>USB CoverFix Deluxe</h1>
         <div class="version">v4.0.5</div>
-
-        <!-- Счётчик MP3 -->
         <div class="trial">
             <strong>🎁 Бесплатно:</strong> <span id="mp3-counter">20</span>/20 MP3 сегодня<br>
             <div style="width:100%; height:6px; background:#0a0e12; border-radius:10px; margin-top:5px;">
@@ -476,188 +76,62 @@
             </div>
             <span style="font-size:0.7rem;">💎 Полная версия без ограничений</span>
         </div>
-
-        <p class="intro-text">
-            Обложки для автомагнитол и USB • <span class="highlight">Пакетная обработка • Плеер • ИИ-фея</span>
-        </p>
-
-        <!-- Карусель со стрелками (только десктоп) -->
+        <p class="intro-text">Обложки для автомагнитол и USB • <span class="highlight">Пакетная обработка • Плеер • ИИ-фея</span></p>
         <div class="carousel-wrapper">
             <div class="screenshots-carousel">
                 <div class="carousel-slides" id="carouselSlides">
-                    <div class="carousel-slide">
-                        <img src="screenshot_main.png" alt="Главное окно" onerror="this.style.display='none'">
-                        <div class="carousel-caption">Главное окно с плеером</div>
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="screenshot_batch.png" alt="Пакетный режим" onerror="this.style.display='none'">
-                        <div class="carousel-caption">Пакетная обработка</div>
-                    </div>
-                    <div class="carousel-slide">
-                        <video autoplay loop muted playsinline>
-                            <source src="demo.mp4" type="video/mp4">
-                            Ваш браузер не поддерживает видео.
-                        </video>
-                        <div class="carousel-caption">🎬 Краткая демонстрация</div>
-                    </div>
+                    <div class="carousel-slide"><img src="screenshot_main.png" alt="Главное окно" onerror="this.style.display='none'"><div class="carousel-caption">Главное окно с плеером</div></div>
+                    <div class="carousel-slide"><img src="screenshot_batch.png" alt="Пакетный режим" onerror="this.style.display='none'"><div class="carousel-caption">Пакетная обработка</div></div>
+                    <div class="carousel-slide"><video autoplay loop muted playsinline><source src="demo.mp4" type="video/mp4"></video><div class="carousel-caption">🎬 Краткая демонстрация</div></div>
                 </div>
-                <div class="carousel-dots" id="carouselDots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
+                <div class="carousel-dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
             </div>
             <div class="carousel-arrow arrow-left" id="carouselPrev">‹</div>
             <div class="carousel-arrow arrow-right" id="carouselNext">›</div>
         </div>
-
-        <!-- Горизонтальные фичи -->
         <div class="feature-scroll">
-            <div class="feature-card">
-                <h3>🎵 MP3</h3>
-                <ul>
-                    <li>Загрузка папок</li>
-                    <li>Пакетно и по одному</li>
-                    <li>Резервное копирование</li>
-                    <li>Снятие защиты от записи</li>
-                </ul>
-            </div>
-            <div class="feature-card">
-                <h3>🚗 Автомагнитолы</h3>
-                <ul>
-                    <li>Схемы именования</li>
-                    <li>Изменение размера</li>
-                    <li>JPG, PNG, BMP</li>
-                </ul>
-            </div>
-            <div class="feature-card">
-                <h3>🎧 Плеер</h3>
-                <ul>
-                    <li>Воспроизведение / Пауза</li>
-                    <li>Перемотка</li>
-                    <li>Громкость</li>
-                </ul>
-            </div>
-            <div class="feature-card">
-                <h3>🖼️ Изображения</h3>
-                <ul>
-                    <li>Кэш предпросмотра</li>
-                    <li>Полный экран</li>
-                    <li>Извлечение обложек</li>
-                </ul>
-            </div>
-            <div class="feature-card">
-                <h3>🧚 ИИ-фея</h3>
-                <ul>
-                    <li>Анимация помощи</li>
-                    <li>Вкл/Выкл</li>
-                    <li>Многоязычная</li>
-                </ul>
-            </div>
-            <div class="feature-card">
-                <h3>🎮 Пасхальное яйцо</h3>
-                <ul>
-                    <li>BrickBreak</li>
-                    <li>Клик по логотипу</li>
-                </ul>
-            </div>
+            <div class="feature-card"><h3>🎵 MP3</h3><ul><li>Загрузка папок</li><li>Пакетно и по одному</li><li>Резервное копирование</li><li>Снятие защиты от записи</li></ul></div>
+            <div class="feature-card"><h3>🚗 Автомагнитолы</h3><ul><li>Схемы именования</li><li>Изменение размера</li><li>JPG, PNG, BMP</li></ul></div>
+            <div class="feature-card"><h3>🎧 Плеер</h3><ul><li>Воспроизведение / Пауза</li><li>Перемотка</li><li>Громкость</li></ul></div>
+            <div class="feature-card"><h3>🖼️ Изображения</h3><ul><li>Кэш предпросмотра</li><li>Полный экран</li><li>Извлечение обложек</li></ul></div>
+            <div class="feature-card"><h3>🧚 ИИ-фея</h3><ul><li>Анимация помощи</li><li>Вкл/Выкл</li><li>Многоязычная</li></ul></div>
+            <div class="feature-card"><h3>🎮 Пасхальное яйцо</h3><ul><li>BrickBreak</li><li>Клик по логотипу</li></ul></div>
         </div>
-
-        <!-- Аккордеон редактора -->
-        <details class="editor-compact">
-            <summary>🎨 Редактор обложек ▼</summary>
-            <ul>
-                <li>Сохранить</li>
-                <li>Отразить</li>
-                <li>Кадрировать</li>
-                <li>Отменить</li>
-                <li>Изменить размер</li>
-                <li>JPG/PNG/WebP</li>
-            </ul>
-        </details>
-
-        <!-- Кнопки -->
+        <details class="editor-compact"><summary>🎨 Редактор обложек ▼</summary><ul><li>Сохранить</li><li>Отразить</li><li>Кадрировать</li><li>Отменить</li><li>Изменить размер</li><li>JPG/PNG/WebP</li></ul></details>
         <a href="ССЫЛКА_НА_СКАЧИВАНИЕ_TRIAL" class="btn">⬇️ Скачать бесплатно</a>
         <a href="#" id="buyButton" class="btn btn-buy">💎 Купить полную версию</a>
-
-        <p style="text-align:center; font-size:0.7rem; color:#95a5a6; margin:5px 0;">
-            *До 20 MP3 в день бесплатно
-        </p>
-
-        <!-- Футер + счётчик посетителей -->
+        <p style="text-align:center; font-size:0.7rem; color:#95a5a6; margin:5px 0;">*До 20 MP3 в день бесплатно</p>
+        <!-- ФУТЕР С ИСПРАВЛЕННОЙ ССЫЛКОЙ ПОДДЕРЖКИ -->
         <div class="footer">
             <img src="logo_mini5.png" alt="Логотип"> © Siegfried Scheck<br>
             <a href="https://github.com/scheck2019-png/USB_CoverFix_Deluxe">GitHub</a> |
-            <a href="https://github.com/scheck2019-png/USB_CoverFix_Deluxe/issues">Поддержка</a> |
-            📧 usbcoverfix@gmail.com
-            <div class="visitor-counter">
-                👀 Посетителей: <span id="visitorCount">0</span>
-            </div>
+            <a href="support_ru.html">Поддержка</a> |
+            📧 <a href="mailto:usbcoverfix@gmail.com">usbcoverfix@gmail.com</a>
+            <div class="visitor-counter">👀 Посетителей: <span id="visitorCount">0</span></div>
         </div>
     </div>
-
-    <!-- Кнопка "Наверх" -->
     <button id="scrollToTopBtn">↑</button>
-
-    <!-- СКРИПТЫ -->
     <script>
-        (function() {
-            // Карусель
-            const slidesContainer = document.getElementById('carouselSlides');
-            const dots = document.querySelectorAll('.dot');
-            const prevBtn = document.getElementById('carouselPrev');
-            const nextBtn = document.getElementById('carouselNext');
-
-            if (slidesContainer && dots.length) {
-                function updateDots() {
-                    const scrollLeft = slidesContainer.scrollLeft;
-                    const slideWidth = slidesContainer.clientWidth;
-                    const index = Math.round(scrollLeft / slideWidth);
-                    dots.forEach((dot, i) => {
-                        dot.classList.toggle('active', i === index);
-                    });
-                }
-                slidesContainer.addEventListener('scroll', updateDots);
-                window.addEventListener('resize', updateDots);
-                updateDots();
-
-                if (prevBtn && nextBtn) {
-                    prevBtn.addEventListener('click', () => {
-                        slidesContainer.scrollBy({ left: -slidesContainer.clientWidth, behavior: 'smooth' });
-                    });
-                    nextBtn.addEventListener('click', () => {
-                        slidesContainer.scrollBy({ left: slidesContainer.clientWidth, behavior: 'smooth' });
-                    });
+        (function(){
+            const slides=document.getElementById('carouselSlides'), dots=document.querySelectorAll('.dot'), prev=document.getElementById('carouselPrev'), next=document.getElementById('carouselNext');
+            if(slides && dots.length) {
+                function upd(){ const idx=Math.round(slides.scrollLeft/slides.clientWidth); dots.forEach((d,i)=>d.classList.toggle('active',i===idx)); }
+                slides.addEventListener('scroll',upd); window.addEventListener('resize',upd); upd();
+                if(prev && next) {
+                    prev.addEventListener('click',()=>slides.scrollBy({left:-slides.clientWidth,behavior:'smooth'}));
+                    next.addEventListener('click',()=>slides.scrollBy({left:slides.clientWidth,behavior:'smooth'}));
                 }
             }
-
-            // MP3-счётчик
-            const used = Math.floor(Math.random() * 15);
-            const left = 20 - used;
-            document.getElementById('mp3-counter').textContent = left;
-            document.getElementById('mp3-progress').style.width = (left / 20 * 100) + '%';
-
-            // Кнопка покупки
-            document.getElementById('buyButton').addEventListener('click', (e) => {
-                e.preventDefault();
-                alert('💎 Спасибо за интерес! Вы будете перенаправлены на страницу оплаты.');
-            });
-
-            // Кнопка "Наверх"
-            const topBtn = document.getElementById('scrollToTopBtn');
-            window.addEventListener('scroll', () => {
-                topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
-            });
-            topBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            // Счётчик посетителей
-            let total = parseInt(localStorage.getItem('totalVisits')) || 0;
-            total += 1;
-            localStorage.setItem('totalVisits', total);
-            document.getElementById('visitorCount').textContent = total;
+            const used=Math.floor(Math.random()*15), left=20-used;
+            document.getElementById('mp3-counter').textContent=left;
+            document.getElementById('mp3-progress').style.width=(left/20*100)+'%';
+            document.getElementById('buyButton').addEventListener('click',e=>{e.preventDefault();alert('💎 Спасибо за интерес! Вы будете перенаправлены на страницу оплаты.');});
+            const topBtn=document.getElementById('scrollToTopBtn');
+            window.addEventListener('scroll',()=>topBtn.style.display=window.scrollY>300?'block':'none');
+            topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+            let visits=parseInt(localStorage.getItem('totalVisits'))||0; visits+=1; localStorage.setItem('totalVisits',visits);
+            document.getElementById('visitorCount').textContent=visits;
         })();
     </script>
 </body>
-                        </html>
+</html>
