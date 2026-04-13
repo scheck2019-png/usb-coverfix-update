@@ -103,12 +103,17 @@
         }
 
         /* ---------- УМНАЯ КАРУСЕЛЬ (КАРТИНКИ + ВИДЕО) ---------- */
-        .screenshots-carousel {
+        .carousel-wrapper {
+            position: relative;
             margin: 10px 0;
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid #2ecc71;
             background: #0a0e12;
+        }
+
+        .screenshots-carousel {
+            width: 100%;
         }
 
         .carousel-slides {
@@ -117,6 +122,7 @@
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
+            scroll-behavior: smooth;
         }
 
         .carousel-slides::-webkit-scrollbar {
@@ -172,6 +178,48 @@
             background: #f1c40f;
             width: 16px;
             border-radius: 10px;
+        }
+
+        /* Кнопки-стрелки (только для десктопа) */
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            background: rgba(21, 30, 38, 0.8);
+            border: 1px solid #2ecc71;
+            border-radius: 50%;
+            color: #2ecc71;
+            font-size: 24px;
+            font-weight: bold;
+            display: none; /* по умолчанию скрыты */
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            backdrop-filter: blur(4px);
+            transition: all 0.2s;
+        }
+
+        .carousel-arrow:hover {
+            background: #2ecc71;
+            color: #0a0e12;
+        }
+
+        .arrow-left {
+            left: 8px;
+        }
+
+        .arrow-right {
+            right: 8px;
+        }
+
+        /* Показываем стрелки только на десктопе */
+        @media (min-width: 768px) {
+            .carousel-arrow {
+                display: flex;
+            }
         }
 
         /* ---------- ГОРИЗОНТАЛЬНЫЕ ФИЧИ ---------- */
@@ -421,7 +469,7 @@
         <h1>USB CoverFix Deluxe</h1>
         <div class="version">v4.0.5</div>
 
-        <!-- Счётчик MP3 с прогресс-баром -->
+        <!-- MP3-счётчик (живой, как в оригинале) -->
         <div class="trial">
             <strong>🎁 Gratis:</strong> <span id="mp3-counter">20</span>/20 MP3 heute<br>
             <div style="width:100%; height:6px; background:#0a0e12; border-radius:10px; margin-top:5px;">
@@ -434,31 +482,35 @@
             Cover für Autoradio & USB • <span class="highlight">Batch • Player • KI-Fee</span>
         </p>
 
-        <!-- Умная карусель: два скриншота + видео -->
-        <div class="screenshots-carousel">
-            <div class="carousel-slides">
-                <div class="carousel-slide">
-                    <img src="screenshot_main.png" alt="Hauptfenster" onerror="this.style.display='none'">
-                    <div class="carousel-caption">Hauptfenster mit Player</div>
+        <!-- Карусель со стрелками -->
+        <div class="carousel-wrapper">
+            <div class="screenshots-carousel">
+                <div class="carousel-slides" id="carouselSlides">
+                    <div class="carousel-slide">
+                        <img src="screenshot_main.png" alt="Hauptfenster" onerror="this.style.display='none'">
+                        <div class="carousel-caption">Hauptfenster mit Player</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="screenshot_batch.png" alt="Batch-Modus" onerror="this.style.display='none'">
+                        <div class="carousel-caption">Batch-Verarbeitung</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <video autoplay loop muted playsinline>
+                            <source src="demo.mp4" type="video/mp4">
+                            Ваш браузер не поддерживает видео.
+                        </video>
+                        <div class="carousel-caption">🎬 Kurze Demo</div>
+                    </div>
                 </div>
-                <div class="carousel-slide">
-                    <img src="screenshot_batch.png" alt="Batch-Modus" onerror="this.style.display='none'">
-                    <div class="carousel-caption">Batch-Verarbeitung</div>
-                </div>
-                <div class="carousel-slide">
-                    <!-- ВИДЕО: замените src на своё демо-видео -->
-                    <video autoplay loop muted playsinline>
-                        <source src="demo.mp4" type="video/mp4">
-                        Ваш браузер не поддерживает видео.
-                    </video>
-                    <div class="carousel-caption">🎬 Kurze Demo</div>
+                <div class="carousel-dots" id="carouselDots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
                 </div>
             </div>
-            <div class="carousel-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
+            <!-- Стрелки -->
+            <div class="carousel-arrow arrow-left" id="carouselPrev">‹</div>
+            <div class="carousel-arrow arrow-right" id="carouselNext">›</div>
         </div>
 
         <!-- Горизонтальные фичи -->
@@ -541,7 +593,7 @@
             <a href="https://github.com/scheck2019-png/USB_CoverFix_Deluxe/issues">Support</a> |
             📧 usbcoverfix@gmail.com
             <div class="visitor-counter">
-                👀 Besucher heute: <span id="visitorCount">0</span>
+                👀 Besucher: <span id="visitorCount">0</span>
             </div>
         </div>
     </div>
@@ -549,27 +601,43 @@
     <!-- Кнопка "Наверх" -->
     <button id="scrollToTopBtn">↑</button>
 
-    <!-- ВСЕ СКРИПТЫ В ОДНОМ МЕСТЕ -->
+    <!-- СКРИПТЫ -->
     <script>
         (function() {
-            // 1. Карусель (точки)
-            const carousel = document.querySelector('.carousel-slides');
+            // 1. Карусель: управление точками и стрелками
+            const slidesContainer = document.getElementById('carouselSlides');
             const dots = document.querySelectorAll('.dot');
-            if (carousel && dots.length) {
+            const prevBtn = document.getElementById('carouselPrev');
+            const nextBtn = document.getElementById('carouselNext');
+
+            if (slidesContainer && dots.length) {
                 function updateDots() {
-                    const scrollLeft = carousel.scrollLeft;
-                    const slideWidth = carousel.clientWidth;
+                    const scrollLeft = slidesContainer.scrollLeft;
+                    const slideWidth = slidesContainer.clientWidth;
                     const index = Math.round(scrollLeft / slideWidth);
                     dots.forEach((dot, i) => {
                         dot.classList.toggle('active', i === index);
                     });
                 }
-                carousel.addEventListener('scroll', updateDots);
+
+                slidesContainer.addEventListener('scroll', updateDots);
                 window.addEventListener('resize', updateDots);
                 updateDots();
+
+                // Стрелки
+                if (prevBtn && nextBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        const slideWidth = slidesContainer.clientWidth;
+                        slidesContainer.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+                    });
+                    nextBtn.addEventListener('click', () => {
+                        const slideWidth = slidesContainer.clientWidth;
+                        slidesContainer.scrollBy({ left: slideWidth, behavior: 'smooth' });
+                    });
+                }
             }
 
-            // 2. Счётчик MP3 (демо-значение)
+            // 2. Живой MP3-счётчик (как в оригинале)
             const used = Math.floor(Math.random() * 15); // 0-14 использовано
             const left = 20 - used;
             const counterSpan = document.getElementById('mp3-counter');
@@ -579,13 +647,13 @@
                 progressBar.style.width = (left / 20 * 100) + '%';
             }
 
-            // 3. Кнопка покупки с уведомлением
+            // 3. Кнопка покупки (заглушка)
             const buyBtn = document.getElementById('buyButton');
             if (buyBtn) {
                 buyBtn.addEventListener('click', function(e) {
                     e.preventDefault();
                     alert('💎 Спасибо за интерес! Вы будете перенаправлены на страницу оплаты.');
-                    // window.location.href = 'ССЫЛКА_НА_ПОКУПКУ'; // раскомментировать, когда будет ссылка
+                    // window.location.href = 'ССЫЛКА_НА_ПОКУПКУ';
                 });
             }
 
@@ -598,36 +666,18 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // 5. Счётчик посетителей (localStorage)
+            // 5. Счётчик посетителей (накопительный, без сброса)
             function updateVisitorCounter() {
                 const countSpan = document.getElementById('visitorCount');
                 if (!countSpan) return;
                 
-                // Получаем текущую дату в формате ГГГГ-ММ-ДД
-                const today = new Date().toISOString().split('T')[0];
-                let data = JSON.parse(localStorage.getItem('visitorData')) || { date: today, count: 0 };
-                
-                // Если дата не сегодня — сбрасываем счётчик
-                if (data.date !== today) {
-                    data = { date: today, count: 0 };
-                }
-                
-                // Увеличиваем счётчик только при первом посещении за сегодня (или каждый раз? лучше при каждом)
-                data.count += 1;
-                localStorage.setItem('visitorData', JSON.stringify(data));
-                countSpan.textContent = data.count;
+                let totalVisits = parseInt(localStorage.getItem('totalVisits')) || 0;
+                totalVisits += 1;
+                localStorage.setItem('totalVisits', totalVisits);
+                countSpan.textContent = totalVisits;
             }
             updateVisitorCounter();
-
-            // Опционально: можно добавить сброс счётчика в полночь через setTimeout
         })();
     </script>
-
-    <!-- Внешний счётчик (альтернатива) — раскомментируйте, если хотите использовать сервис -->
-    <!-- Например, от hitwebcounter:
-    <a href="https://www.hitwebcounter.com" target="_blank">
-        <img src="https://hitwebcounter.com/counter/counter.php?page=YOUR_ID&style=0006&nbdigits=5&type=page&initCount=0" title="Counter Widget" Alt="Visit counter" border="0" />
-    </a>
-    -->
 </body>
-</html>
+    </html>
