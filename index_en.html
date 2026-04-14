@@ -87,6 +87,8 @@
         .personal-greeting { color:#f1c40f; font-size:0.9rem; cursor:pointer; transition:transform 0.2s; user-select:none; }
         .sound-toggle { position:fixed; bottom:20px; left:20px; width:45px; height:45px; border-radius:50%; background:#1e2a36; border:1px solid #2ecc71; color:#2ecc71; font-size:20px; cursor:pointer; z-index:1000; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 10px rgba(0,0,0,0.5); transition:all 0.2s; }
         .sound-toggle:hover { transform:scale(1.1); }
+        .theme-toggle { position:fixed; bottom:80px; left:20px; width:45px; height:45px; border-radius:50%; background:#1e2a36; border:1px solid #2ecc71; color:#f1c40f; font-size:20px; cursor:pointer; z-index:1000; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 10px rgba(0,0,0,0.5); transition:all 0.2s; }
+        .theme-toggle:hover { transform:scale(1.1); }
         .share-button { background:none; border:none; color:#2ecc71; cursor:pointer; font-size:1.2rem; padding:0 5px; vertical-align:middle; transition:transform 0.2s; }
         .share-button:hover { transform:scale(1.2); color:#f1c40f; }
         .download-counter { display:flex; align-items:center; justify-content:center; gap:5px; margin:5px 0; font-size:0.8rem; }
@@ -121,6 +123,56 @@
             .feature-card li { white-space:normal; font-size:0.7rem; }
             .btn { padding:8px; font-size:1rem; }
         }
+
+        /* ---------- LIGHT THEME (fixed, everything visible) ---------- */
+        body.light-theme { background:#f0f2f5; }
+        body.light-theme .container { background:#ffffff; border-color:#2ecc71; color:#1a1a1a; }
+        body.light-theme h1 { background:linear-gradient(45deg,#27ae60,#e67e22); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        body.light-theme .version { background:#2ecc71; color:#ffffff; }
+        body.light-theme .trial { background:#e8f0fe; border-color:#2ecc71; color:#1a1a1a; }
+        body.light-theme .trial strong { color:#e67e22; }
+        body.light-theme .lang-switch a { color:#1a1a1a; }
+        body.light-theme .lang-switch a:first-child,
+        body.light-theme .lang-switch a:nth-child(2),
+        body.light-theme .lang-switch a:last-child { background:#2ecc71; color:#ffffff; }
+        body.light-theme .intro-text { color:#2c3e50; }
+        body.light-theme .highlight { color:#e67e22; }
+        body.light-theme .carousel-wrapper { border-color:#2ecc71; background:#f8f9fa; }
+        body.light-theme .carousel-caption { background:rgba(0,0,0,0.6); color:#ffffff; }
+        body.light-theme .carousel-dots { background:#e9ecef; }
+        body.light-theme .dot { background:#2ecc71; }
+        body.light-theme .carousel-arrow { background:rgba(255,255,255,0.9); border-color:#2ecc71; color:#2ecc71; }
+        body.light-theme .carousel-arrow:hover { background:#2ecc71; color:#ffffff; }
+        body.light-theme .feature-card { background:#ffffff; border-left-color:#2ecc71; box-shadow:0 4px 12px rgba(0,0,0,0.08); color:#1a1a1a; }
+        body.light-theme .feature-card h3 { color:#27ae60; }
+        body.light-theme .feature-card li { color:#2c3e50; }
+        body.light-theme .editor-compact { background:#f8f9fa; border-color:#2ecc71; }
+        body.light-theme .editor-compact summary { color:#e67e22; }
+        body.light-theme .editor-compact li { background:#e9ecef; border-color:#2ecc71; color:#1a1a1a; }
+        body.light-theme .btn { background:#2ecc71; color:#ffffff; box-shadow:0 4px 8px rgba(46,204,113,0.3); }
+        body.light-theme .btn:hover { box-shadow:0 6px 12px rgba(46,204,113,0.5); }
+        body.light-theme .btn-buy { background:#f39c12; color:#ffffff; }
+        body.light-theme .footer { border-top-color:#2ecc71; color:#2c3e50; }
+        body.light-theme .footer a { color:#27ae60; }
+        body.light-theme .visitor-counter { color:#e67e22; }
+        body.light-theme #scrollToTopBtn { background:#2ecc71; color:#ffffff; }
+        body.light-theme .modal-box { background:#ffffff; border-color:#2ecc71; color:#1a1a1a; }
+        body.light-theme .modal-box p { color:#1a1a1a; }
+        body.light-theme .modal-box input { background:#f8f9fa; border-color:#2ecc71; color:#1a1a1a; }
+        body.light-theme .paypal-support { background:#fdecea; border-color:#e74c3c; color:#c0392b; }
+        body.light-theme .paypal-support:hover { background:#e74c3c; color:#ffffff; }
+        body.light-theme .personal-greeting { color:#e67e22; }
+        body.light-theme .sound-toggle,
+        body.light-theme .theme-toggle { background:#ffffff; border-color:#2ecc71; color:#2ecc71; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+        body.light-theme .share-button { color:#27ae60; }
+        body.light-theme .share-button:hover { color:#e67e22; }
+        body.light-theme .download-counter { color:#2c3e50; }
+        body.light-theme #download-count { color:#e67e22 !important; }
+        body.light-theme #gameModal .modal-box { background:#ffffff; }
+        body.light-theme #gameCanvas { border-color:#2ecc71; }
+        body.light-theme div[style*="min-width:250px"] { background:#ffffff !important; border-left-color:#e67e22 !important; box-shadow:0 4px 12px rgba(0,0,0,0.08) !important; }
+        body.light-theme div[style*="min-width:250px"] p { color:#2c3e50 !important; }
+        body.light-theme div[style*="min-width:250px"] p[style*="color:#f1c40f"] { color:#e67e22 !important; }
     </style>
 </head>
 <body>
@@ -133,7 +185,6 @@
 
         <h1>USB CoverFix Deluxe</h1>
 
-        <!-- Version + greeting + Ko-fi -->
         <div class="version-wrapper">
             <div class="version">v4.0.5</div>
             <span id="personal-greeting" class="personal-greeting" title="Click to change your name">👋 Hello!</span>
@@ -142,7 +193,6 @@
             </a>
         </div>
 
-        <!-- MP3 counter -->
         <div class="trial">
             <strong>🎁 Free:</strong> <span id="mp3-counter">20</span>/20 MP3 today<br>
             <div style="width:100%; height:6px; background:#0a0e12; border-radius:10px; margin-top:5px;">
@@ -153,7 +203,6 @@
 
         <p class="intro-text">Covers for car radios & USB • <span class="highlight">Batch • Player • AI Fairy</span></p>
 
-        <!-- Carousel -->
         <div class="carousel-wrapper">
             <div class="screenshots-carousel">
                 <div class="carousel-slides" id="carouselSlides">
@@ -167,7 +216,25 @@
             <div class="carousel-arrow arrow-right" id="carouselNext">›</div>
         </div>
 
-        <!-- Features -->
+        <!-- Reviews -->
+        <div style="margin: 15px 0;">
+            <h3 style="color:#2ecc71; text-align:center; margin-bottom:10px;">⭐ What users say</h3>
+            <div style="display:flex; gap:10px; overflow-x:auto; padding-bottom:5px;">
+                <div style="min-width:250px; background:#1e2a36; border-radius:16px; padding:15px; border-left:4px solid #f1c40f;">
+                    <p style="font-style:italic;">"Finally a tool that covered my 500 MP3s in 2 minutes. Awesome!"</p>
+                    <p style="margin-top:8px; color:#f1c40f;">— Michael K.</p>
+                </div>
+                <div style="min-width:250px; background:#1e2a36; border-radius:16px; padding:15px; border-left:4px solid #f1c40f;">
+                    <p style="font-style:italic;">"The AI fairy is funny, but batch mode saves me hours. Highly recommended!"</p>
+                    <p style="margin-top:8px; color:#f1c40f;">— Lena R.</p>
+                </div>
+                <div style="min-width:250px; background:#1e2a36; border-radius:16px; padding:15px; border-left:4px solid #f1c40f;">
+                    <p style="font-style:italic;">"Simple, fast, no frills. Exactly what I needed for my car."</p>
+                    <p style="margin-top:8px; color:#f1c40f;">— Thomas W.</p>
+                </div>
+            </div>
+        </div>
+
         <div class="feature-scroll">
             <div class="feature-card"><h3>🎵 MP3</h3><ul><li>Load folders</li><li>Batch & single</li><li>Backup</li><li>Remove write protection</li></ul></div>
             <div class="feature-card"><h3>🚗 Car Radio</h3><ul><li>Naming schemes</li><li>Resize</li><li>JPG, PNG, BMP</li></ul></div>
@@ -177,25 +244,22 @@
             <div class="feature-card"><h3>🎮 Easter Egg</h3><ul><li>BrickBreak</li><li>Click on logo</li></ul></div>
         </div>
 
-        <!-- Editor -->
         <details class="editor-compact"><summary>🎨 Cover Editor ▼</summary><ul><li>Save</li><li>Flip</li><li>Crop</li><li>Undo</li><li>Resize</li><li>JPG/PNG/WebP</li></ul></details>
 
-        <!-- Buttons -->
         <a href="https://github.com/scheck2019-png/usb-coverfix-update/releases/download/v4.0.8/USB_CoverFix_Deluxe_4.0.8_setup.exe" class="btn">⬇️ Free Download</a>
         <a href="#" id="buyButton" class="btn btn-buy">💎 Buy Full Version</a>
         <p style="text-align:center; font-size:0.7rem; color:#95a5a6; margin:5px 0;">*Up to 20 MP3/day free</p>
 
-        <!-- Download counter -->
         <div class="download-counter">
             <span>📥</span>
             <span id="download-count" style="color: #f1c40f; font-weight: bold;">…</span>
             <span>Downloads</span>
         </div>
 
-        <!-- Footer (with About) -->
         <div class="footer">
             <img src="logo_mini5.png" alt="Logo"> © Siegfried Scheck<br>
             <a href="about_en.html">About</a> |
+            <a href="changelog_en.html">Changelog</a> |
             <a href="license_en.html">License</a> |
             <a href="faq_en.html">FAQ</a> |
             <a href="support_en.html">Support</a> |
@@ -215,7 +279,7 @@
         </div>
     </div>
 
-    <!-- Name input modal -->
+    <!-- Name modal -->
     <div class="modal-overlay" id="nameModal">
         <div class="modal-box">
             <p>✨ <span id="nameModalTitle">What should I call you?</span></p>
@@ -227,11 +291,23 @@
         </div>
     </div>
 
-    <!-- Sound -->
+    <!-- Game modal -->
+    <div class="modal-overlay" id="gameModal">
+        <div class="modal-box" style="max-width:500px; padding:15px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <span style="color:#f1c40f; font-weight:bold;">🧱 BrickBreak</span>
+                <button id="closeGameBtn" style="background:none; border:none; color:#e74c3c; font-size:20px; cursor:pointer;">✕</button>
+            </div>
+            <canvas id="gameCanvas" width="400" height="300" style="width:100%; height:auto; background:#0a0e12; border-radius:12px;"></canvas>
+            <p style="margin-top:8px; font-size:0.8rem; color:#95a5a6;">← → move | Space to start/restart</p>
+        </div>
+    </div>
+
     <audio id="hoverSound" preload="auto">
         <source src="data:audio/wav;base64,UklGRlwAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YVoAAACAgICAf39/f39/f3+AgICAf39/f39/f3+AgICAf39/f39/f3+AgICAf39/f39/f3+AgICAf39/f39/f3+AgICAf39/fw==" type="audio/wav">
     </audio>
     <button id="soundToggle" class="sound-toggle" title="Sound on/off">🔊</button>
+    <button id="themeToggle" class="theme-toggle" title="Light/Dark">🌙</button>
 
     <script>
         (function(){
@@ -265,29 +341,25 @@
             });
             modal.addEventListener('click',(e)=>{ if(e.target===modal) modal.classList.remove('show'); });
 
-            // Buy button (no redirect)
             document.getElementById('buyButton').addEventListener('click',e=>{ 
                 e.preventDefault(); 
                 showModal('Thanks for your interest! You will be redirected to the payment page.'); 
             });
 
-            // Ko-fi button (with modal + redirect)
             document.getElementById('paypalSupportBtn').addEventListener('click', e => {
                 e.preventDefault();
                 showModal('💖 Thank you for your support! Redirecting to Ko-fi...');
                 modalOkBtn.dataset.redirectUrl = 'https://ko-fi.com/usb_coverfix';
             });
 
-            // Scroll to top
             const topBtn=document.getElementById('scrollToTopBtn');
             window.addEventListener('scroll',()=>topBtn.style.display=window.scrollY>300?'block':'none');
             topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-            // Visitor counter
             let visits=parseInt(localStorage.getItem('totalVisits'))||0; visits+=1; localStorage.setItem('totalVisits',visits);
             document.getElementById('visitorCount').textContent=visits;
 
-            // Greeting (custom)
+            // Greeting
             const greetingSpan = document.getElementById('personal-greeting');
             const nameModal = document.getElementById('nameModal');
             const nameInput = document.getElementById('userNameInput');
@@ -341,11 +413,88 @@
                 else window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareData.text)}&url=${encodeURIComponent(shareData.url)}`, '_blank', 'width=600,height=400');
             });
 
-            // Download counter (mock)
+            // Download counter
             function fetchDownloadCount() {
-                document.getElementById('download-count').textContent = 1247 + Math.floor(Math.random() * 50);
+                fetch('https://api.github.com/repos/scheck2019-png/usb-coverfix-update/releases')
+                    .then(res => res.json())
+                    .then(releases => {
+                        let total = 0;
+                        releases.forEach(release => { release.assets.forEach(asset => total += asset.download_count || 0); });
+                        document.getElementById('download-count').textContent = total;
+                    })
+                    .catch(() => document.getElementById('download-count').textContent = '1247+');
             }
             fetchDownloadCount();
+
+            // Theme toggle
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('light-theme');
+                themeToggle.textContent = document.body.classList.contains('light-theme') ? '☀️' : '🌙';
+                localStorage.setItem('theme', document.body.classList.contains('light-theme') ? 'light' : 'dark');
+            });
+            if (localStorage.getItem('theme') === 'light') {
+                document.body.classList.add('light-theme');
+                themeToggle.textContent = '☀️';
+            }
+
+            // Konami + BrickBreak
+            const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+            let konamiIndex = 0;
+            window.addEventListener('keydown', (e) => {
+                if (e.key === konamiCode[konamiIndex]) {
+                    konamiIndex++;
+                    if (konamiIndex === konamiCode.length) {
+                        document.getElementById('gameModal').classList.add('show');
+                        initGame();
+                        konamiIndex = 0;
+                    }
+                } else konamiIndex = 0;
+            });
+            document.getElementById('closeGameBtn').addEventListener('click', () => {
+                document.getElementById('gameModal').classList.remove('show');
+                if (gameLoop) cancelAnimationFrame(gameLoop);
+                gameLoop = null;
+            });
+            const canvas = document.getElementById('gameCanvas');
+            const ctx = canvas.getContext('2d');
+            let gameLoop = null, paddleX = 150, ballX = 200, ballY = 250, ballDX = 3, ballDY = -3, bricks = [], score = 0, gameActive = false;
+            function initBricks() {
+                bricks = [];
+                for (let row = 0; row < 5; row++) for (let col = 0; col < 7; col++) bricks.push({ x: col * 55 + 10, y: row * 20 + 30, w: 50, h: 15, active: true });
+            }
+            function drawGame() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#2ecc71'; ctx.fillRect(paddleX, 280, 80, 10);
+                ctx.beginPath(); ctx.arc(ballX, ballY, 6, 0, Math.PI * 2); ctx.fillStyle = '#f1c40f'; ctx.fill();
+                bricks.forEach(b => { if (b.active) { ctx.fillStyle = '#e74c3c'; ctx.fillRect(b.x, b.y, b.w, b.h); } });
+                ctx.fillStyle = '#fff'; ctx.font = '14px "Segoe UI"'; ctx.fillText('Score: ' + score, 10, 20);
+                if (!gameActive) { ctx.fillStyle = '#95a5a6'; ctx.font = '18px "Segoe UI"'; ctx.fillText('Press Space', 120, 160); }
+            }
+            function updateGame() {
+                if (!gameActive) return;
+                ballX += ballDX; ballY += ballDY;
+                if (ballX < 6 || ballX > canvas.width - 6) ballDX *= -1;
+                if (ballY < 6) ballDY *= -1;
+                if (ballY > 270 && ballX > paddleX && ballX < paddleX + 80 && ballDY > 0) { ballDY *= -1; ballY = 269; }
+                bricks.forEach(b => { if (b.active && ballX > b.x && ballX < b.x + b.w && ballY > b.y && ballY < b.y + b.h) { b.active = false; ballDY *= -1; score += 10; } });
+                if (ballY > canvas.height) { gameActive = false; initBricks(); score = 0; ballX = 200; ballY = 250; ballDX = 3; ballDY = -3; }
+                if (bricks.every(b => !b.active)) { gameActive = false; initBricks(); score = 0; ballX = 200; ballY = 250; ballDX = 3; ballDY = -3; }
+            }
+            function gameStep() { updateGame(); drawGame(); gameLoop = requestAnimationFrame(gameStep); }
+            function initGame() { if (gameLoop) cancelAnimationFrame(gameLoop); initBricks(); paddleX = 160; ballX = 200; ballY = 250; ballDX = 3; ballDY = -3; score = 0; gameActive = true; gameLoop = requestAnimationFrame(gameStep); }
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft' && gameActive) paddleX = Math.max(0, paddleX - 20);
+                if (e.key === 'ArrowRight' && gameActive) paddleX = Math.min(320, paddleX + 20);
+                if (e.key === ' ' && !gameActive) { e.preventDefault(); initGame(); }
+            });
+            canvas.addEventListener('mousemove', (e) => {
+                if (!gameActive) return;
+                const rect = canvas.getBoundingClientRect();
+                const scaleX = canvas.width / rect.width;
+                const mouseX = (e.clientX - rect.left) * scaleX;
+                paddleX = Math.min(canvas.width - 80, Math.max(0, mouseX - 40));
+            });
         })();
     </script>
 </body>
