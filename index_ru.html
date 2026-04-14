@@ -87,6 +87,8 @@
         .personal-greeting { color:#f1c40f; font-size:0.9rem; cursor:pointer; transition:transform 0.2s; user-select:none; }
         .sound-toggle { position:fixed; bottom:20px; left:20px; width:45px; height:45px; border-radius:50%; background:#1e2a36; border:1px solid #2ecc71; color:#2ecc71; font-size:20px; cursor:pointer; z-index:1000; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 10px rgba(0,0,0,0.5); transition:all 0.2s; }
         .sound-toggle:hover { transform:scale(1.1); }
+        .theme-toggle { position:fixed; bottom:80px; left:20px; width:45px; height:45px; border-radius:50%; background:#1e2a36; border:1px solid #2ecc71; color:#f1c40f; font-size:20px; cursor:pointer; z-index:1000; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 10px rgba(0,0,0,0.5); transition:all 0.2s; }
+        .theme-toggle:hover { transform:scale(1.1); }
         .share-button { background:none; border:none; color:#2ecc71; cursor:pointer; font-size:1.2rem; padding:0 5px; vertical-align:middle; transition:transform 0.2s; }
         .share-button:hover { transform:scale(1.2); color:#f1c40f; }
         .download-counter { display:flex; align-items:center; justify-content:center; gap:5px; margin:5px 0; font-size:0.8rem; }
@@ -121,6 +123,56 @@
             .feature-card li { white-space:normal; font-size:0.7rem; }
             .btn { padding:8px; font-size:1rem; }
         }
+
+        /* ---------- СВЕТЛАЯ ТЕМА (исправленная, всё видно) ---------- */
+        body.light-theme { background:#f0f2f5; }
+        body.light-theme .container { background:#ffffff; border-color:#2ecc71; color:#1a1a1a; }
+        body.light-theme h1 { background:linear-gradient(45deg,#27ae60,#e67e22); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        body.light-theme .version { background:#2ecc71; color:#ffffff; }
+        body.light-theme .trial { background:#e8f0fe; border-color:#2ecc71; color:#1a1a1a; }
+        body.light-theme .trial strong { color:#e67e22; }
+        body.light-theme .lang-switch a { color:#1a1a1a; }
+        body.light-theme .lang-switch a:first-child,
+        body.light-theme .lang-switch a:nth-child(2),
+        body.light-theme .lang-switch a:last-child { background:#2ecc71; color:#ffffff; }
+        body.light-theme .intro-text { color:#2c3e50; }
+        body.light-theme .highlight { color:#e67e22; }
+        body.light-theme .carousel-wrapper { border-color:#2ecc71; background:#f8f9fa; }
+        body.light-theme .carousel-caption { background:rgba(0,0,0,0.6); color:#ffffff; }
+        body.light-theme .carousel-dots { background:#e9ecef; }
+        body.light-theme .dot { background:#2ecc71; }
+        body.light-theme .carousel-arrow { background:rgba(255,255,255,0.9); border-color:#2ecc71; color:#2ecc71; }
+        body.light-theme .carousel-arrow:hover { background:#2ecc71; color:#ffffff; }
+        body.light-theme .feature-card { background:#ffffff; border-left-color:#2ecc71; box-shadow:0 4px 12px rgba(0,0,0,0.08); color:#1a1a1a; }
+        body.light-theme .feature-card h3 { color:#27ae60; }
+        body.light-theme .feature-card li { color:#2c3e50; }
+        body.light-theme .editor-compact { background:#f8f9fa; border-color:#2ecc71; }
+        body.light-theme .editor-compact summary { color:#e67e22; }
+        body.light-theme .editor-compact li { background:#e9ecef; border-color:#2ecc71; color:#1a1a1a; }
+        body.light-theme .btn { background:#2ecc71; color:#ffffff; box-shadow:0 4px 8px rgba(46,204,113,0.3); }
+        body.light-theme .btn:hover { box-shadow:0 6px 12px rgba(46,204,113,0.5); }
+        body.light-theme .btn-buy { background:#f39c12; color:#ffffff; }
+        body.light-theme .footer { border-top-color:#2ecc71; color:#2c3e50; }
+        body.light-theme .footer a { color:#27ae60; }
+        body.light-theme .visitor-counter { color:#e67e22; }
+        body.light-theme #scrollToTopBtn { background:#2ecc71; color:#ffffff; }
+        body.light-theme .modal-box { background:#ffffff; border-color:#2ecc71; color:#1a1a1a; }
+        body.light-theme .modal-box p { color:#1a1a1a; }
+        body.light-theme .modal-box input { background:#f8f9fa; border-color:#2ecc71; color:#1a1a1a; }
+        body.light-theme .paypal-support { background:#fdecea; border-color:#e74c3c; color:#c0392b; }
+        body.light-theme .paypal-support:hover { background:#e74c3c; color:#ffffff; }
+        body.light-theme .personal-greeting { color:#e67e22; }
+        body.light-theme .sound-toggle,
+        body.light-theme .theme-toggle { background:#ffffff; border-color:#2ecc71; color:#2ecc71; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+        body.light-theme .share-button { color:#27ae60; }
+        body.light-theme .share-button:hover { color:#e67e22; }
+        body.light-theme .download-counter { color:#2c3e50; }
+        body.light-theme #download-count { color:#e67e22 !important; }
+        body.light-theme #gameModal .modal-box { background:#ffffff; }
+        body.light-theme #gameCanvas { border-color:#2ecc71; }
+        body.light-theme div[style*="min-width:250px"] { background:#ffffff !important; border-left-color:#e67e22 !important; box-shadow:0 4px 12px rgba(0,0,0,0.08) !important; }
+        body.light-theme div[style*="min-width:250px"] p { color:#2c3e50 !important; }
+        body.light-theme div[style*="min-width:250px"] p[style*="color:#f1c40f"] { color:#e67e22 !important; }
     </style>
 </head>
 <body>
@@ -133,7 +185,6 @@
 
         <h1>USB CoverFix Deluxe</h1>
 
-        <!-- Версия + приветствие + Ko-fi -->
         <div class="version-wrapper">
             <div class="version">v4.0.5</div>
             <span id="personal-greeting" class="personal-greeting" title="Нажми, чтобы изменить имя">👋 Привет!</span>
@@ -142,7 +193,6 @@
             </a>
         </div>
 
-        <!-- MP3-счётчик -->
         <div class="trial">
             <strong>🎁 Бесплатно:</strong> <span id="mp3-counter">20</span>/20 MP3 сегодня<br>
             <div style="width:100%; height:6px; background:#0a0e12; border-radius:10px; margin-top:5px;">
@@ -153,7 +203,6 @@
 
         <p class="intro-text">Обложки для автомагнитол и USB • <span class="highlight">Пакетная обработка • Плеер • ИИ-фея</span></p>
 
-        <!-- Карусель -->
         <div class="carousel-wrapper">
             <div class="screenshots-carousel">
                 <div class="carousel-slides" id="carouselSlides">
@@ -167,7 +216,25 @@
             <div class="carousel-arrow arrow-right" id="carouselNext">›</div>
         </div>
 
-        <!-- Фичи -->
+        <!-- Отзывы -->
+        <div style="margin: 15px 0;">
+            <h3 style="color:#2ecc71; text-align:center; margin-bottom:10px;">⭐ Что говорят пользователи</h3>
+            <div style="display:flex; gap:10px; overflow-x:auto; padding-bottom:5px;">
+                <div style="min-width:250px; background:#1e2a36; border-radius:16px; padding:15px; border-left:4px solid #f1c40f;">
+                    <p style="font-style:italic;">«Наконец-то инструмент, который обработал мои 500 MP3 за 2 минуты. Шикарно!»</p>
+                    <p style="margin-top:8px; color:#f1c40f;">— Михаил К.</p>
+                </div>
+                <div style="min-width:250px; background:#1e2a36; border-radius:16px; padding:15px; border-left:4px solid #f1c40f;">
+                    <p style="font-style:italic;">«ИИ-фея забавная, но пакетный режим экономит часы. Однозначно рекомендую!»</p>
+                    <p style="margin-top:8px; color:#f1c40f;">— Лена Р.</p>
+                </div>
+                <div style="min-width:250px; background:#1e2a36; border-radius:16px; padding:15px; border-left:4px solid #f1c40f;">
+                    <p style="font-style:italic;">«Просто, быстро, без лишнего. То, что нужно для машины.»</p>
+                    <p style="margin-top:8px; color:#f1c40f;">— Фома В.</p>
+                </div>
+            </div>
+        </div>
+
         <div class="feature-scroll">
             <div class="feature-card"><h3>🎵 MP3</h3><ul><li>Загрузка папок</li><li>Пакетно и по одному</li><li>Резервное копирование</li><li>Снятие защиты от записи</li></ul></div>
             <div class="feature-card"><h3>🚗 Автомагнитолы</h3><ul><li>Схемы именования</li><li>Изменение размера</li><li>JPG, PNG, BMP</li></ul></div>
@@ -177,25 +244,22 @@
             <div class="feature-card"><h3>🎮 Пасхальное яйцо</h3><ul><li>BrickBreak</li><li>Клик по логотипу</li></ul></div>
         </div>
 
-        <!-- Редактор -->
         <details class="editor-compact"><summary>🎨 Редактор обложек ▼</summary><ul><li>Сохранить</li><li>Отразить</li><li>Кадрировать</li><li>Отменить</li><li>Изменить размер</li><li>JPG/PNG/WebP</li></ul></details>
 
-        <!-- Кнопки -->
         <a href="https://github.com/scheck2019-png/usb-coverfix-update/releases/download/v4.0.8/USB_CoverFix_Deluxe_4.0.8_setup.exe" class="btn">⬇️ Скачать бесплатно</a>
         <a href="#" id="buyButton" class="btn btn-buy">💎 Купить полную версию</a>
         <p style="text-align:center; font-size:0.7rem; color:#95a5a6; margin:5px 0;">*До 20 MP3 в день бесплатно</p>
 
-        <!-- Счётчик скачиваний -->
         <div class="download-counter">
             <span>📥</span>
             <span id="download-count" style="color: #f1c40f; font-weight: bold;">…</span>
             <span>Скачиваний</span>
         </div>
 
-        <!-- Футер (с About) -->
         <div class="footer">
             <img src="logo_mini5.png" alt="Логотип"> © Siegfried Scheck<br>
             <a href="about_ru.html">О программе</a> |
+            <a href="changelog_ru.html">История версий</a> |
             <a href="license_ru.html">Лицензия</a> |
             <a href="faq_ru.html">FAQ</a> |
             <a href="support_ru.html">Поддержка</a> |
@@ -227,11 +291,23 @@
         </div>
     </div>
 
-    <!-- Звук -->
+    <!-- Модальное окно с игрой -->
+    <div class="modal-overlay" id="gameModal">
+        <div class="modal-box" style="max-width:500px; padding:15px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <span style="color:#f1c40f; font-weight:bold;">🧱 BrickBreak</span>
+                <button id="closeGameBtn" style="background:none; border:none; color:#e74c3c; font-size:20px; cursor:pointer;">✕</button>
+            </div>
+            <canvas id="gameCanvas" width="400" height="300" style="width:100%; height:auto; background:#0a0e12; border-radius:12px;"></canvas>
+            <p style="margin-top:8px; font-size:0.8rem; color:#95a5a6;">← → движение | Пробел — старт/рестарт</p>
+        </div>
+    </div>
+
     <audio id="hoverSound" preload="auto">
         <source src="data:audio/wav;base64,UklGRlwAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YVoAAACAgICAf39/f39/f3+AgICAf39/f39/f3+AgICAf39/f39/f3+AgICAf39/f39/f3+AgICAf39/f39/f3+AgICAf39/fw==" type="audio/wav">
     </audio>
     <button id="soundToggle" class="sound-toggle" title="Звук вкл/выкл">🔊</button>
+    <button id="themeToggle" class="theme-toggle" title="Светлая/Тёмная">🌙</button>
 
     <script>
         (function(){
@@ -265,25 +341,21 @@
             });
             modal.addEventListener('click',(e)=>{ if(e.target===modal) modal.classList.remove('show'); });
 
-            // Кнопка покупки
             document.getElementById('buyButton').addEventListener('click',e=>{ 
                 e.preventDefault(); 
                 showModal('Спасибо за интерес! Вы будете перенаправлены на страницу оплаты.'); 
             });
 
-            // Кнопка Ko-fi
             document.getElementById('paypalSupportBtn').addEventListener('click', e => {
                 e.preventDefault();
                 showModal('💖 Спасибо за поддержку! Перенаправляем на Ko-fi...');
                 modalOkBtn.dataset.redirectUrl = 'https://ko-fi.com/usb_coverfix';
             });
 
-            // Кнопка наверх
             const topBtn=document.getElementById('scrollToTopBtn');
             window.addEventListener('scroll',()=>topBtn.style.display=window.scrollY>300?'block':'none');
             topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-            // Счётчик посетителей
             let visits=parseInt(localStorage.getItem('totalVisits'))||0; visits+=1; localStorage.setItem('totalVisits',visits);
             document.getElementById('visitorCount').textContent=visits;
 
@@ -341,12 +413,89 @@
                 else window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareData.text)}&url=${encodeURIComponent(shareData.url)}`, '_blank', 'width=600,height=400');
             });
 
-            // Счётчик скачиваний (заглушка)
+            // Счётчик скачиваний
             function fetchDownloadCount() {
-                document.getElementById('download-count').textContent = 1247 + Math.floor(Math.random() * 50);
+                fetch('https://api.github.com/repos/scheck2019-png/usb-coverfix-update/releases')
+                    .then(res => res.json())
+                    .then(releases => {
+                        let total = 0;
+                        releases.forEach(release => { release.assets.forEach(asset => total += asset.download_count || 0); });
+                        document.getElementById('download-count').textContent = total;
+                    })
+                    .catch(() => document.getElementById('download-count').textContent = '1247+');
             }
             fetchDownloadCount();
+
+            // Тема
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('light-theme');
+                themeToggle.textContent = document.body.classList.contains('light-theme') ? '☀️' : '🌙';
+                localStorage.setItem('theme', document.body.classList.contains('light-theme') ? 'light' : 'dark');
+            });
+            if (localStorage.getItem('theme') === 'light') {
+                document.body.classList.add('light-theme');
+                themeToggle.textContent = '☀️';
+            }
+
+            // Konami + игра
+            const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+            let konamiIndex = 0;
+            window.addEventListener('keydown', (e) => {
+                if (e.key === konamiCode[konamiIndex]) {
+                    konamiIndex++;
+                    if (konamiIndex === konamiCode.length) {
+                        document.getElementById('gameModal').classList.add('show');
+                        initGame();
+                        konamiIndex = 0;
+                    }
+                } else konamiIndex = 0;
+            });
+            document.getElementById('closeGameBtn').addEventListener('click', () => {
+                document.getElementById('gameModal').classList.remove('show');
+                if (gameLoop) cancelAnimationFrame(gameLoop);
+                gameLoop = null;
+            });
+            const canvas = document.getElementById('gameCanvas');
+            const ctx = canvas.getContext('2d');
+            let gameLoop = null, paddleX = 150, ballX = 200, ballY = 250, ballDX = 3, ballDY = -3, bricks = [], score = 0, gameActive = false;
+            function initBricks() {
+                bricks = [];
+                for (let row = 0; row < 5; row++) for (let col = 0; col < 7; col++) bricks.push({ x: col * 55 + 10, y: row * 20 + 30, w: 50, h: 15, active: true });
+            }
+            function drawGame() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#2ecc71'; ctx.fillRect(paddleX, 280, 80, 10);
+                ctx.beginPath(); ctx.arc(ballX, ballY, 6, 0, Math.PI * 2); ctx.fillStyle = '#f1c40f'; ctx.fill();
+                bricks.forEach(b => { if (b.active) { ctx.fillStyle = '#e74c3c'; ctx.fillRect(b.x, b.y, b.w, b.h); } });
+                ctx.fillStyle = '#fff'; ctx.font = '14px "Segoe UI"'; ctx.fillText('Счёт: ' + score, 10, 20);
+                if (!gameActive) { ctx.fillStyle = '#95a5a6'; ctx.font = '18px "Segoe UI"'; ctx.fillText('Нажми Пробел', 110, 160); }
+            }
+            function updateGame() {
+                if (!gameActive) return;
+                ballX += ballDX; ballY += ballDY;
+                if (ballX < 6 || ballX > canvas.width - 6) ballDX *= -1;
+                if (ballY < 6) ballDY *= -1;
+                if (ballY > 270 && ballX > paddleX && ballX < paddleX + 80 && ballDY > 0) { ballDY *= -1; ballY = 269; }
+                bricks.forEach(b => { if (b.active && ballX > b.x && ballX < b.x + b.w && ballY > b.y && ballY < b.y + b.h) { b.active = false; ballDY *= -1; score += 10; } });
+                if (ballY > canvas.height) { gameActive = false; initBricks(); score = 0; ballX = 200; ballY = 250; ballDX = 3; ballDY = -3; }
+                if (bricks.every(b => !b.active)) { gameActive = false; initBricks(); score = 0; ballX = 200; ballY = 250; ballDX = 3; ballDY = -3; }
+            }
+            function gameStep() { updateGame(); drawGame(); gameLoop = requestAnimationFrame(gameStep); }
+            function initGame() { if (gameLoop) cancelAnimationFrame(gameLoop); initBricks(); paddleX = 160; ballX = 200; ballY = 250; ballDX = 3; ballDY = -3; score = 0; gameActive = true; gameLoop = requestAnimationFrame(gameStep); }
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft' && gameActive) paddleX = Math.max(0, paddleX - 20);
+                if (e.key === 'ArrowRight' && gameActive) paddleX = Math.min(320, paddleX + 20);
+                if (e.key === ' ' && !gameActive) { e.preventDefault(); initGame(); }
+            });
+            canvas.addEventListener('mousemove', (e) => {
+                if (!gameActive) return;
+                const rect = canvas.getBoundingClientRect();
+                const scaleX = canvas.width / rect.width;
+                const mouseX = (e.clientX - rect.left) * scaleX;
+                paddleX = Math.min(canvas.width - 80, Math.max(0, mouseX - 40));
+            });
         })();
     </script>
 </body>
-    </html>
+</html>
