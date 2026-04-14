@@ -133,11 +133,11 @@
 
         <h1>USB CoverFix Deluxe</h1>
 
-        <!-- Версия + приветствие + PayPal -->
+        <!-- Версия + приветствие + Ko-fi -->
         <div class="version-wrapper">
             <div class="version">v4.0.5</div>
             <span id="personal-greeting" class="personal-greeting" title="Klicke, um deinen Namen zu ändern">👋 Hallo!</span>
-            <a href="https://ko-fi.com/usb_coverfix" id="paypalSupportBtn" class="paypal-support" target="_blank"">
+            <a href="https://ko-fi.com/usb_coverfix" id="paypalSupportBtn" class="paypal-support" target="_blank">
                 ❤️ Support <span style="color: #e74c3c;">☕</span>
             </a>
         </div>
@@ -192,9 +192,10 @@
             <span>Downloads</span>
         </div>
 
-        <!-- Футер -->
+        <!-- Футер (добавлен About) -->
         <div class="footer">
             <img src="logo_mini5.png" alt="Logo"> © Siegfried Scheck<br>
+            <a href="about.html">Über uns</a> |
             <a href="license_de.html">Lizenz</a> |
             <a href="faq_de.html">FAQ</a> |
             <a href="support_de.html">Support</a> |
@@ -249,7 +250,7 @@
             document.getElementById('mp3-counter').textContent=left;
             document.getElementById('mp3-progress').style.width=(left/20*100)+'%';
 
-            // Модальное окно (универсальное)
+            // Универсальное модальное окно
             const modal=document.getElementById('paymentModal');
             const modalMessage=document.getElementById('modalMessage');
             const modalOkBtn=document.getElementById('modalOkBtn');
@@ -264,17 +265,17 @@
             });
             modal.addEventListener('click',(e)=>{ if(e.target===modal) modal.classList.remove('show'); });
 
-            // Кнопка покупки
+            // Кнопка покупки (без редиректа)
             document.getElementById('buyButton').addEventListener('click',e=>{ 
                 e.preventDefault(); 
                 showModal('Danke für dein Interesse! Du wirst zur Zahlungsseite weitergeleitet.'); 
             });
 
-            // Кнопка PayPal
+            // Кнопка Ko-fi (с модалкой и редиректом)
             document.getElementById('paypalSupportBtn').addEventListener('click', e => {
                 e.preventDefault();
-                showModal('💖 Vielen Dank für deine Unterstützung! Du wirst zu PayPal weitergeleitet.');
-                modalOkBtn.dataset.redirectUrl = 'https://paypal.me/ТВОЙ_PAYPAL';
+                showModal('💖 Vielen Dank für deine Unterstützung! Du wirst zu Ko-fi weitergeleitet.');
+                modalOkBtn.dataset.redirectUrl = 'https://ko-fi.com/usb_coverfix';
             });
 
             // Кнопка наверх
