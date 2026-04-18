@@ -343,7 +343,8 @@
 
             document.getElementById('buyButton').addEventListener('click',e=>{ 
                 e.preventDefault(); 
-                showModal('Thanks for your interest! You will be redirected to the payment page.'); 
+                showModal('Thanks for your interest! You will be redirected to the payment page.');
+                modalOkBtn.dataset.redirectUrl = 'https://ko-fi.com/s/ae02c4932f';
             });
 
             document.getElementById('paypalSupportBtn').addEventListener('click', e => {
