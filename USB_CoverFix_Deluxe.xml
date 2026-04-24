@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XML_DIZ_INFO>
+  <MASTER_PAD_VERSION_INFO>
+    <MASTER_PAD_VERSION>4.0</MASTER_PAD_VERSION>
+    <MASTER_PAD_EDITOR>Vasilkoff PAD Make 1.0</MASTER_PAD_EDITOR>
+    <MASTER_PAD_EDITOR_URL>https://vasilkoff.com/pad-make</MASTER_PAD_EDITOR_URL>
+    <MASTER_PAD_INFO>Portable Application Description (PAD) is a structured XML format that describes software applications for easy submission to directories.</MASTER_PAD_INFO>
+    <CERTIFIED>N</CERTIFIED>
+    <CERTIFICATE_ID></CERTIFICATE_ID>
+    <CERTIFICATE_LICENSE></CERTIFICATE_LICENSE>
+  </MASTER_PAD_VERSION_INFO>
+
+  <Company_Info>
+    <Company_Name>USB CoverFix Team</Company_Name>
+    <Company_WebSite_URL>https://scheck2019-png.github.io/usb-coverfix-update</Company_WebSite_URL>
+    <Contact_Info>
+      <Contact_Email>usbcoverfix@gmail.com</Contact_Email>
+    </Contact_Info>
+  </Company_Info>
+
+  <Program_Info>
+    <Program_Name>USB CoverFix Deluxe</Program_Name>
+    <Program_Version>4.0.9</Program_Version>
+    <Program_Release_Month>04</Program_Release_Month>
+    <Program_Release_Day>24</Program_Release_Day>
+    <Program_Release_Year>2026</Program_Release_Year>
+    <Program_Type>Shareware</Program_Type>
+    <Program_Category_Class>Audio &amp; Multimedia::Other</Program_Category_Class>
+    <Program_OS_Support>Windows 7, Windows 8, Windows 10, Windows 11</Program_OS_Support>
+    <Program_Limitations>Trial version processes only 20 MP3 files per day. Full version unlocks unlimited processing.</Program_Limitations>
+  </Program_Info>
+
+  <Web_Info>
+    <Application_URLs>
+      <Application_Info_URL>https://scheck2019-png.github.io/usb-coverfix-update</Application_Info_URL>
+      <Application_Screenshot_URL>https://raw.githubusercontent.com/scheck2019-png/usb-coverfix-update/gh-pages/Screenshot_usbcoverfix_en.png</Application_Screenshot_URL>
+      <Application_Icon_URL>https://raw.githubusercontent.com/scheck2019-png/usb-coverfix-update/gh-pages/Usbcoverfix_logo.png</Application_Icon_URL>
+    </Application_URLs>
+    <Download_URLs>
+      <Primary_Download_URL>https://github.com/scheck2019-png/usb-coverfix-update/releases/download/v4.0.9/USB.CoverFix.Deluxe_4.0.9_Setup.zip</Primary_Download_URL>
+      <Secondary_Download_URL>https://github.com/scheck2019-png/usb-coverfix-update/releases/download/v4.0.9/USB.CoverFix.Deluxe_4.0.9_Setup.zip</Secondary_Download_URL>
+    </Download_URLs>
+  </Web_Info>
+
+  <Program_Descriptions>
+    <English>
+      <Short_Description>Repairs album covers on USB sticks for car radios (VW, BMW, Audi, Mercedes). Batch processing &amp; ID3 tag repair.</Short_Description>
+      <Long_Description>Automatically resizes covers, repairs corrupted ID3 tags, and processes entire USB sticks in seconds. Tested on many cars. Trial version: 20 MP3 files per day. Full version unlocks unlimited processing.</Long_Description>
+    </English>
+  </Program_Descriptions>
+</XML_DIZ_INFO>
