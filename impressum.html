@@ -2,19 +2,63 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impressum & Kontakt – USB CoverFix Deluxe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
         body { background:#0a0e12; color:#e0e0e0; font-family:'Segoe UI',sans-serif; padding:20px; line-height:1.5; }
-        .container { max-width:800px; margin:0 auto; background:#151e26; border-radius:16px; padding:20px; border:1px solid #2ecc71; }
-        h1 { color:#2ecc71; }
-        .lang-block { margin-bottom:30px; border-bottom:1px solid #2ecc71; padding-bottom:20px; }
-        .lang-block h2 { color:#f1c40f; }
-        a { color:#2ecc71; }
+        .container { max-width:900px; margin:0 auto; background:#151e26; border-radius:16px; padding:25px; border:1px solid #2ecc71; }
+        h1 { color:#2ecc71; margin-bottom:20px; font-size:1.8rem; }
+        .lang-block { margin-bottom:35px; border-bottom:1px solid #2ecc71; padding-bottom:20px; }
+        .lang-block:last-child { border-bottom:none; }
+        .lang-block h2 { color:#f1c40f; margin-bottom:12px; font-size:1.4rem; }
+        p { margin:8px 0; }
+        a { color:#2ecc71; text-decoration:none; }
+        a:hover { text-decoration:underline; }
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .nav-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #2ecc71;
+            color: #0a0e12;
+            padding: 10px 24px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .nav-button:hover {
+            background: #f1c40f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            text-decoration: none;
+        }
+        .nav-button.secondary {
+            background: #1e2a36;
+            color: #2ecc71;
+            border: 1px solid #2ecc71;
+        }
+        .nav-button.secondary:hover {
+            background: #2ecc71;
+            color: #0a0e12;
+        }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>Impressum / Legal Notice / Контактные данные</h1>
+    <h1><i class="fas fa-info-circle"></i> Impressum / Legal Notice / Контактные данные</h1>
 
     <div class="lang-block">
         <h2>🇩🇪 Deutsch (rechtlich bindend)</h2>
@@ -24,28 +68,31 @@
         72131 Ofterdingen<br>
         Deutschland</p>
         <p><strong>Kontakt:</strong><br>
-        E-Mail: <a href="mailto:scheck2019@web.de">scheck2019@web.de</a></p>
+        E-Mail: <a href="mailto:scheck2019@web.de">scheck2019@web.de</a><br>
+        Telefon: nicht erforderlich (Privatperson)</p>
         <p><strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</strong><br>
         Siegfried Scheck (Anschrift wie oben)</p>
-        <p><strong>Hinweis:</strong> Derzeit keine gewerblichen Einnahmen.</p>
+        <p><strong>Hinweis:</strong> Derzeit werden keine gewerblichen Einnahmen erzielt. Eine Umsatzsteuer-Identifikationsnummer wird nicht ausgewiesen.</p>
     </div>
 
     <div class="lang-block">
         <h2>🇬🇧 English (non-binding translation)</h2>
-        <p><strong>Responsible for content:</strong> Siegfried Scheck, Lindenstraße 3, 72131 Ofterdingen, Germany<br>
-        <strong>Contact:</strong> <a href="mailto:scheck2019@web.de">scheck2019@web.de</a></p>
+        <p><strong>Responsible for content:</strong> Siegfried Scheck, Lindenstraße 3, 72131 Ofterdingen, Germany</p>
+        <p><strong>Contact:</strong> <a href="mailto:scheck2019@web.de">scheck2019@web.de</a></p>
+        <p><strong>Note:</strong> No commercial income at this time. No VAT ID.</p>
     </div>
 
     <div class="lang-block">
         <h2>🇷🇺 Русский (неофициальный перевод)</h2>
-        <p><strong>Ответственное лицо:</strong> Зигфрид Шек, Линденштрассе 3, 72131 Офтердинген, Германия<br>
-        <strong>Контакты:</strong> <a href="mailto:scheck2019@web.de">scheck2019@web.de</a></p>
+        <p><strong>Ответственное лицо:</strong> Зигфрид Шек, Линденштрассе 3, 72131 Офтердинген, Германия</p>
+        <p><strong>Контакты:</strong> <a href="mailto:scheck2019@web.de">scheck2019@web.de</a></p>
+        <p><strong>Примечание:</strong> На данный момент коммерческий доход отсутствует.</p>
     </div>
 
-    <p><strong>Datenschutzerklärung / Privacy Policy / Политика конфиденциальности:</strong><br>
-    <a href="datenschutz.html">Hier klicken / Click here / Нажмите здесь</a></p>
-
-    <p><a href="index.html">← Zurück / Back / Назад</a></p>
+    <div class="button-group">
+        <a href="javascript:history.back()" class="nav-button"><i class="fas fa-arrow-left"></i> Zurück / Back / Назад</a>
+        <a href="datenschutz.html" class="nav-button secondary"><i class="fas fa-shield-alt"></i> Datenschutz</a>
+    </div>
 </div>
 </body>
 </html>
