@@ -257,19 +257,18 @@
 
     <!-- Footer -->
     <div class="footer">
-    <div class="footer">
-    <img src="logo_mini5.png" alt="Logo"> © Siegfried Scheck<br>
-    <a href="about_de.html">Über uns</a> |
-    <a href="changelog_de.html">Changelog</a> |
-    <a href="license_de.html">Lizenz</a> |
-    <a href="faq_de.html">FAQ</a> |
-    <a href="support_de.html">Support</a> |
-    <a href="impressum.html">Impressum</a> |
-    <a href="datenschutz.html">Datenschutz</a> |
-    📧 <a href="mailto:usbcoverfix@gmail.com">usbcoverfix@gmail.com</a>
-    <button id="shareButton" class="share-button" title="Teilen">📤</button>
-    <div class="visitor-counter">👀 Besucher: <span id="visitorCount">0</span></div>
-</div>
+        <img src="logo_mini5.png" alt="Logo"> © Siegfried Scheck<br>
+        <a href="about_de.html">Über uns</a> |
+        <a href="changelog_de.html">Changelog</a> |
+        <a href="license_de.html">Lizenz</a> |
+        <a href="faq_de.html">FAQ</a> |
+        <a href="support_de.html">Support</a> |
+        <a href="impressum.html">Impressum</a> |
+        <a href="datenschutz.html">Datenschutz</a> |
+        📧 <a href="mailto:usbcoverfix@gmail.com">usbcoverfix@gmail.com</a>
+        <button id="shareButton" class="share-button" title="Teilen">📤</button>
+        <div class="visitor-counter">👀 Besucher: <span id="visitorCount">0</span></div>
+    </div>
 </div>
 
 <button id="scrollToTopBtn">↑</button>
@@ -307,6 +306,18 @@
 </audio>
 <button id="soundToggle" class="sound-toggle" title="Sound ein/aus">🔊</button>
 <button id="themeToggle" class="theme-toggle" title="Hell/Dunkel">🌙</button>
+
+<!-- Twikoo Kommentare -->
+<div id="twikoo-comments" style="margin-top: 40px;"></div>
+<script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.39/dist/twikoo.min.js"></script>
+<script>
+  twikoo.init({
+    envId: 'https://twikoo-backend-pearl.vercel.app',
+    el: '#twikoo-comments',
+    region: 'eu',
+    lang: 'de'
+  })
+</script>
 
 <script>
 (function(){
