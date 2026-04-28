@@ -307,18 +307,10 @@
 <button id="soundToggle" class="sound-toggle" title="Sound ein/aus">🔊</button>
 <button id="themeToggle" class="theme-toggle" title="Hell/Dunkel">🌙</button>
 
-<!-- Twikoo Kommentare -->
-<div id="twikoo-comments" style="margin-top: 40px;"></div>
-<script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.39/dist/twikoo.min.js"></script>
-<script>
-  twikoo.init({
-    envId: 'https://twikoo-backend-pearl.vercel.app',
-    el: '#twikoo-comments',
-    region: 'eu',
-    lang: 'en',
-    locale: 'en'
-  })
-</script>
+<!-- CommentBox Kommentare -->
+<div class="commentbox" style="margin-top: 50px;"></div>
+<script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+<script>commentBox('5760875461869568-proj')</script>
 
 <script>
 (function(){
