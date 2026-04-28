@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>USB CoverFix Deluxe – Cover-Lösung für Windows</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI','Courier New',monospace; }
         html,body { width:100%; overflow-x:hidden; background:#0a0e12; transition:background 0.3s, color 0.2s; }
@@ -105,7 +107,7 @@
             .feature-card li { white-space:normal; font-size:0.7rem; }
             .btn { padding:8px; font-size:1rem; }
         }
-        /* ----- LIGHT THEME ----- */
+        /* LIGHT THEME */
         body.light-theme { background:#f0f2f5; }
         body.light-theme .container { background:#ffffff; border-color:#2ecc71; color:#1a1a1a; }
         body.light-theme h1 { background:linear-gradient(45deg,#27ae60,#e67e22); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
@@ -161,6 +163,97 @@
         }
         body.light-theme div[style*="min-width:250px"] p[style*="color:#f1c40f"] {
             color: #e67e22 !important;
+        }
+
+        /* Social buttons */
+        .social-links {
+            text-align: center;
+            margin: 30px 0 20px;
+        }
+        .social-links h3 {
+            color: #2ecc71;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        .social-icons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #1e2a36;
+            color: #2ecc71;
+            padding: 8px 18px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            border: 1px solid #2ecc71;
+        }
+        .social-icon i {
+            font-size: 1.2rem;
+        }
+        .social-icon:hover {
+            background: #2ecc71;
+            color: #0a0e12;
+            transform: translateY(-2px);
+        }
+        .social-icon.instagram:hover { background: #e4405f; border-color: #e4405f; color: #fff; }
+        .social-icon.tiktok:hover { background: #000; border-color: #fff; color: #fff; }
+        .social-icon.youtube:hover { background: #ff0000; border-color: #ff0000; color: #fff; }
+        .social-icon.reddit:hover { background: #ff4500; border-color: #ff4500; color: #fff; }
+        .social-icon.github:hover { background: #fff; border-color: #fff; color: #0a0e12; }
+        @media (max-width: 600px) {
+            .social-icon { padding: 6px 12px; font-size: 0.8rem; }
+            .social-icon i { font-size: 1rem; }
+        }
+
+        /* Kommentare Button oben */
+        .comment-jump {
+            color: #ffffff !important;
+            margin-left: 15px;
+            background: #2ecc71;
+            padding: 3px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .comment-jump:hover {
+            background: #f1c40f;
+            transform: scale(1.02);
+        }
+
+        /* HCB comment box styling */
+        #HCB_comment_box {
+            background-color: #151e26 !important;
+            border-radius: 16px !important;
+            padding: 20px !important;
+            color: #e0e0e0 !important;
+        }
+        #HCB_comment_box textarea, #HCB_comment_box input[type="text"] {
+            background-color: #0a0e12 !important;
+            border: 1px solid #2ecc71 !important;
+            border-radius: 12px !important;
+            color: #e0e0e0 !important;
+            padding: 8px !important;
+        }
+        #HCB_comment_box input[type="submit"] {
+            background-color: #2ecc71 !important;
+            border: none !important;
+            border-radius: 40px !important;
+            padding: 10px 24px !important;
+            font-weight: bold !important;
+            color: #0a0e12 !important;
+            cursor: pointer !important;
+        }
+        #HCB_comment_box input[type="submit"]:hover {
+            background-color: #f1c40f !important;
         }
     </style>
 </head>
@@ -254,6 +347,28 @@
         <span>📥</span>
         <span id="download-count" style="color: #f1c40f; font-weight: bold;">…</span>
         <span>Downloads</span>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="social-links">
+        <h3>📱 Folgen & Teilen</h3>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/DEN_USERNAME" target="_blank" rel="noopener noreferrer" class="social-icon instagram" title="Instagram">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="https://www.tiktok.com/@DEN_USERNAME" target="_blank" rel="noopener noreferrer" class="social-icon tiktok" title="TikTok">
+                <i class="fab fa-tiktok"></i> TikTok
+            </a>
+            <a href="https://www.youtube.com/channel/DEN_CHANNEL_ID" target="_blank" rel="noopener noreferrer" class="social-icon youtube" title="YouTube">
+                <i class="fab fa-youtube"></i> YouTube
+            </a>
+            <a href="https://www.reddit.com/user/DEN_USERNAME" target="_blank" rel="noopener noreferrer" class="social-icon reddit" title="Reddit">
+                <i class="fab fa-reddit-alien"></i> Reddit
+            </a>
+            <a href="https://github.com/scheck2019-png/usb-coverfix-update" target="_blank" rel="noopener noreferrer" class="social-icon github" title="GitHub">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -509,47 +624,5 @@
     });
 })();
 </script>
-    <style>
-#HCB_comment_box {
-    background-color: #151e26 !important;
-    border-radius: 16px !important;
-    padding: 20px !important;
-    color: #e0e0e0 !important;
-}
-#HCB_comment_box textarea, #HCB_comment_box input[type="text"] {
-    background-color: #0a0e12 !important;
-    border: 1px solid #2ecc71 !important;
-    border-radius: 12px !important;
-    color: #e0e0e0 !important;
-    padding: 8px !important;
-}
-#HCB_comment_box input[type="submit"] {
-    background-color: #2ecc71 !important;
-    border: none !important;
-    border-radius: 40px !important;
-    padding: 10px 24px !important;
-    font-weight: bold !important;
-    color: #0a0e12 !important;
-    cursor: pointer !important;
-}
-#HCB_comment_box input[type="submit"]:hover {
-    background-color: #f1c40f !important;
-}
-        .comment-jump {
-    color: #ffffff !important;
-    margin-left: 15px;
-    background: #2ecc71;
-    color: #0a0e12;
-    padding: 3px 12px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.2s;
-}
-.comment-jump:hover {
-    background: #f1c40f;
-    transform: scale(1.02);
-}
-    </style>
 </body>
-    </html>
+                                                                                     </html>
