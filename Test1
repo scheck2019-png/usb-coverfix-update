@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>USB CoverFix Deluxe V6 BRUTAL</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+font-family:Segoe UI,Arial,sans-serif;
+background:#0b1016;
+color:#fff;
+transition:.25s;
+overflow-x:hidden;
+}
+
+body.light{
+background:#f4f6f8;
+color:#111;
+}
+
+.container{
+max-width:1250px;
+margin:auto;
+padding:18px;
+}
+
+.hero{
+background:linear-gradient(135deg,#111827,#0f172a);
+border:2px solid #22c55e;
+border-radius:28px;
+padding:35px;
+text-align:center;
+box-shadow:0 0 35px rgba(34,197,94,.18);
+position:relative;
+overflow:hidden;
+}
+
+body.light .hero{
+background:#fff;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+top:-60px;
+right:-60px;
+width:180px;
+height:180px;
+background:rgba(250,204,21,.08);
+border-radius:50%;
+}
+
+.badge{
+display:inline-block;
+padding:8px 18px;
+border-radius:30px;
+background:#22c55e;
+color:#000;
+font-weight:700;
+margin-bottom:16px;
+}
+
+h1{
+font-size:52px;
+margin-bottom:12px;
+background:linear-gradient(90deg,#22c55e,#facc15);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.sub{
+font-size:21px;
+color:#cbd5e1;
+margin-bottom:20px;
+}
+
+body.light .sub{
+color:#444;
+}
+
+.greeting{
+margin-bottom:18px;
+font-size:18px;
+color:#facc15;
+cursor:pointer;
+}
+
+.trust{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+justify-content:center;
+margin-bottom:22px;
+}
+
+.trust span{
+background:#1e293b;
+padding:8px 14px;
+border-radius:30px;
+font-size:14px;
+border:1px solid #334155;
+}
+
+body.light .trust span{
+background:#edf2f7;
+border:1px solid #ddd;
+}
+
+.price{
+font-size:32px;
+font-weight:800;
+color:#facc15;
+margin:14px 0;
+}
+
+.old{
+text-decoration:line-through;
+font-size:18px;
+opacity:.6;
+margin-right:10px;
+}
+
+.timer{
+font-size:18px;
+margin-bottom:18px;
+color:#22c55e;
+font-weight:700;
+}
+
+.btns{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+margin-top:10px;
+}
+
+.btn{
+padding:16px 28px;
+border-radius:50px;
+font-weight:800;
+font-size:18px;
+text-decoration:none;
+transition:.2s;
+display:inline-block;
+cursor:pointer;
+}
+
+.btn:hover{
+transform:translateY(-2px) scale(1.03);
+}
+
+.green{background:#22c55e;color:#000;}
+.gold{background:#f59e0b;color:#000;}
+
+.section{
+margin-top:28px;
+background:#111827;
+padding:24px;
+border-radius:24px;
+border:1px solid #1f2937;
+}
+
+body.light .section{
+background:#fff;
+border:1px solid #ddd;
+}
+
+.section h2{
+text-align:center;
+font-size:32px;
+margin-bottom:20px;
+color:#22c55e;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:18px;
+}
+
+.card{
+background:#1e293b;
+padding:18px;
+border-radius:18px;
+border-left:4px solid #22c55e;
+}
+
+body.light .card{
+background:#f7f7f7;
+}
+
+.card h3{
+color:#facc15;
+margin-bottom:10px;
+}
+
+.card li{
+list-style:none;
+margin-bottom:7px;
+}
+
+.slider{
+overflow:hidden;
+border-radius:20px;
+margin-top:18px;
+}
+
+.slides{
+display:flex;
+width:300%;
+animation:slide 12s infinite;
+}
+
+.slide{
+width:100%;
+height:380px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:40px;
+font-weight:900;
+}
+
+.slide:nth-child(1){background:#1d4ed8;}
+.slide:nth-child(2){background:#16a34a;}
+.slide:nth-child(3){background:#ea580c;}
+
+@keyframes slide{
+0%,30%{transform:translateX(0);}
+33%,63%{transform:translateX(-100%);}
+66%,96%{transform:translateX(-200%);}
+100%{transform:translateX(0);}
+}
+
+.review{
+background:#1e293b;
+padding:18px;
+border-radius:18px;
+border-left:4px solid #facc15;
+}
+
+body.light .review{
+background:#f7f7f7;
+}
+
+.stars{
+color:#facc15;
+margin-bottom:8px;
+}
+
+.social{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+justify-content:center;
+margin-top:18px;
+}
+
+.social a{
+padding:10px 18px;
+border-radius:40px;
+background:#1e293b;
+color:#22c55e;
+text-decoration:none;
+font-weight:700;
+}
+
+body.light .social a{
+background:#f1f1f1;
+}
+
+.floating{
+position:fixed;
+bottom:18px;
+left:18px;
+display:flex;
+flex-direction:column;
+gap:12px;
+z-index:999;
+}
+
+.round{
+width:50px;
+height:50px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+cursor:pointer;
+background:#1e293b;
+border:1px solid #22c55e;
+}
+
+.sale-popup{
+position:fixed;
+right:18px;
+bottom:18px;
+background:#111827;
+padding:14px 18px;
+border-radius:18px;
+border:1px solid #22c55e;
+font-size:14px;
+z-index:999;
+animation:pop .3s ease;
+}
+
+body.light .sale-popup{
+background:#fff;
+}
+
+@keyframes pop{
+from{transform:translateY(30px);opacity:0;}
+to{transform:translateY(0);opacity:1;}
+}
+
+.footer{
+text-align:center;
+padding:28px;
+font-size:14px;
+color:#94a3b8;
+}
+
+@media(max-width:768px){
+h1{font-size:34px;}
+.sub{font-size:17px;}
+.btn{width:100%;}
+.slide{height:220px;font-size:24px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="hero">
+
+<div class="badge">🔥 BRUTAL EDITION 2026</div>
+
+<h1>USB CoverFix Deluxe</h1>
+
+<div class="greeting" onclick="setName()">👋 Hallo Freund!</div>
+
+<div class="sub">
+MP3 Cover automatisch einfügen • Autoradio Ready • Batch Power
+</div>
+
+<div class="trust">
+<span>✔ Windows 10 / 11</span>
+<span>✔ Kein Abo</span>
+<span>✔ Für immer nutzen</span>
+<span>✔ Updates gratis</span>
+<span>✔ VW / Audi / BMW getestet</span>
+</div>
+
+<div class="price">
+<span class="old">29,90€</span> 19,90€
+</div>
+
+<div class="timer" id="timer">
+⏰ Angebot endet in 03:59:59
+</div>
+
+<div class="btns">
+<a href="#" class="btn green">⬇️ Gratis testen</a>
+<a href="#" class="btn gold">💎 Jetzt kaufen</a>
+</div>
+
+</div>
+
+<div class="section">
+<h2>🎬 Live Vorschau</h2>
+
+<div class="slider">
+<div class="slides">
+<div class="slide">Hauptfenster</div>
+<div class="slide">Batch Modus</div>
+<div class="slide">Cover Editor</div>
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>🚀 Features</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>🎵 MP3 Power</h3>
+<li>1000 Songs schnell</li>
+<li>Auto Cover</li>
+<li>Ordner Scan</li>
+</div>
+
+<div class="card">
+<h3>🚗 Autoradio</h3>
+<li>Cover sichtbar</li>
+<li>USB Stick ready</li>
+<li>folder.jpg</li>
+</div>
+
+<div class="card">
+<h3>🖼 Editor</h3>
+<li>Zuschneiden</li>
+<li>Drehen</li>
+<li>Resize</li>
+</div>
+
+<div class="card">
+<h3>💎 Vollversion</h3>
+<li>Ohne Limit</li>
+<li>Lifetime</li>
+<li>Alle Updates</li>
+</div>
+
+</div>
+</div>
+
+<div class="section">
+<h2>⭐ Bewertungen</h2>
+
+<div class="grid">
+
+<div class="review">
+<div class="stars">★★★★★</div>
+500 Songs in Minuten erledigt!
+<br><br><b>— Michael</b>
+</div>
+
+<div class="review">
+<div class="stars">★★★★★</div>
+Bestes Tool fürs Auto.
+<br><br><b>— Lena</b>
+</div>
+
+<div class="review">
+<div class="stars">★★★★★</div>
+19,90€ total wert.
+<br><br><b>— Thomas</b>
+</div>
+
+</div>
+</div>
+
+<div class="section">
+<h2>📱 Community</h2>
+
+<div class="social">
+<a href="#">Instagram</a>
+<a href="#">TikTok</a>
+<a href="#">YouTube</a>
+<a href="#">GitHub</a>
+</div>
+</div>
+
+<div class="footer">
+© Siegfried Scheck – USB CoverFix Deluxe BRUTAL
+</div>
+
+</div>
+
+<div class="floating">
+<div class="round" onclick="toggleTheme()">🌙</div>
+<div class="round" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+</div>
+
+<div class="sale-popup" id="salePopup">
+🔥 Thomas aus Berlin hat gekauft
+</div>
+
+<script>
+function setName(){
+let n=prompt("Wie heißt du?");
+if(n){
+localStorage.setItem("name",n);
+document.querySelector(".greeting").innerHTML="👋 Hallo "+n+"!";
+}
+}
+window.onload=()=>{
+let n=localStorage.getItem("name");
+if(n) document.querySelector(".greeting").innerHTML="👋 Hallo "+n+"!";
+}
+
+function toggleTheme(){
+document.body.classList.toggle("light");
+}
+
+let sec=14399;
+setInterval(()=>{
+sec--;
+let h=Math.floor(sec/3600);
+let m=Math.floor((sec%3600)/60);
+let s=sec%60;
+document.getElementById("timer").innerHTML=
+"⏰ Angebot endet in "+
+String(h).padStart(2,"0")+":"+
+String(m).padStart(2,"0")+":"+
+String(s).padStart(2,"0");
+},1000);
+
+const buyers=[
+"Thomas aus Berlin",
+"Markus aus Hamburg",
+"Lena aus Köln",
+"Peter aus München",
+"Alex aus Stuttgart"
+];
+
+setInterval(()=>{
+let r=buyers[Math.floor(Math.random()*buyers.length)];
+document.getElementById("salePopup").innerHTML="🔥 "+r+" hat gekauft";
+},7000);
+</script>
+
+</body>
+</html>
