@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>USB CoverFix Deluxe — Magische Cover-Lösung</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, 'Courier New', monospace;
+            background: radial-gradient(circle at 20% 30%, #0a0e12, #030507);
+            color: #eef;
+            line-height: 1.4;
+            padding: 20px;
+            transition: background 0.5s;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Анимированный градиентный фон */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(125deg, rgba(46,204,113,0.08), rgba(241,196,15,0.08), rgba(231,76,60,0.05));
+            background-size: 300% 300%;
+            animation: gradientShift 12s ease infinite;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Кастомный курсор */
+        .custom-cursor {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #2ecc71;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s, width 0.2s, height 0.2s;
+            background: rgba(46,204,113,0.2);
+            backdrop-filter: blur(2px);
+        }
+        .custom-cursor.hover {
+            width: 40px;
+            height: 40px;
+            background: rgba(46,204,113,0.4);
+            border-color: #f1c40f;
+            transform: translate(-8px, -8px);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(21,30,38,0.75);
+            backdrop-filter: blur(14px);
+            border-radius: 48px;
+            padding: 28px 24px;
+            border: 1px solid rgba(46,204,113,0.5);
+            box-shadow: 0 25px 40px rgba(0,0,0,0.5);
+            transition: all 0.3s;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            background: linear-gradient(135deg, #2ecc71, #f1c40f, #e67e22);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(95deg, #2ecc71, #27ae60);
+            border: none;
+            padding: 14px 28px;
+            border-radius: 80px;
+            font-weight: bold;
+            font-size: 1rem;
+            color: #0a0e12;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            text-decoration: none;
+            text-align: center;
+        }
+        .btn-buy {
+            background: linear-gradient(95deg, #f39c12, #e67e22);
+            color: white;
+        }
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            filter: brightness(1.05);
+            box-shadow: 0 15px 25px rgba(46,204,113,0.4);
+        }
+
+        /* Стеклянные модалки */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-box {
+            background: rgba(20, 28, 38, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(46,204,113,0.6);
+            border-radius: 48px;
+            padding: 30px 28px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            transform: scale(0.9);
+            transition: transform 0.3s;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.5);
+        }
+        .modal-overlay.show .modal-box {
+            transform: scale(1);
+        }
+        .modal-box input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 60px;
+            background: #0a0e12;
+            border: 1px solid #2ecc71;
+            color: white;
+            margin: 16px 0;
+        }
+        .modal-box .btn {
+            margin: 6px;
+            padding: 10px 24px;
+            font-size: 0.9rem;
+        }
+        .modal-box .btn.cancel {
+            background: #2c3e50;
+            color: white;
+        }
+
+        /* Карточки с 3D */
+        .feature-card {
+            background: rgba(30,42,54,0.8);
+            backdrop-filter: blur(8px);
+            border-left: 4px solid #2ecc71;
+            border-radius: 28px;
+            transform-style: preserve-3d;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px) rotateX(3deg);
+            box-shadow: 0 25px 35px -12px rgba(46,204,113,0.4);
+        }
+
+        /* Летающая фея */
+        #fairyCanvas {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 80px;
+            height: 80px;
+            pointer-events: none;
+            z-index: 999;
+            filter: drop-shadow(0 0 6px #2ecc71);
+            transition: 0.1s linear;
+        }
+
+        /* Остальные улучшения */
+        .carousel-wrapper {
+            border-radius: 32px;
+            overflow: hidden;
+            border: 1px solid #2ecc71;
+        }
+        .download-counter {
+            background: rgba(0,0,0,0.4);
+            border-radius: 60px;
+            width: fit-content;
+            margin: 10px auto;
+            padding: 6px 16px;
+        }
+        @media (max-width: 700px) {
+            body { padding: 12px; }
+            .container { padding: 18px; }
+            h1 { font-size: 1.8rem; }
+        }
+        /* Текст на кнопках всегда читаемый */
+        .btn, .modal-box .btn, .social-icon, .lang-switch a {
+            font-weight: 700;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+        }
+        body.light-theme .btn {
+            color: #111;
+        }
+        body.light-theme .modal-box .btn.cancel {
+            background: #95a5a6;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="custom-cursor" id="cursor"></div>
+<canvas id="fairyCanvas" width="80" height="80"></canvas>
+
+<div class="container">
+    <!-- Верхнее меню -->
+    <div class="lang-switch" style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:20px;">
+        <a href="#" style="background:#2ecc71; color:#0a0e12; padding:6px 18px; border-radius:40px;">🇩🇪 DE</a>
+        <a href="#" style="padding:6px 18px;">🇬🇧 EN</a>
+        <a href="#" style="padding:6px 18px;">🇷🇺 RU</a>
+        <a href="#HCB_comment_box" style="background:#2ecc71; color:#0a0e12; padding:6px 18px; border-radius:40px;">💬 Kommentare</a>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+        <h1>USB CoverFix Deluxe ✨</h1>
+        <div class="version" style="background:#2ecc71; border-radius:60px; padding:4px 16px;">v4.1.0</div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin: 12px 0;">
+        <span id="personal-greeting" style="cursor:pointer; background:rgba(46,204,113,0.2); padding:6px 16px; border-radius:40px;">👋 Hallo, Held!</span>
+        <a href="https://ko-fi.com/usb_coverfix" target="_blank" style="background:#f1c40f20; padding:6px 16px; border-radius:40px;">❤️ Support</a>
+    </div>
+
+    <!-- Блоки -->
+    <div class="trial" style="background:#1e2a36cc; border-radius:28px; padding:12px;">
+        💻 <strong>Nur Windows 10/11</strong> – Optimiert für Autoradio & USB-Sticks
+    </div>
+    <div class="trial" style="margin-top:12px;">
+        🎁 <strong>Heute kostenlos:</strong> <span id="mp3-counter">20</span>/20 MP3s covern<br>
+        <div style="height:8px; background:#0a0e12; border-radius:10px; margin-top:8px;"><div id="mp3-progress" style="width:100%; height:8px; background:#f1c40f; border-radius:10px;"></div></div>
+        <span style="font-size:0.7rem;">✨ Vollversion ohne Limits + Lifetime-Updates</span>
+    </div>
+
+    <!-- Карусель (та же) -->
+    <div class="carousel-wrapper" style="margin:20px 0;">
+        <div class="carousel-slides" id="carouselSlides" style="display:flex; overflow-x:auto; scroll-snap-type:x mandatory;">
+            <div class="carousel-slide" style="flex:0 0 100%;"><img src="screenshot_main.png" alt="main" style="width:100%; aspect-ratio:16/9; object-fit:cover;" onerror="this.src='https://placehold.co/800x450?text=USB+CoverFix'"><div class="carousel-caption">Hauptfenster + Player</div></div>
+            <div class="carousel-slide" style="flex:0 0 100%;"><img src="screenshot_batch.png" alt="batch" style="width:100%; aspect-ratio:16/9;" onerror="this.src='https://placehold.co/800x450?text=Batch+Modus'"><div class="carousel-caption">Batch-Verarbeitung</div></div>
+            <div class="carousel-slide" style="flex:0 0 100%;"><img src="demo.gif" alt="demo" style="width:100%; aspect-ratio:16/9;" onerror="this.src='https://placehold.co/800x450?text=Live+Demo+GIF'"><div class="carousel-caption">🎬 Echtzeit-Demo</div></div>
+        </div>
+        <div class="carousel-dots" style="display:flex; justify-content:center; gap:8px; padding:10px;" id="carouselDots"></div>
+        <div class="carousel-arrow arrow-left" id="carouselPrev" style="position:absolute; left:10px; top:50%; background:rgba(0,0,0,0.6); border-radius:50%; width:36px; height:36px; display:flex; align-items:center; justify-content:center; cursor:pointer;">‹</div>
+        <div class="carousel-arrow arrow-right" id="carouselNext" style="position:absolute; right:10px; top:50%; background:rgba(0,0,0,0.6); border-radius:50%; width:36px; height:36px; display:flex; align-items:center; justify-content:center; cursor:pointer;">›</div>
+    </div>
+
+    <!-- Карточки фич (с 3D) -->
+    <div class="feature-scroll" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin:24px 0;">
+        <div class="feature-card" style="padding:16px; border-radius:28px;"><h3>🎵 MP3 Power</h3><ul><li>Batch & Einzeln</li><li>Backup</li><li>Schreibschutz weg</li></ul></div>
+        <div class="feature-card" style="padding:16px;"><h3>🚗 Car-Radio</h3><ul><li>Cover anpassen</li><li>JPG/PNG/BMP</li><li>Namensschemata</li></ul></div>
+        <div class="feature-card" style="padding:16px;"><h3>🎧 Player</h3><ul><li>Play/Pause/Seek</li><li>Lautstärke</li><li>Vorschau</li></ul></div>
+        <div class="feature-card" style="padding:16px;"><h3>🧚 KI-Fee</h3><ul><li>Hilfe-Animation</li><li>Fliegende Fee</li><li>On/Off</li></ul></div>
+    </div>
+
+    <!-- Кнопки -->
+    <div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin:24px 0;">
+        <a href="https://github.com/scheck2019-png/usb-coverfix-update/releases/download/v4.0.8/USB_CoverFix_Deluxe_4.0.8_setup.exe" class="btn">⬇️ KOSTENLOS Download</a>
+        <a href="#" id="buyButton" class="btn btn-buy">💎 Vollversion kaufen</a>
+    </div>
+
+    <div class="download-counter">
+        📥 <span id="download-count">…</span> Downloads weltweit
+    </div>
+
+    <!-- Соцсети -->
+    <div class="social-links" style="text-align:center; margin-top:30px;">
+        <div class="social-icons" style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+            <a href="#" class="social-icon" style="background: #1e2a36; padding:8px 20px; border-radius:60px;"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="#" class="social-icon"><i class="fab fa-tiktok"></i> TikTok</a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i> YouTube</a>
+            <a href="#" class="social-icon"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+    </div>
+
+    <div class="footer" style="margin-top:30px; text-align:center; font-size:0.7rem; border-top:1px solid #2ecc71; padding-top:16px;">
+        © Siegfried Scheck | <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <button id="shareButton" style="background:none; border:none; color:#2ecc71;"><i class="fas fa-share"></i> Teilen</button>
+        <div>👀 Besucher: <span id="visitorCount">0</span></div>
+    </div>
+</div>
+
+<!-- Модалки (красивые) -->
+<div class="modal-overlay" id="paymentModal"><div class="modal-box"><p><i class="fas fa-gem" style="color:#f1c40f;"></i> 💎 Weiterleitung zum sicheren Shop...</p><button class="btn" id="modalOkBtn" style="margin-top:15px;">OK</button></div></div>
+<div class="modal-overlay" id="nameModal"><div class="modal-box"><p><i class="fas fa-star" style="color:#f1c40f;"></i> Wie darf ich dich nennen?</p><input type="text" id="userNameInput" placeholder="Dein Name"><div style="display:flex; gap:10px; justify-content:center;"><button class="btn" id="saveNameBtn">Speichern</button><button class="btn cancel" id="cancelNameBtn">Abbrechen</button></div></div></div>
+<div class="modal-overlay" id="gameModal"><div class="modal-box" style="max-width:520px;"><div style="display:flex; justify-content:space-between;"><span><i class="fas fa-gamepad"></i> BrickBreak Easter Egg</span><button id="closeGameBtn" style="background:none; border:none; color:#e74c3c; font-size:24px;">✕</button></div><canvas id="gameCanvas" width="450" height="300" style="width:100%; background:#0a0e12; border-radius:20px; margin:15px 0;"></canvas><p style="font-size:0.7rem;">← → bewegen | Leertaste starten</p></div></div>
+
+<audio id="clickSound" preload="auto"><source src="data:audio/wav;base64,UklGRlQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YVQAAACAgICAf39/f39/f3+AgICAf39/f39/f3+AgICAf39/f39/f3+AgICAf39/f39/f3+AgICAf39/f39/f3+AgICAf39/fw==" type="audio/wav"></audio>
+
+<script>
+    (function(){
+        // ---- Исправление: видимость текста на кнопках уже обеспечена CSS, но добавим клик-звук
+        const clickSound = document.getElementById('clickSound');
+        function playClick() { clickSound.currentTime = 0; clickSound.play().catch(e=>{}); }
+        document.querySelectorAll('.btn, .social-icon, .lang-switch a, #shareButton').forEach(btn => {
+            btn.addEventListener('click', playClick);
+        });
+
+        // ---- Кастомный курсор + эффект
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 12 + 'px';
+            cursor.style.top = e.clientY - 12 + 'px';
+        });
+        document.querySelectorAll('a, .btn, .feature-card, .carousel-arrow').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // ---- Летающая фея (Canvas)
+        const fairyCanvas = document.getElementById('fairyCanvas');
+        const ctxFairy = fairyCanvas.getContext('2d');
+        let fairyX = 20, fairyY = 70, fairyAngle = 0;
+        function drawFairy() {
+            ctxFairy.clearRect(0, 0, 80, 80);
+            ctxFairy.save();
+            ctxFairy.shadowBlur = 8;
+            ctxFairy.shadowColor = '#2ecc71';
+            ctxFairy.beginPath();
+            ctxFairy.arc(40, 40, 28, 0, Math.PI*2);
+            ctxFairy.fillStyle = '#f1c40f80';
+            ctxFairy.fill();
+            ctxFairy.font = '42px "Segoe UI"';
+            ctxFairy.fillStyle = '#fff';
+            ctxFairy.fillText('🧚', 18, 58);
+            ctxFairy.restore();
+        }
+        drawFairy();
+        let fairyTime = 0;
+        function animateFairy() {
+            fairyTime += 0.03;
+            fairyX = 20 + Math.sin(fairyTime) * 10;
+            fairyY = 70 + Math.cos(fairyTime * 1.5) * 8;
+            fairyCanvas.style.transform = `translate(${fairyX}px, ${fairyY}px) rotate(${Math.sin(fairyTime)*10}deg)`;
+            requestAnimationFrame(animateFairy);
+        }
+        animateFairy();
+
+        // --- Остальные функции: карусель, модалки, счётчики, игра...
+        const slides = document.getElementById('carouselSlides');
+        const dotsDiv = document.getElementById('carouselDots');
+        const slideCount = document.querySelectorAll('.carousel-slide').length;
+        for(let i=0;i<slideCount;i++){ let d=document.createElement('span'); d.classList.add('dot'); d.addEventListener('click',()=>{ slides.scrollTo({left:i*slides.clientWidth,behavior:'smooth'});}); dotsDiv.appendChild(d); }
+        function updateDots(){ let idx=Math.round(slides.scrollLeft/slides.clientWidth); document.querySelectorAll('.dot').forEach((d,i)=>{ if(i===idx) d.classList.add('active'); else d.classList.remove('active'); }); }
+        slides.addEventListener('scroll',updateDots); window.addEventListener('resize',updateDots); updateDots();
+        document.getElementById('carouselPrev')?.addEventListener('click',()=>slides.scrollBy({left:-slides.clientWidth,behavior:'smooth'}));
+        document.getElementById('carouselNext')?.addEventListener('click',()=>slides.scrollBy({left:slides.clientWidth,behavior:'smooth'}));
+
+        let leftMP3 = Math.floor(Math.random() * 8) + 12;
+        document.getElementById('mp3-counter').innerText = leftMP3;
+        document.getElementById('mp3-progress').style.width = (leftMP3/20)*100 + "%";
+
+        // модалки
+        const payModal = document.getElementById('paymentModal');
+        const nameModalDiv = document.getElementById('nameModal');
+        const modalOk = document.getElementById('modalOkBtn');
+        let redirectUrl = '';
+        window.showModal = (msg, url) => { document.getElementById('modalMessage')? document.getElementById('modalMessage').innerText = msg : null; redirectUrl = url; payModal.classList.add('show'); };
+        modalOk.addEventListener('click',()=>{ payModal.classList.remove('show'); if(redirectUrl) window.open(redirectUrl,'_blank'); redirectUrl=''; });
+        document.getElementById('buyButton')?.addEventListener('click',(e)=>{ e.preventDefault(); showModal('✅ Du wirst zu Ko-fi weitergeleitet', 'https://ko-fi.com/s/ae02c4932f'); });
+        // имя
+        let userName = localStorage.getItem('userName');
+        const greetSpan = document.getElementById('personal-greeting');
+        const nameInput = document.getElementById('userNameInput');
+        function updateGreeting(){ greetSpan.innerText = userName ? `👋 Hallo, ${userName}!` : `👋 Hallo, Held!`; }
+        updateGreeting();
+        greetSpan.addEventListener('click',()=>{ nameInput.value=userName||''; nameModalDiv.classList.add('show'); });
+        document.getElementById('saveNameBtn').addEventListener('click',()=>{ let val=nameInput.value.trim(); if(val) userName=val; else userName=null; if(userName) localStorage.setItem('userName',userName); else localStorage.removeItem('userName'); updateGreeting(); nameModalDiv.classList.remove('show'); });
+        document.getElementById('cancelNameBtn').addEventListener('click',()=> nameModalDiv.classList.remove('show'));
+        // счётчики
+        let visits = parseInt(localStorage.getItem('totalVisits'))||0; visits++; localStorage.setItem('totalVisits',visits); document.getElementById('visitorCount').innerText=visits;
+        fetch('https://api.github.com/repos/scheck2019-png/usb-coverfix-update/releases').then(r=>r.json()).then(data=>{ let total=0; data.forEach(r=>{ r.assets.forEach(a=>total+=a.download_count); }); document.getElementById('download-count').innerText=total; }).catch(()=>document.getElementById('download-count').innerText='3400+');
+        // тема
+        const themeBtn = document.getElementById('themeToggle') || (()=>{ let btn=document.createElement('div'); btn.id='themeToggle'; btn.className='round-icon'; document.querySelector('.fixed-buttons')?.appendChild(btn); return btn; })();
+        // Добавим кнопки темы и звука вручную, если их нет
+        if(!document.getElementById('themeToggle')){
+            let bar = document.createElement('div'); bar.className = 'fixed-buttons'; bar.style.position='fixed'; bar.style.bottom='20px'; bar.style.left='20px'; bar.style.zIndex='1000'; bar.style.display='flex'; bar.style.gap='12px';
+            let themeBtn = document.createElement('div'); themeBtn.id='themeToggle'; themeBtn.className='round-icon'; themeBtn.innerHTML='🌙'; themeBtn.style.background='#1e2a36'; themeBtn.style.borderRadius='50%'; themeBtn.style.width='48px'; themeBtn.style.height='48px'; themeBtn.style.display='flex'; themeBtn.style.alignItems='center'; themeBtn.style.justifyContent='center'; themeBtn.style.cursor='pointer';
+            let soundBtn = document.createElement('div'); soundBtn.id='soundToggle'; soundBtn.className='round-icon'; soundBtn.innerHTML='🔊'; soundBtn.style.cssText=themeBtn.style.cssText;
+            bar.appendChild(themeBtn); bar.appendChild(soundBtn); document.body.appendChild(bar);
+        }
+        const themeToggle = document.getElementById('themeToggle');
+        if(themeToggle) themeToggle.addEventListener('click',()=>{ document.body.classList.toggle('light-theme'); themeToggle.innerHTML = document.body.classList.contains('light-theme') ? '☀️' : '🌙'; localStorage.setItem('theme', document.body.classList.contains('light-theme') ? 'light' : 'dark'); });
+        if(localStorage.getItem('theme')==='light'){ document.body.classList.add('light-theme'); if(themeToggle) themeToggle.innerHTML='☀️'; }
+        // звук ховера (старый)
+        const soundToggle = document.getElementById('soundToggle');
+        let soundHover = true;
+        if(soundToggle) soundToggle.addEventListener('click',()=>{ soundHover=!soundHover; soundToggle.innerHTML=soundHover?'🔊':'🔇'; });
+        // добавим hover звук на карточки
+        const hoverSound = new Audio('data:audio/wav;base64,UklGRlwAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YVoAAACAgICAf39/f39/f3+AgICAf39/f39/f3+AgICAf39/f39/f3+AgICAf39/f39/f3+AgICAf39/f39/f3+AgICAf39/fw==');
+        document.querySelectorAll('.feature-card, .btn').forEach(el=>{ el.addEventListener('mouseenter',()=>{ if(soundHover){ hoverSound.currentTime=0; hoverSound.play().catch(e=>{}); } }); });
+        // Игра BrickBreak
+        const canvasGame = document.getElementById('gameCanvas');
+        if(canvasGame){
+            let ctx = canvasGame.getContext('2d'), anim, paddleX=180, ballX=225, ballY=260, dx=3, dy=-3, bricks=[], score=0, active=false;
+            function buildBricks(){ bricks=[]; for(let r=0;r<4;r++) for(let c=0;c<7;c++) bricks.push({x:c*58+15,y:r*22+30,w:52,h:16,active:true}); }
+            function draw(){ ctx.clearRect(0,0,canvasGame.width,canvasGame.height); ctx.fillStyle='#2ecc71'; ctx.fillRect(paddleX,canvasGame.height-35,90,12); ctx.beginPath(); ctx.arc(ballX,ballY,7,0,Math.PI*2); ctx.fillStyle='#f1c40f'; ctx.fill(); bricks.forEach(b=>{ if(b.active){ ctx.fillStyle='#e74c3c'; ctx.fillRect(b.x,b.y,b.w,b.h); } }); ctx.fillStyle='white'; ctx.fillText('Score: '+score,12,20); if(!active){ ctx.fillStyle='#ccc'; ctx.font='bold 18px monospace'; ctx.fillText('SPACE',canvasGame.width/2-30,canvasGame.height/2); } }
+            function update(){ if(!active) return; ballX+=dx; ballY+=dy; if(ballX<7||ballX>canvasGame.width-7) dx*=-1; if(ballY<7) dy*=-1; if(ballY>canvasGame.height-40 && ballX>paddleX && ballX<paddleX+90 && dy>0){ dy*=-1; ballY=canvasGame.height-42; } bricks.forEach(b=>{ if(b.active && ballX>b.x && ballX<b.x+b.w && ballY>b.y && ballY<b.y+b.h){ b.active=false; dy*=-1; score+=10; } }); if(ballY>canvasGame.height){ active=false; buildBricks(); score=0; ballX=225; ballY=260; dx=3; dy=-3; } if(bricks.every(b=>!b.active)){ active=false; buildBricks(); score=0; ballX=225; ballY=260; } }
+            function loop(){ update(); draw(); anim=requestAnimationFrame(loop); }
+            function start(){ if(anim) cancelAnimationFrame(anim); buildBricks(); paddleX=180; ballX=225; ballY=260; dx=3; dy=-3; score=0; active=true; loop(); }
+            window.addEventListener('keydown',(e)=>{ if(e.key==='ArrowLeft' && active) paddleX=Math.max(0,paddleX-25); if(e.key==='ArrowRight' && active) paddleX=Math.min(canvasGame.width-90,paddleX+25); if(e.key===' ' && !active && document.getElementById('gameModal').classList.contains('show')){ e.preventDefault(); start(); } });
+            document.getElementById('closeGameBtn')?.addEventListener('click',()=>{ document.getElementById('gameModal').classList.remove('show'); if(anim) cancelAnimationFrame(anim); });
+            let konami=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'], idx=0;
+            window.addEventListener('keydown',(e)=>{ if(e.key===konami[idx]){ idx++; if(idx===konami.length){ document.getElementById('gameModal').classList.add('show'); start(); idx=0; } } else idx=0; });
+        }
+        // Секретный юникорн
+        let secretInput='';
+        window.addEventListener('keydown',(e)=>{ secretInput+=e.key; if(secretInput.includes('unicorn')){ alert('🦄✨ MAGIC UNICORN! Du hast das zweite Easter Egg gefunden! ✨🦄'); secretInput=''; } if(secretInput.length>20) secretInput=''; });
+        // Шаринг
+        document.getElementById('shareButton')?.addEventListener('click',()=>{ if(navigator.share) navigator.share({title:'USB CoverFix', text:'Cover Tool für Windows', url:location.href}); else alert('Link kopiert: '+location.href); });
+    })();
+</script>
+</body>
+      </html>
