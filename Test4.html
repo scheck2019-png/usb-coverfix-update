@@ -1,0 +1,281 @@
+<!-- USB COVERFIX DELUXE – BRUTAL FULL UPGRADE -->
+<!-- EINSETZEN GANZ UNTEN vor </body> -->
+
+<!-- =========================
+🧚 FAIRY SYSTEM
+========================= -->
+<style>
+#fairyAssistant{
+position:fixed;
+left:40px;
+top:140px;
+width:74px;
+height:74px;
+z-index:99999;
+pointer-events:none;
+transition:transform .4s;
+animation:fairyFloat 3s ease-in-out infinite;
+filter:drop-shadow(0 0 15px rgba(255,255,255,.7));
+}
+
+#fairyAssistant img{
+width:100%;
+height:100%;
+object-fit:contain;
+}
+
+@keyframes fairyFloat{
+0%{transform:translateY(0)}
+50%{transform:translateY(-18px)}
+100%{transform:translateY(0)}
+}
+
+.fairyBubble{
+position:fixed;
+z-index:99998;
+background:rgba(0,0,0,.82);
+color:#fff;
+padding:10px 14px;
+border-radius:20px;
+font-size:14px;
+font-weight:bold;
+max-width:220px;
+box-shadow:0 0 15px rgba(255,255,255,.25);
+animation:fairyMsg 5s forwards;
+pointer-events:none;
+}
+
+@keyframes fairyMsg{
+0%{opacity:0;transform:scale(.7)}
+10%{opacity:1;transform:scale(1)}
+85%{opacity:1}
+100%{opacity:0;transform:translateY(-15px)}
+}
+
+.spark{
+position:fixed;
+width:8px;
+height:8px;
+border-radius:50%;
+background:gold;
+z-index:99997;
+pointer-events:none;
+animation:sparkFly 1s linear forwards;
+}
+
+@keyframes sparkFly{
+0%{opacity:1;transform:scale(1)}
+100%{opacity:0;transform:translateY(-25px) scale(0)}
+}
+
+#megaBanner{
+margin:15px 0;
+padding:16px;
+border-radius:20px;
+background:linear-gradient(45deg,#f39c12,#f1c40f,#2ecc71);
+color:#111;
+font-weight:900;
+text-align:center;
+font-size:20px;
+box-shadow:0 0 25px rgba(255,215,0,.45);
+animation:pulseBanner 2s infinite;
+}
+
+@keyframes pulseBanner{
+0%{transform:scale(1)}
+50%{transform:scale(1.02)}
+100%{transform:scale(1)}
+}
+
+#fakeSales{
+text-align:center;
+font-size:14px;
+color:#f1c40f;
+margin-top:8px;
+font-weight:bold;
+}
+
+.shakeBtn{
+animation:shakeBuy .8s infinite;
+}
+
+@keyframes shakeBuy{
+0%{transform:rotate(0)}
+25%{transform:rotate(1deg)}
+50%{transform:rotate(-1deg)}
+75%{transform:rotate(1deg)}
+100%{transform:rotate(0)}
+}
+</style>
+
+<div id="fairyAssistant">
+<img src="https://cdn-icons-png.flaticon.com/512/3468/3468377.png">
+</div>
+
+<script>
+(function(){
+
+/* =======================
+FAIRY ENGINE
+======================= */
+const fairy = document.getElementById("fairyAssistant");
+
+let fx=40, fy=140;
+let tx=40, ty=140;
+
+function fairyLoop(){
+fx += (tx-fx)*0.05;
+fy += (ty-fy)*0.05;
+fairy.style.left = fx+"px";
+fairy.style.top  = fy+"px";
+requestAnimationFrame(fairyLoop);
+}
+fairyLoop();
+
+document.addEventListener("mousemove",e=>{
+tx=e.clientX+20;
+ty=e.clientY-35;
+spark(e.clientX,e.clientY);
+});
+
+function spark(x,y){
+const s=document.createElement("div");
+s.className="spark";
+s.style.left=x+"px";
+s.style.top=y+"px";
+document.body.appendChild(s);
+setTimeout(()=>s.remove(),1000);
+}
+
+function fairySay(text){
+const b=document.createElement("div");
+b.className="fairyBubble";
+b.innerText=text;
+b.style.left=(fx+55)+"px";
+b.style.top=(fy-5)+"px";
+document.body.appendChild(b);
+setTimeout(()=>b.remove(),5000);
+}
+
+/* RANDOM FAIRY TALK */
+const fairyTexts = [
+"✨ Ich verschönere deine MP3!",
+"🎵 CoverFix = Magie fürs Autoradio!",
+"😇 Nur 19,90€ Vollversion!",
+"🚗 Dein USB Stick wird sexy!",
+"💎 Kauf mich... ich bin geil.",
+"🔥 Batch Modus spart Stunden!",
+"🎶 Tausche Covers wie ein Boss!"
+];
+
+setInterval(()=>{
+fairySay(fairyTexts[Math.floor(Math.random()*fairyTexts.length)]);
+},9000);
+
+/* =======================
+BUY BUTTON BOOST
+======================= */
+const buyBtn = document.getElementById("buyButton");
+if(buyBtn){
+buyBtn.innerHTML="💎 Vollversion kaufen – nur 19,90€";
+buyBtn.classList.add("shakeBtn");
+
+buyBtn.addEventListener("mouseenter",()=>{
+const r=buyBtn.getBoundingClientRect();
+tx=r.left+r.width/2;
+ty=r.top-40;
+fairySay("😍 Klick hier!");
+});
+
+buyBtn.addEventListener("click",()=>{
+fairySay("🥳 Beste Entscheidung!");
+});
+}
+
+/* =======================
+DOWNLOAD BUTTON BOOST
+======================= */
+const dl = document.querySelector(".btn");
+if(dl){
+dl.innerHTML="⬇️ GRATIS DOWNLOAD TESTVERSION";
+}
+
+/* =======================
+MEGA BANNER
+======================= */
+const cont=document.querySelector(".container");
+if(cont){
+const banner=document.createElement("div");
+banner.id="megaBanner";
+banner.innerHTML="🔥 HEUTE ANGEBOT – VOLLVERSION NUR 19,90€ + ALLE UPDATES GRATIS";
+const target=document.querySelector(".intro-text");
+if(target) target.after(banner);
+}
+
+/* =======================
+LIVE SALES COUNTER
+======================= */
+const sales=document.createElement("div");
+sales.id="fakeSales";
+sales.innerHTML="⚡ Heute bereits 17 Käufe";
+const place=document.querySelector(".download-counter");
+if(place) place.after(sales);
+
+let num=17;
+setInterval(()=>{
+num += Math.random()>.55 ? 1:0;
+sales.innerHTML="⚡ Heute bereits "+num+" Käufe";
+},14000);
+
+/* =======================
+EXIT INTENT
+======================= */
+document.addEventListener("mouseleave",e=>{
+if(e.clientY<10){
+fairySay("😳 Warte! Erst gratis testen!");
+}
+});
+
+/* =======================
+IDLE MODE
+======================= */
+let idle;
+function resetIdle(){
+clearTimeout(idle);
+idle=setTimeout(()=>{
+fairySay("😏 Dein Radio wartet...");
+},12000);
+}
+document.addEventListener("mousemove",resetIdle);
+document.addEventListener("click",resetIdle);
+resetIdle();
+
+/* =======================
+KONAMI SECRET BONUS
+======================= */
+const code=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+let i=0;
+
+window.addEventListener("keydown",(e)=>{
+if(e.key===code[i]){
+i++;
+if(i===code.length){
+fairySay("👑 GOD MODE AKTIVIERT!");
+document.body.style.filter="hue-rotate(90deg)";
+setTimeout(()=>document.body.style.filter="none",6000);
+i=0;
+}
+}else{
+i=0;
+}
+});
+
+/* =======================
+AUTO SOCIAL PROOF
+======================= */
+setTimeout(()=>{
+fairySay("⭐ Nutzer geben 4.9 / 5");
+},5000);
+
+})();
+</script>
