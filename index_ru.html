@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>USB CoverFix Deluxe – решение обложек для Windows</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI','Courier New',monospace; }
         html,body { width:100%; overflow-x:hidden; background:#0a0e12; transition:background 0.3s, color 0.2s; }
@@ -16,7 +18,7 @@
         .windows-hint { background:#1e2a36; border-color:#2ecc71; }
         .lang-switch { text-align:center; margin-bottom:8px; }
         .lang-switch a { color:#2ecc71; margin:0 4px; padding:3px 8px; border-radius:20px; font-size:0.8rem; text-decoration:none; font-weight:bold; display:inline-block; transition:background 0.2s, color 0.2s; }
-        .lang-switch a.active { background:#2ecc71; color:#0a0e12; }
+        .lang-switch a:first-child { background:#2ecc71; color:#0a0e12; }
         .intro-text { font-size:0.9rem; text-align:center; margin:8px 0; }
         .highlight { color:#f1c40f; font-weight:bold; }
         .carousel-wrapper { position:relative; margin:10px 0; border-radius:12px; overflow:hidden; border:1px solid #2ecc71; background:#0a0e12; transition:border-color 0.2s, background 0.3s; }
@@ -105,7 +107,7 @@
             .feature-card li { white-space:normal; font-size:0.7rem; }
             .btn { padding:8px; font-size:1rem; }
         }
-        /* ----- СВЕТЛАЯ ТЕМА (полностью) ----- */
+        /* LIGHT THEME */
         body.light-theme { background:#f0f2f5; }
         body.light-theme .container { background:#ffffff; border-color:#2ecc71; color:#1a1a1a; }
         body.light-theme h1 { background:linear-gradient(45deg,#27ae60,#e67e22); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
@@ -115,7 +117,7 @@
         body.light-theme .windows-hint { background:#e8f0fe !important; border-color:#2ecc71 !important; color:#1a1a1a; }
         body.light-theme .windows-hint strong { color:#e67e22; }
         body.light-theme .lang-switch a { color:#1a1a1a; }
-        body.light-theme .lang-switch a.active { background:#2ecc71; color:#ffffff; }
+        body.light-theme .lang-switch a:first-child { background:#2ecc71; color:#ffffff; }
         body.light-theme .intro-text { color:#2c3e50; }
         body.light-theme .highlight { color:#e67e22; }
         body.light-theme .carousel-wrapper { border-color:#2ecc71; background:#f8f9fa; }
@@ -162,6 +164,97 @@
         body.light-theme div[style*="min-width:250px"] p[style*="color:#f1c40f"] {
             color: #e67e22 !important;
         }
+
+        /* Social buttons */
+        .social-links {
+            text-align: center;
+            margin: 30px 0 20px;
+        }
+        .social-links h3 {
+            color: #2ecc71;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        .social-icons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #1e2a36;
+            color: #2ecc71;
+            padding: 8px 18px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            border: 1px solid #2ecc71;
+        }
+        .social-icon i {
+            font-size: 1.2rem;
+        }
+        .social-icon:hover {
+            background: #2ecc71;
+            color: #0a0e12;
+            transform: translateY(-2px);
+        }
+        .social-icon.instagram:hover { background: #e4405f; border-color: #e4405f; color: #fff; }
+        .social-icon.tiktok:hover { background: #000; border-color: #fff; color: #fff; }
+        .social-icon.youtube:hover { background: #ff0000; border-color: #ff0000; color: #fff; }
+        .social-icon.reddit:hover { background: #ff4500; border-color: #ff4500; color: #fff; }
+        .social-icon.github:hover { background: #fff; border-color: #fff; color: #0a0e12; }
+        @media (max-width: 600px) {
+            .social-icon { padding: 6px 12px; font-size: 0.8rem; }
+            .social-icon i { font-size: 1rem; }
+        }
+
+        /* Kommentare Button oben */
+        .comment-jump {
+            color: #ffffff !important;
+            margin-left: 15px;
+            background: #2ecc71;
+            padding: 3px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .comment-jump:hover {
+            background: #f1c40f;
+            transform: scale(1.02);
+        }
+
+        /* HCB comment box styling */
+        #HCB_comment_box {
+            background-color: #151e26 !important;
+            border-radius: 16px !important;
+            padding: 20px !important;
+            color: #e0e0e0 !important;
+        }
+        #HCB_comment_box textarea, #HCB_comment_box input[type="text"] {
+            background-color: #0a0e12 !important;
+            border: 1px solid #2ecc71 !important;
+            border-radius: 12px !important;
+            color: #e0e0e0 !important;
+            padding: 8px !important;
+        }
+        #HCB_comment_box input[type="submit"] {
+            background-color: #2ecc71 !important;
+            border: none !important;
+            border-radius: 40px !important;
+            padding: 10px 24px !important;
+            font-weight: bold !important;
+            color: #0a0e12 !important;
+            cursor: pointer !important;
+        }
+        #HCB_comment_box input[type="submit"]:hover {
+            background-color: #f1c40f !important;
+        }
     </style>
 </head>
 <body>
@@ -170,6 +263,7 @@
         <a href="index.html">DE</a>
         <a href="index_en.html">EN</a>
         <a href="index_ru.html" class="active">RU</a>
+        <a href="#HCB_comment_box" class="comment-jump">💬 Комментарии</a>
     </div>
 
     <h1>USB CoverFix Deluxe</h1>
@@ -230,6 +324,32 @@
         </div>
     </div>
 
+    <!-- 🏆 Награды и внимание СМИ (SPOTLIGHT) -->
+    <div style="margin: 20px 0; text-align: center;">
+        <h3 style="color:#2ecc71; font-size:1.2rem; margin-bottom:15px;">🏆 В центре внимания</h3>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
+            <!-- Softpedia Award -->
+            <a href="https://www.softpedia.com/get/Multimedia/Audio/Audio-Editors-Recorders/USB-CoverFix-Deluxe.shtml" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                <div style="background:#1e2a36; border-radius:40px; padding:8px 20px; display:inline-flex; align-items:center; gap:8px; border:1px solid #2ecc71; transition:0.2s;">
+                    <span style="font-size:1.5rem;">⭐</span>
+                    <span style="font-weight:bold; color:#f1c40f;">Softpedia 4.0/5</span>
+                    <span style="color:#2ecc71;">| проверено и рекомендовано</span>
+                </div>
+            </a>
+            <!-- Giveaway of the Day (скоро) -->
+            <div style="background:#1e2a36; border-radius:40px; padding:8px 20px; display:inline-flex; align-items:center; gap:8px; border:1px solid #f1c40f; opacity:0.9;">
+                <span style="font-size:1.5rem;">🎁</span>
+                <span style="font-weight:bold; color:#f1c40f;">Giveaway of the Day</span>
+                <span style="color:#2ecc71;">| скоро бесплатно на 24ч</span>
+            </div>
+        </div>
+        <!-- Цитата из рецензии Softpedia -->
+        <div style="margin-top: 20px; padding: 12px 16px; background:#1e2a36; border-left: 4px solid #f1c40f; border-radius: 12px; max-width: 600px; margin-left: auto; margin-right: auto;">
+            <p style="font-style: italic; color:#e0e0e0;">„USB CoverFix Deluxe gives you the ability to quickly assign cover arts for as many songs as you need.“</p>
+            <p style="margin-top: 5px; color:#2ecc71;">— Рецензия Softpedia</p>
+        </div>
+    </div>
+
     <!-- Карточки функций -->
     <div class="feature-scroll">
         <div class="feature-card"><h3>🎵 MP3</h3><ul><li>Загрузка папок</li><li>Пакетно и по одному</li><li>Резервное копирование</li><li>Снятие защиты</li></ul></div>
@@ -255,25 +375,47 @@
         <span>Загрузок</span>
     </div>
 
+    <!-- Социальные сети -->
+    <div class="social-links">
+        <h3>📱 Подписаться и поделиться</h3>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/usbcoverfix" target="_blank" rel="noopener noreferrer" class="social-icon instagram" title="Instagram">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="https://www.tiktok.com/@usb_coverfix_deluxe?_r=1&_t=ZG-95vF7syq8ky" target="_blank" rel="noopener noreferrer" class="social-icon tiktok" title="TikTok">
+                <i class="fab fa-tiktok"></i> TikTok
+            </a>
+            <a href="https://youtube.com/@usb_coverfix_deluxe?si=Kn3Tqe5QQui7v17P" target="_blank" rel="noopener noreferrer" class="social-icon youtube" title="YouTube">
+                <i class="fab fa-youtube"></i> YouTube
+            </a>
+            <a href="https://www.reddit.com/u/USB_CoverFix_DELUXE/s/YM28fsatTH" target="_blank" rel="noopener noreferrer" class="social-icon reddit" title="Reddit">
+                <i class="fab fa-reddit-alien"></i> Reddit
+            </a>
+            <a href="https://github.com/scheck2019-png/usb-coverfix-update" target="_blank" rel="noopener noreferrer" class="social-icon github" title="GitHub">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+        </div>
+    </div>
+
     <!-- Футер -->
     <div class="footer">
-    <img src="logo_mini5.png" alt="Logo"> © Зигфрид Шек<br>
-    <a href="about_ru.html">О нас</a> |
-    <a href="changelog_ru.html">История версий</a> |
-    <a href="license_ru.html">Лицензия</a> |
-    <a href="faq_ru.html">ЧаВо</a> |
-    <a href="support_ru.html">Поддержка</a> |
-    <a href="impressum.html">Импрессум</a> |
-    <a href="datenschutz.html">Политика конфиденциальности</a> |
-    📧 <a href="mailto:usbcoverfix@gmail.com">usbcoverfix@gmail.com</a>
-    <button id="shareButton" class="share-button" title="Поделиться">📤</button>
-    <div class="visitor-counter">👀 Посетителей: <span id="visitorCount">0</span></div>
+        <img src="logo_mini5.png" alt="Логотип"> © Siegfried Scheck<br>
+        <a href="about_ru.html">О нас</a> |
+        <a href="changelog_ru.html">История версий</a> |
+        <a href="license_ru.html">Лицензия</a> |
+        <a href="faq_ru.html">ЧаВо</a> |
+        <a href="support_ru.html">Поддержка</a> |
+        <a href="impressum.html">Impressum</a> |
+        <a href="datenschutz.html">Datenschutz</a> |
+        📧 <a href="mailto:usbcoverfix@gmail.com">usbcoverfix@gmail.com</a>
+        <button id="shareButton" class="share-button" title="Поделиться">📤</button>
+        <div class="visitor-counter">👀 Посетителей: <span id="visitorCount">0</span></div>
     </div>
 </div>
 
 <button id="scrollToTopBtn">↑</button>
 
-<!-- Модальные окна -->
+<!-- Modals -->
 <div class="modal-overlay" id="paymentModal">
     <div class="modal-box">
         <p>💎 <span id="modalMessage">Спасибо за интерес! Вы будете перенаправлены на страницу оплаты.</span></p>
@@ -306,6 +448,12 @@
 </audio>
 <button id="soundToggle" class="sound-toggle" title="Звук вкл/выкл">🔊</button>
 <button id="themeToggle" class="theme-toggle" title="Светлая/тёмная тема">🌙</button>
+
+<!-- begin wwww.htmlcommentbox.com -->
+<div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Comment Form</a> is loading comments...</div>
+<link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
+<script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24Q6tFlQ0Thzocmv1yVLUHI%2F"+"&opts=16798&num=10&ts=1777385050724");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
+<!-- end www.htmlcommentbox.com -->
 
 <script>
 (function(){
@@ -503,4 +651,4 @@
 })();
 </script>
 </body>
-        </html>
+            </html>
