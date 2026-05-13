@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>USB CoverFix Deluxe – Cover solution for Windows</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI','Courier New',monospace; }
         html,body { width:100%; overflow-x:hidden; background:#0a0e12; transition:background 0.3s, color 0.2s; }
@@ -105,7 +107,7 @@
             .feature-card li { white-space:normal; font-size:0.7rem; }
             .btn { padding:8px; font-size:1rem; }
         }
-        /* ----- LIGHT THEME (complete) ----- */
+        /* LIGHT THEME */
         body.light-theme { background:#f0f2f5; }
         body.light-theme .container { background:#ffffff; border-color:#2ecc71; color:#1a1a1a; }
         body.light-theme h1 { background:linear-gradient(45deg,#27ae60,#e67e22); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
@@ -162,6 +164,97 @@
         body.light-theme div[style*="min-width:250px"] p[style*="color:#f1c40f"] {
             color: #e67e22 !important;
         }
+
+        /* Social buttons */
+        .social-links {
+            text-align: center;
+            margin: 30px 0 20px;
+        }
+        .social-links h3 {
+            color: #2ecc71;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        .social-icons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #1e2a36;
+            color: #2ecc71;
+            padding: 8px 18px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            border: 1px solid #2ecc71;
+        }
+        .social-icon i {
+            font-size: 1.2rem;
+        }
+        .social-icon:hover {
+            background: #2ecc71;
+            color: #0a0e12;
+            transform: translateY(-2px);
+        }
+        .social-icon.instagram:hover { background: #e4405f; border-color: #e4405f; color: #fff; }
+        .social-icon.tiktok:hover { background: #000; border-color: #fff; color: #fff; }
+        .social-icon.youtube:hover { background: #ff0000; border-color: #ff0000; color: #fff; }
+        .social-icon.reddit:hover { background: #ff4500; border-color: #ff4500; color: #fff; }
+        .social-icon.github:hover { background: #fff; border-color: #fff; color: #0a0e12; }
+        @media (max-width: 600px) {
+            .social-icon { padding: 6px 12px; font-size: 0.8rem; }
+            .social-icon i { font-size: 1rem; }
+        }
+
+        /* Kommentare Button oben */
+        .comment-jump {
+            color: #ffffff !important;
+            margin-left: 15px;
+            background: #2ecc71;
+            padding: 3px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .comment-jump:hover {
+            background: #f1c40f;
+            transform: scale(1.02);
+        }
+
+        /* HCB comment box styling */
+        #HCB_comment_box {
+            background-color: #151e26 !important;
+            border-radius: 16px !important;
+            padding: 20px !important;
+            color: #e0e0e0 !important;
+        }
+        #HCB_comment_box textarea, #HCB_comment_box input[type="text"] {
+            background-color: #0a0e12 !important;
+            border: 1px solid #2ecc71 !important;
+            border-radius: 12px !important;
+            color: #e0e0e0 !important;
+            padding: 8px !important;
+        }
+        #HCB_comment_box input[type="submit"] {
+            background-color: #2ecc71 !important;
+            border: none !important;
+            border-radius: 40px !important;
+            padding: 10px 24px !important;
+            font-weight: bold !important;
+            color: #0a0e12 !important;
+            cursor: pointer !important;
+        }
+        #HCB_comment_box input[type="submit"]:hover {
+            background-color: #f1c40f !important;
+        }
     </style>
 </head>
 <body>
@@ -170,6 +263,7 @@
         <a href="index.html">DE</a>
         <a href="index_en.html" class="active">EN</a>
         <a href="index_ru.html">RU</a>
+        <a href="#HCB_comment_box" class="comment-jump">💬 Comments</a>
     </div>
 
     <h1>USB CoverFix Deluxe</h1>
@@ -180,7 +274,7 @@
         <a href="https://ko-fi.com/usb_coverfix" id="paypalSupportBtn" class="paypal-support" target="_blank">❤️ Support ☕</a>
     </div>
 
-    <!-- Windows hint with its own class -->
+    <!-- Windows hint -->
     <div class="trial windows-hint">
         <strong>💻 Windows only</strong> – Tested on Windows 10 and 11<br>
         <span style="font-size:0.7rem;">macOS and Linux are not supported</span>
@@ -230,7 +324,33 @@
         </div>
     </div>
 
-    <!-- Feature cards -->
+    <!-- 🏆 Spotlight Section -->
+    <div style="margin: 20px 0; text-align: center;">
+        <h3 style="color:#2ecc71; font-size:1.2rem; margin-bottom:15px;">🏆 In the Spotlight</h3>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
+            <!-- Softpedia Award -->
+            <a href="https://www.softpedia.com/get/Multimedia/Audio/Audio-Editors-Recorders/USB-CoverFix-Deluxe.shtml" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                <div style="background:#1e2a36; border-radius:40px; padding:8px 20px; display:inline-flex; align-items:center; gap:8px; border:1px solid #2ecc71; transition:0.2s;">
+                    <span style="font-size:1.5rem;">⭐</span>
+                    <span style="font-weight:bold; color:#f1c40f;">Softpedia 4.0/5</span>
+                    <span style="color:#2ecc71;">| tested & recommended</span>
+                </div>
+            </a>
+            <!-- Giveaway of the Day (coming soon) -->
+            <div style="background:#1e2a36; border-radius:40px; padding:8px 20px; display:inline-flex; align-items:center; gap:8px; border:1px solid #f1c40f; opacity:0.9;">
+                <span style="font-size:1.5rem;">🎁</span>
+                <span style="font-weight:bold; color:#f1c40f;">Giveaway of the Day</span>
+                <span style="color:#2ecc71;">| free for 24h soon</span>
+            </div>
+        </div>
+        <!-- Quote from Softpedia review -->
+        <div style="margin-top: 20px; padding: 12px 16px; background:#1e2a36; border-left: 4px solid #f1c40f; border-radius: 12px; max-width: 600px; margin-left: auto; margin-right: auto;">
+            <p style="font-style: italic; color:#e0e0e0;">“USB CoverFix Deluxe gives you the ability to quickly assign cover arts for as many songs as you need.”</p>
+            <p style="margin-top: 5px; color:#2ecc71;">— Softpedia Review</p>
+        </div>
+    </div>
+
+    <!-- Feature Cards -->
     <div class="feature-scroll">
         <div class="feature-card"><h3>🎵 MP3</h3><ul><li>Load folders</li><li>Batch & single</li><li>Backup</li><li>Remove write protection</li></ul></div>
         <div class="feature-card"><h3>🚗 Car Radio</h3><ul><li>Naming schemes</li><li>Resize covers</li><li>JPG, PNG, BMP, GIF, TIFF</li></ul></div>
@@ -248,33 +368,54 @@
     <a href="#" id="buyButton" class="btn btn-buy">💎 Buy Full Version</a>
     <p style="text-align:center; font-size:0.7rem; color:#95a5a6; margin:5px 0;">*Up to 20 MP3/day free • Windows 10/11</p>
 
-    <!-- Download counter -->
+    <!-- Download Counter -->
     <div class="download-counter">
         <span>📥</span>
         <span id="download-count" style="color: #f1c40f; font-weight: bold;">…</span>
         <span>Downloads</span>
     </div>
 
+    <!-- Social Links -->
+    <div class="social-links">
+        <h3>📱 Follow & Share</h3>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/usbcoverfix" target="_blank" rel="noopener noreferrer" class="social-icon instagram" title="Instagram">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="https://www.tiktok.com/@usb_coverfix_deluxe?_r=1&_t=ZG-95vF7syq8ky" target="_blank" rel="noopener noreferrer" class="social-icon tiktok" title="TikTok">
+                <i class="fab fa-tiktok"></i> TikTok
+            </a>
+            <a href="https://youtube.com/@usb_coverfix_deluxe?si=Kn3Tqe5QQui7v17P" target="_blank" rel="noopener noreferrer" class="social-icon youtube" title="YouTube">
+                <i class="fab fa-youtube"></i> YouTube
+            </a>
+            <a href="https://www.reddit.com/u/USB_CoverFix_DELUXE/s/YM28fsatTH" target="_blank" rel="noopener noreferrer" class="social-icon reddit" title="Reddit">
+                <i class="fab fa-reddit-alien"></i> Reddit
+            </a>
+            <a href="https://github.com/scheck2019-png/usb-coverfix-update" target="_blank" rel="noopener noreferrer" class="social-icon github" title="GitHub">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+        </div>
+    </div>
+
     <!-- Footer -->
     <div class="footer">
-    <div class="footer">
-    <img src="logo_mini5.png" alt="Logo"> © Siegfried Scheck<br>
-    <a href="about_en.html">About</a> |
-    <a href="changelog_en.html">Changelog</a> |
-    <a href="license_en.html">License</a> |
-    <a href="faq_en.html">FAQ</a> |
-    <a href="support_en.html">Support</a> |
-    <a href="impressum.html">Imprint</a> |
-    <a href="datenschutz.html">Privacy Policy</a> |
-    📧 <a href="mailto:usbcoverfix@gmail.com">usbcoverfix@gmail.com</a>
-    <button id="shareButton" class="share-button" title="Share">📤</button>
-    <div class="visitor-counter">👀 Visitors: <span id="visitorCount">0</span></div>
+        <img src="logo_mini5.png" alt="Logo"> © Siegfried Scheck<br>
+        <a href="about_en.html">About</a> |
+        <a href="changelog_en.html">Changelog</a> |
+        <a href="license_en.html">License</a> |
+        <a href="faq_en.html">FAQ</a> |
+        <a href="support_en.html">Support</a> |
+        <a href="impressum.html">Impressum</a> |
+        <a href="datenschutz.html">Datenschutz</a> |
+        📧 <a href="mailto:usbcoverfix@gmail.com">usbcoverfix@gmail.com</a>
+        <button id="shareButton" class="share-button" title="Share">📤</button>
+        <div class="visitor-counter">👀 Visitors: <span id="visitorCount">0</span></div>
     </div>
 </div>
 
 <button id="scrollToTopBtn">↑</button>
 
-<!-- Modals (same as German) -->
+<!-- Modals -->
 <div class="modal-overlay" id="paymentModal">
     <div class="modal-box">
         <p>💎 <span id="modalMessage">Thank you for your interest! You will be redirected to the payment page.</span></p>
@@ -307,6 +448,12 @@
 </audio>
 <button id="soundToggle" class="sound-toggle" title="Sound on/off">🔊</button>
 <button id="themeToggle" class="theme-toggle" title="Light/Dark">🌙</button>
+
+<!-- begin wwww.htmlcommentbox.com -->
+<div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Comment Form</a> is loading comments...</div>
+<link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
+<script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24Q6tFlQ0Thzocmv1yVLUHI%2F"+"&opts=16798&num=10&ts=1777385050724");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
+<!-- end www.htmlcommentbox.com -->
 
 <script>
 (function(){
@@ -504,4 +651,4 @@
 })();
 </script>
 </body>
-              </html>
+                </html>
